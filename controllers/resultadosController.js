@@ -56,22 +56,42 @@ async function reqUltimos() {
     console.log(sorteios);
 }
 
-function formatBanca(banca, sorteios){
+function formatBanca(sorteios){
     return sorteios.extracoes.map(extracao => {
         return {
-            banca: banca,
+            banca: extracao.banca,
             data: sorteios.data,
             extracao: formatExtracao(extracao.sorteio),
             resultado: formatPremios(extracao.resultados)
         }
     })
 }
-async function reqBanca(banca_urn) {
-    console.log(HOST+APIURN+URN[banca_urn])
+async function reqBanca(banca_urn, data) {
+    banca_urn = data ? banca_urn+(data.split("/").join("_")) : banca_urn;
     let res = await axios.get(HOST+APIURN+URN[banca_urn]);
-    let sorteios = formatBanca(banca_urn ,res.data);
+    let sorteios = formatBanca(res.data);
     console.log(sorteios);
 }
 
+function formatSorteio(sorteios, extracao){
+    sorteios.extracoes = sorteios.extracoes.filter((sorteio) => {
+        return formatExtracao(sorteio.sorteio) === extracao;
+    });
+    return sorteios.extracoes.length > 0 ? {
+        banca: sorteios.extracoes[0].banca,
+        data: sorteios.data,
+        extracao: formatExtracao(sorteios.extracoes[0].sorteio),
+        resultado: formatPremios(sorteios.extracoes[0].resultados)
+    } : false;
+    
+}
+async function reqSorteio(banca_urn, data, extracao) {
+    data = data.split("/").join("_");
+    let res = await axios.get(HOST+APIURN+URN[banca_urn]+data);
+    let sorteio = formatSorteio(res.data, extracao);
+    console.log(sorteio);
+}
+
 // reqUltimos();
-reqBanca('bahia');
+// reqBanca('bahia');
+// reqSorteio('bahia', "15/03/2020", "12:00")
