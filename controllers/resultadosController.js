@@ -1,5 +1,5 @@
 const axios = require('axios').default;
-const fs = require ('fs');
+// const fs = require ('fs');
 const loterias = require('./data/loterias')
 const RGX = loterias.rgx;
 const URN = loterias.urns;
@@ -28,7 +28,7 @@ function formatPremios(resultados) {
         return { milhar: premio[1], grupo: GRUPO[Number(premio[2])] }
     }
     if(!(Array.isArray(resultados))) {
-        resultados = [resultados];
+        return formatPremio(resultados);
     }
     return resultados.map(resultado => {
         return formatPremio(resultado);
@@ -49,11 +49,11 @@ function formatLasts(sorteios) {
         }
     });
 }
-async function reqUltimos() {
+async function reqUltimas() {
     let res = await axios.get(HOST+APIURN);
     let resultados = res.data.feed;
-    let sorteios = formatLasts(resultados);
-    console.log(sorteios);
+    let extracoes = formatLasts(resultados);
+    return extracoes;
 }
 
 function formatBanca(sorteios){
@@ -70,7 +70,7 @@ async function reqBanca(banca_urn, data) {
     banca_urn = data ? banca_urn+(data.split("/").join("_")) : banca_urn;
     let res = await axios.get(HOST+APIURN+URN[banca_urn]);
     let sorteios = formatBanca(res.data);
-    console.log(sorteios);
+    return sorteios;
 }
 
 function formatSorteio(sorteios, extracao){
@@ -89,7 +89,16 @@ async function reqSorteio(banca_urn, data, extracao) {
     data = data.split("/").join("_");
     let res = await axios.get(HOST+APIURN+URN[banca_urn]+data);
     let sorteio = formatSorteio(res.data, extracao);
-    console.log(sorteio);
+    return sorteio;
+}
+
+exports.ultimas_extracoes = async function(req, res, next) {
+    let extracoes = await reqUltimas();
+    console.log(extracoes);
+    if(!extracoes) {
+        return next();
+    }
+    res.render('extracoes', {title: ':: Últimos Resultados ::', extracoes})
 }
 
 // reqUltimos();

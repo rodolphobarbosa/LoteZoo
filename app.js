@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const resultadosRouter = require('./routes/resultados');
 
 var app = express();
 
@@ -20,10 +21,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules/jquery')));
 app.use(express.static(path.join(__dirname, 'node_modules/@popperjs/core/dist')));
-app.use(express.static(path.join(__dirname, 'node_modules/@popperjs/bootstrap/dist')));
+app.use(express.static(path.join(__dirname, 'node_modules/bootstrap/dist')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/resultados', resultadosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

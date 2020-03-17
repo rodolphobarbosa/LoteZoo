@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	.container-fluid
+		.row.no-gutters
+			h2.col-12 Últimos Resultados
+			each item in extracoes
+				.col-6
+					h5= item.banca
+					h6= item.extracao
+					p.text-muted= item.data
+				.col-6
+					img.img-thumbnail(src='http://www.placecorgi.com/120' alt=item.resultado.grupo.nome)
+					p.lead= item.resultado.milhar
