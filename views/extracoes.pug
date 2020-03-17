@@ -1,14 +1,28 @@
 extends layout
 
 block content
-	.container-fluid
-		.row.no-gutters
-			h2.col-12 Últimos Resultados
+	.container-md.container-lg
+		h2 Últimos Resultados
+		.row.no-gutters.row-cols-1.row-cols-sm-2.row-cols-lg-3
 			each item in extracoes
-				.col-6
-					h5= item.banca
-					h6= item.extracao
-					p.text-muted= item.data
-				.col-6
-					img.img-thumbnail(src='http://www.placecorgi.com/120' alt=item.resultado.grupo.nome)
-					p.lead= item.resultado.milhar
+				.col.px-4.px-sm-3.px-md-2.mb-3.mb-lg-4
+					.card.rounded-0.extracao
+						.card-header.d-flex.align-items-baseline.justify-content-between.px-3.py-2
+							h6.card-title.m-0= item.banca
+							h6.card-subtitle= item.extracao
+						.card-body.p-0
+							ul.list-group.list-group-flush.sorteio-resultado
+								li.list-group-item.sorteio-premio
+									.row.no-gutters.row-cols-2
+										.col.pl-3
+											p.sorteio-milhar= item.resultado.milhar
+										.col.pr-3.sorteio-grupo.d-flex.justify-content-around.align-items-center
+											span.grupo-num= item.resultado.grupo.num
+											img.grupo-img(src='http://www.placecorgi.com/32' alt=item.resultado.grupo.nome)
+											span.grupo-nome= item.resultado.grupo.nome
+						.card-footer.d-flex.align-items-baseline.justify-content-between.px-3.py-2.text-muted
+							span.border.p-1.sorteio-data= item.data
+							.btn-group(role='group' aria-label='extracao opções')
+								a.btn.btn-outline-secondary.btn-sm(role='button' href='resultados/'+item.urn) Banca
+								button.btn.btn-outline-info.btn-sm(type='buttton') Resultado
+

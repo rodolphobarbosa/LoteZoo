@@ -1,8 +1,16 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+main {
+    padding-top: 4rem;
 }
-
-a {
-  color: #00B7FF;
+.sorteio-premio {
+    padding: .2rem 0;
+}
+.sorteio-milhar {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: .2rem;
+}
+.sorteio-data {
+    font-size: .9rem;
+    border-color: #ccc;
 }

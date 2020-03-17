@@ -6,8 +6,13 @@ html(lang='pt-br')
     title= title
     link(rel='stylesheet', href='/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+  body.text-body.bg-light
+    header
+      block header
+        nav.navbar.fixed-top.navbar-dark.bg-dark.mr-auto
+          a.navbar-brand(href='/') DeuNoPoste
+    main(role='main')
+      block content
     block scripts
       script(src='/dist/jquery.slim.min.js')
       script(src='/umd/popper.min.js')
