@@ -1,4 +1,5 @@
 doctype html
+include includes/icones.pug
 html(lang='pt-br')
   head
     meta(charset='utf-8')
@@ -13,6 +14,14 @@ html(lang='pt-br')
           a.navbar-brand(href='/') DeuNoPoste
     main(role='main')
       block content
+    footer.bg-dark
+      block footer
+        .row.no-gutters.justify-content-center.p-2
+          blockquote.blockquote.text-center.text-muted.note
+            p.m-0 Desenvolvido por 
+              a.text-light(href="https://github.com/https://github.com/RuanSena") RuanSena
+            block iconesRights
+              +citeRights([ ["Freepik", "https://www.flaticon.com/authors/freepik"], ["monkik", "https://www.flaticon.com/authors/monkik"], ["Smashicons", "https://www.flaticon.com/authors/smashicons"], ["photo3idea_studio", "https://www.flaticon.com/authors/photo3idea-studio"] ])
     block scripts
       script(src='/dist/jquery.slim.min.js')
       script(src='/umd/popper.min.js')

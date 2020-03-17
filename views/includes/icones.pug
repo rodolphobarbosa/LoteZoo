@@ -1,0 +1,9 @@
+mixin citeRights(refs = [])
+    -let nested = refs.slice(0, refs.length-1)
+    footer.blockquote-footer Icons made by 
+        each ref in nested
+            a.text-decoration-none.text-muted(href=ref[1])
+                cite(title=ref[0])= ref[0]+', '
+        a.text-decoration-none.text-muted(href=refs[refs.length-1][1])
+            cite(title=refs[refs.length-1][0])= refs[refs.length-1][0]+' '
+        | from #[a.text-decoration-none.text-muted(href="https://www.flaticon.com/" title="Flaticon") www.flaticon.com]

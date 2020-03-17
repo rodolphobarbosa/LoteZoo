@@ -12,13 +12,13 @@ block content
 							h6.card-subtitle= item.extracao
 						.card-body.p-0
 							ul.list-group.list-group-flush.sorteio-resultado
-								li.list-group-item.sorteio-premio
+								li.list-group-item.sorteio-premios
 									.row.no-gutters.row-cols-2
 										.col.pl-3
 											p.sorteio-milhar= item.resultado.milhar
 										.col.pr-3.sorteio-grupo.d-flex.justify-content-around.align-items-center
 											span.grupo-num= item.resultado.grupo.num
-											img.grupo-img(src='http://www.placecorgi.com/32' alt=item.resultado.grupo.nome)
+											img.grupo-img(src='/images/grupos/'+item.resultado.grupo.img alt=item.resultado.grupo.nome)
 											span.grupo-nome= item.resultado.grupo.nome
 						.card-footer.d-flex.align-items-baseline.justify-content-between.px-3.py-2.text-muted
 							span.border.p-1.sorteio-data= item.data
