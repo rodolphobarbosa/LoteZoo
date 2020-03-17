@@ -1,0 +1,22 @@
+mixin premios(resultados, cabeca = false)
+	if cabeca
+		-let grupo = resultados.grupo
+			li.list-group-item.sorteio-premios
+				.row.no-gutters.row-cols-2
+					.col.pl-3
+						p.sorteio-milhar= resultados.milhar
+					.col.pr-3.sorteio-grupo.d-flex.justify-content-around.align-items-center
+						span= grupo.num
+						img.grupo-img(src='/images/grupos/'+grupo.img alt=grupo.nome)
+						span.grupo-nome= grupo.nome
+	else
+		each resultado in resultados
+			-let grupo = resultado.grupo
+				li.list-group-item.sorteio-premios
+					.row.no-gutters.row-cols-2
+						.col.pl-3
+							p.sorteio-milhar= resultado.milhar
+						.col.pr-3.sorteio-grupo.d-flex.justify-content-around.align-items-center
+							span= grupo.num
+							img.grupo-img(src='/images/grupos/'+grupo.img alt=grupo.nome)
+							span.grupo-nome= grupo.nome

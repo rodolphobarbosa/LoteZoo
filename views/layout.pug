@@ -1,29 +1,35 @@
 doctype html
 include includes/icones.pug
 html(lang='pt-br')
-  head
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    title= title
-    link(rel='stylesheet', href='/css/bootstrap.min.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body.text-body.bg-light
-    header
-      block header
-        nav.navbar.fixed-top.navbar-dark.bg-dark.mr-auto
-          a.navbar-brand(href='/') DeuNoPoste
-    main(role='main')
-      block content
-    footer.bg-dark
-      block footer
-        .row.no-gutters.justify-content-center.p-2
-          blockquote.blockquote.text-center.text-muted.note
-            p.m-0 Desenvolvido por 
-              a.text-light(href="https://github.com/https://github.com/RuanSena") RuanSena
-            block iconesRights
-              +citeRights([ ["Freepik", "https://www.flaticon.com/authors/freepik"], ["monkik", "https://www.flaticon.com/authors/monkik"], ["Smashicons", "https://www.flaticon.com/authors/smashicons"], ["photo3idea_studio", "https://www.flaticon.com/authors/photo3idea-studio"] ])
-    block scripts
-      script(src='/dist/jquery.slim.min.js')
-      script(src='/umd/popper.min.js')
-      script(src='/js/bootstrap.min.js')
-    
+	head
+		meta(charset='utf-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1')
+		title= title
+		link(rel='stylesheet' href='/css/bootstrap.min.css')
+		link(href="https://fonts.googleapis.com/css?family=Baloo+Da+2|Muli&display=swap" rel="stylesheet")
+		link(rel='stylesheet' href='/stylesheets/style.css')
+	body.text-body.bg-light
+		header
+			block header
+				nav.navbar.navbar-expand-sm.fixed-top.navbar-dark.bg-dark.mr-auto
+					a.navbar-brand(href='/') DeuNoPoste
+					button.navbar-toggler(type='button' data-toggle='collapse' data-target='#topNav' aria-controls='topNav' aria-expanded='false' aria-label='Procurar menu')
+						span.navbar-toggler-icon.navbar-banca-icone
+					#topNav.collapse.navbar-collapse
+						form.form-inline.ml-auto
+							input.form-control(type='text' placeholder='Banca' aria-label='Procurar')
+		main(role='main')
+			block content
+		footer.bg-dark
+			block footer
+				.row.no-gutters.justify-content-center.p-2
+					blockquote.blockquote.text-center.text-muted.note
+						p.m-0 Desenvolvido por 
+							a.text-light(href="https://github.com/https://github.com/RuanSena") RuanSena
+						block iconesRights
+							+citeRights([ ["Freepik", "https://www.flaticon.com/authors/freepik"], ["monkik", "https://www.flaticon.com/authors/monkik"], ["Smashicons", "https://www.flaticon.com/authors/smashicons"], ["photo3idea_studio", "https://www.flaticon.com/authors/photo3idea-studio"] ])
+		block scripts
+			script(src='/dist/jquery.slim.min.js')
+			script(src='/umd/popper.min.js')
+			script(src='/js/bootstrap.min.js')
+

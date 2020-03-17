@@ -1,13 +1,28 @@
+body {
+	font-family: 'Baloo Da 2', cursive;
+}
 main {
-	padding-top: 4rem;
+	padding-top: 3rem;
+}
+.navbar-banca-icone {
+    background-image: url('/images/banca.svg') !important;
+}
+.sorteios {
+    font-family: 'Muli', sans-serif;
+}
+.sorteio {
+	color: var(--info);
+}
+.sorteio-resultado {
+	font-weight: 700;
+	color: var(--purple);
 }
 .sorteio-premios {
-	padding: 0.2rem 0;
+	padding: 0.4rem 0;
 }
 .sorteio-milhar {
 	margin: 0;
-	font-size: 1.25rem;
-	font-weight: 500;
+	font-size: 1.35rem;
 	letter-spacing: 0.2rem;
 }
 .grupo-img {
@@ -15,11 +30,14 @@ main {
 	height: auto;
 	user-select: none;
 }
+.grupo-nome {
+	color: var(--gray-dark);
+}
 .sorteio-data {
 	font-size: 0.9rem;
 	border-color: #ccc;
 }
 .note {
-	font-size: .8rem;
+	font-size: 0.9rem;
 	margin-bottom: 0;
 }
