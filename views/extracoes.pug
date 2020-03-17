@@ -11,16 +11,18 @@ block content
 
 	.container-md.container-lg.sorteios
 		.row.no-gutters.row-cols-1.row-cols-sm-2.row-cols-lg-3
+			//- order deu no poste
+			//- -extracoes.sort(function(a, b) {return (a.poste > b.poste) ? -1 : (a.poste < b.poste) ? 1 : 0;});
 			each item in extracoes
-				.col.px-4.px-sm-3.px-md-2.mb-3.mb-lg-4
-					.card.rounded-0.sorteio
-						.card-header.d-flex.align-items-baseline.justify-content-between.px-3.py-2
+				.col.px-4.px-sm-1.px-md-2.mb-3.mb-md-4.mb-lg-5
+					.card.rounded-0.shadow.sorteio(class=item.poste?"border-info":"")
+						.card-header.d-flex.align-items-center.justify-content-between.px-3.py-3
 							h6.card-title.m-0= item.banca
-							h6(title='Extração').card-subtitle= item.extracao
+							h6(title='Extração').card-subtitle.p-1.rounded.border.border-info= item.extracao
 						.card-body.p-0
 							ul.list-group.list-group-flush.sorteio-resultado
 								+premios(item.resultado, true)
-						.card-footer.d-flex.align-items-baseline.justify-content-between.px-3.py-2.text-muted
+						.card-footer.d-flex.align-items-baseline.justify-content-between.px-3.px-sm-2.py-2.text-muted
 							span.border.p-1.text-reset.sorteio-data= item.data
 							.btn-group(role='group' aria-label='extracao opções')
 								a.btn.btn-outline-secondary.btn-sm(role='button' href='resultados/'+item.urn) Banca
