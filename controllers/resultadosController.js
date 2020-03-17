@@ -8,6 +8,11 @@ const GRUPO = loterias.grupos;
 const HOST = loterias.host
 const APIURN = loterias.apiUrn;
 
+function formatUrn(uri) {
+    uri = uri.split(APIURN)[1];
+    uri = uri.indexOf("/") > -1 ? uri.slice(0, uri.indexOf("/")) : uri;
+    return URN[uri];
+}
 function formatExtracao(string) {
     // clean spaces 
     string = string.trim().replace("  ", " ");
@@ -42,6 +47,7 @@ function formatLasts(sorteios) {
     return sorteios.map(sorteio => {
         return {
             banca: sorteio.banca,
+            urn: formatUrn(sorteio.banca_url),
             extracao: formatExtracao(sorteio.extracao),
             data: sorteio.data,
             resultado: formatPremios(sorteio.resultado),
@@ -51,8 +57,7 @@ function formatLasts(sorteios) {
 }
 async function reqUltimas() {
     let res = await axios.get(HOST+APIURN);
-    let resultados = res.data.feed;
-    let extracoes = formatLasts(resultados);
+    let extracoes = formatLasts(res.data.feed);
     return extracoes;
 }
 
@@ -93,8 +98,10 @@ async function reqSorteio(banca_urn, data, extracao) {
 }
 
 exports.ultimas_extracoes = async function(req, res, next) {
+    let limit = 12;
+    let skip = 0;
     let extracoes = await reqUltimas();
-    console.log(extracoes);
+    extracoes = extracoes.slice(skip, limit);
     if(!extracoes) {
         return next();
     }
