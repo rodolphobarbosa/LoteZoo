@@ -25,7 +25,6 @@ exports.ultimas_extracoes = async function(req, res, next) {
 
 exports.banca_sorteios = async function(req, res, next) {
     let sorteios = await loteria.req_banca(req.params.banca);
-    console.log(sorteios);
     res.render('resultados', {title: 'Resultados', banca: sorteios.banca, data: sorteios.data, sorteios: sorteios.sorteios})
 }
 
