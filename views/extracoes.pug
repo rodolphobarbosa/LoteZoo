@@ -5,15 +5,15 @@ block content
 	.jumbotron
 		.container
 			h2 Deu no Poste! - Últimos Resultados
-			p.lead Confira em tempo real as últimas extrações das bancas de todo Brasil.#[br] Utilize dos filtros para organizar os resultados.
-			hr.my-2
-			p As extrações são exibidas o 1º prêmio (Cabeça), consulte o Resultado ou a página da Banca.
+			p.lead.d-none.d-lg-block Confira em tempo real as últimas extrações das bancas de todo Brasil.#[br] Utilize dos filtros para organizar os resultados.
+			hr.d-none.d-sm-block.my-2
+			p.d-none.d-sm-block As extrações são exibidas o 1º prêmio (Cabeça), consulte o Resultado ou a página da Banca.
 
 	.container-md.container-lg.sorteios
 		.row.no-gutters.row-cols-1.row-cols-sm-2.row-cols-lg-3
 			each item in extracoes
 				.col.px-4.px-sm-1.px-md-2.mb-3.mb-md-4.mb-lg-5
-					.card.rounded-0.shadow.sorteio(id=item.ID class=item.poste?"border-info":"")
+					.card.rounded-0.shadow.sorteio(id=item.ID class=item.poste?"border-info":"border-cinza")
 						.card-header.d-flex.align-items-center.justify-content-between.px-3.py-3
 							h6.card-title.m-0= item.banca
 							h6(title='Extração').card-subtitle.p-1.rounded.border.border-info= item.extracao

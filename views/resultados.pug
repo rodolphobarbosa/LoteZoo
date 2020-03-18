@@ -12,9 +12,9 @@ block content
 					a.p-2.text-muted(href='#'+sorteio.ID)= sorteio.extracao
 		.row.no-gutters.row-cols-1.row-cols-md-2
 			if sorteios.length > 1
-			each sorteio in sorteios
+			each sorteio, i in sorteios
 				.col.px-4.mb-3.mb-md-4.mb-lg-5
-					.card.rounded-0.shadow.sorteio(id=sorteio.ID)
+					.card.rounded-0.shadow.sorteio(id=sorteio.ID class=i%2==0?"border-cinza":"")
 						.card-header.px-3.py-3.text-center
 							h6.card-subtitle.p-1.rounded.border(class=sorteio.poste?"bg-info text-light border-primary":"border-info")= sorteio.extracao
 						.card-body.p-0

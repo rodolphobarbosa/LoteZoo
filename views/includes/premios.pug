@@ -13,7 +13,7 @@ mixin premios(resultados, cabeca = false)
 	else
 		each resultado, i in resultados
 			-let grupo = resultado.grupo
-				li.list-group-item.sorteio-premio(class=i%2==1?"bg-light":"")
+				li.list-group-item.sorteio-premio(class=i%2==1?"bg-striped":"")
 					.row.no-gutters.row-cols-md-3.row-cols-lg-4
 						.col.pl-3.d-flex.align-items-center.justify-content-between
 							span.d-md-none.d-lg-inline.border.text-muted.premio-num= (i+1)+"º"

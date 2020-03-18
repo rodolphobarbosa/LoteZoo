@@ -1,3 +1,8 @@
+:root {
+	--cinza-escuro: #c2c3c4;
+	--cinza: #eceff1;
+	--cinza-claro: #eceef0;
+}
 body {
 	font-family: 'Baloo Da 2', cursive;
 }
@@ -30,6 +35,9 @@ main {
 	padding-bottom: 0.75rem;
 	font-size: 0.875rem;
 }
+.border-cinza {
+	border-color: var(--cinza-escuro);
+}
 .sorteios {
 	font-family: 'Muli', sans-serif;
 }
@@ -39,6 +47,11 @@ main {
 .sorteio-resultado {
 	font-weight: 700;
 	color: var(--purple);
+}
+.bg-striped {
+	background-color: var(--cinza-claro);
+	background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+	background-size: 1rem 1rem;
 }
 .sorteio-premio {
 	padding: 0.4rem 0;
