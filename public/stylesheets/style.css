@@ -30,15 +30,10 @@ main {
 	white-space: nowrap;
 	-webkit-overflow-scrolling: touch;
 }
-.nav-scroller .nav-link {
-	padding-top: 0.75rem;
-	padding-bottom: 0.75rem;
-	font-size: 0.875rem;
-}
 .border-cinza {
 	border-color: var(--cinza-escuro);
 }
-.sorteios {
+.sorteios, #ResultadoModal {
 	font-family: 'Muli', sans-serif;
 }
 .sorteio {

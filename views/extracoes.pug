@@ -9,14 +9,14 @@ block content
 			hr.d-none.d-sm-block.my-2
 			p.d-none.d-sm-block As extrações são exibidas o 1º prêmio (Cabeça), consulte o Resultado ou a página da Banca.
 
-	.container-md.container-lg.sorteios
+	.container-md.container-lg.px-sm-1.sorteios
 		.row.no-gutters.row-cols-1.row-cols-sm-2.row-cols-lg-3
 			each item in extracoes
 				.col.px-4.px-sm-1.px-md-2.mb-3.mb-md-4.mb-lg-5
 					.card.rounded-0.shadow.sorteio(id=item.ID class=item.poste?"border-info":"border-cinza")
 						.card-header.d-flex.align-items-center.justify-content-between.px-3.py-3
 							h6.card-title.m-0= item.banca
-							h6(title='Extração').card-subtitle.p-1.rounded.border.border-info= item.extracao
+							h6(title='Extração').card-subtitle.p-1.text-monospace.rounded.border.border-info= item.extracao
 						.card-body.p-0
 							ul.list-group.list-group-flush.sorteio-resultado
 								+premios(item.resultado, true)
@@ -24,5 +24,17 @@ block content
 							span.border.p-1.text-reset.sorteio-data= item.data
 							.btn-group(role='group' aria-label='extracao opções')
 								a.btn.btn-outline-secondary.btn-sm(role='button' href='resultados/'+item.urn) Banca
-								button.btn.btn-outline-info.btn-sm(type='buttton') Resultado
+								button.btn.btn-outline-info.btn-sm(type='buttton' data-toggle='modal' data-target='#ResultadoModal') Resultado
 
+	#ResultadoModal.modal.fade(tab-index="-1" role="dialog" aria-labelledby='ResultadoCabecalho' aria-hidden='true')
+		.modal-dialog.modal-dialog-centered(role='document')
+			.modal-content
+				.modal-header
+					h5#ResultadoCabecalho.modal-title Banca - #[span.text-monospace Extração]
+					button.close(type="button" data-dismiss='modal' aria-label='Fechar')
+						span(aria-hidden='true') &times;
+				.modal-body
+					p Resultado
+				.modal-footer
+					button.btn.btn-primary(type='button') Imprimir
+					button.btn.btn-secondary(type='button' data-dismiss='modal') Fechar

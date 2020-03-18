@@ -4,19 +4,19 @@ include includes/premios.pug
 block content
 	section.jumbotron.text-center.mb-0
 		h2= banca
-		p.h3= data
+		p.h3.d-inline-block.px-2.py-1.shadow-sm= data
 	.container-sm.container-md.container-lg.mt-n3.mt-md-n5.sorteios.bg-light.shadow-lg
 		.nav-scroller.py-1.mb-2.border-top.border-bottom.border-info
 			nav.nav.justify-content-between
 				each sorteio in sorteios
-					a.p-2.text-muted(href='#'+sorteio.ID)= sorteio.extracao
+					a.p-2.text-muted.text-monospace.font-weight-bold(href='#'+sorteio.ID)= sorteio.extracao
 		.row.no-gutters.row-cols-1.row-cols-md-2
 			if sorteios.length > 1
 			each sorteio, i in sorteios
 				.col.px-4.mb-3.mb-md-4.mb-lg-5
-					.card.rounded-0.shadow.sorteio(id=sorteio.ID class=i%2==0?"border-cinza":"")
+					.card.rounded-0.shadow.sorteio(id=sorteio.ID)
 						.card-header.px-3.py-3.text-center
-							h6.card-subtitle.p-1.rounded.border(class=sorteio.poste?"bg-info text-light border-primary":"border-info")= sorteio.extracao
+							h6.card-subtitle.p-1.text-monospace.rounded.border(class=sorteio.poste?"bg-info text-light border-primary":"border-info")= sorteio.extracao
 						.card-body.p-0
 							ul.list-group.list-group-flush.sorteio-resultado
 								+premios(sorteio.resultado)
