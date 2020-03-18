@@ -1,22 +1,26 @@
 mixin premios(resultados, cabeca = false)
 	if cabeca
 		-let grupo = resultados.grupo
-			li.list-group-item.sorteio-premios
+			li.list-group-item.sorteio-premio
 				.row.no-gutters.row-cols-2
-					.col.pl-3
-						p.sorteio-milhar= resultados.milhar
-					.col.pr-3.sorteio-grupo.d-flex.justify-content-around.align-items-center
+					.col.pl-3.d-flex.justify-content-start.align-items-center
+						span.d-sm-none.d-md-inline.border.text-muted.premio-num= 1+"º"
+						span.premio-milhar= resultados.milhar
+					.col.pr-3.premio-grupo.d-flex.justify-content-around.align-items-center
 						span= grupo.num
 						img.grupo-img(src='/images/grupos/'+grupo.img alt=grupo.nome)
 						span.d-sm-none.d-md-block.d-lg-none.d-xl-block.grupo-nome= grupo.nome
 	else
-		each resultado in resultados
+		each resultado, i in resultados
 			-let grupo = resultado.grupo
-				li.list-group-item.sorteio-premios
-					.row.no-gutters.row-cols-2
-						.col.pl-3
-							p.sorteio-milhar= resultado.milhar
-						.col.pr-3.sorteio-grupo.d-flex.justify-content-around.align-items-center
+				li.list-group-item.sorteio-premio
+					.row.no-gutters.row-cols-md-3.row-cols-lg-4
+						.col.pl-3.d-flex.align-items-center.justify-content-between
+							span.d-md-none.d-lg-inline.border.text-muted.premio-num= (i+1)+"º"
+							p.premio-milhar.ml-auto= resultado.milhar
+						.col.d-flex.align-items-center.justify-content-end
 							span= grupo.num
+						.col.d-flex.align-items-center.justify-content-center
 							img.grupo-img(src='/images/grupos/'+grupo.img alt=grupo.nome)
+						.col.pr-3.d-none.d-lg-flex.align-items-center.justify-content-center
 							span.grupo-nome= grupo.nome

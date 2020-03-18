@@ -5,10 +5,33 @@ main {
 	padding-top: 3rem;
 }
 .navbar-banca-icone {
-    background-image: url('/images/banca.svg') !important;
+	background-image: url('/images/banca.svg') !important;
+}
+.nav-scroller {
+	position: relative;
+	z-index: 2;
+	height: 2.75rem;
+	overflow-y: hidden;
+}
+.nav-scroller .nav {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+	padding-bottom: 1rem;
+	margin-top: -1px;
+	overflow-x: auto;
+	text-align: center;
+	white-space: nowrap;
+	-webkit-overflow-scrolling: touch;
+}
+.nav-scroller .nav-link {
+	padding-top: 0.75rem;
+	padding-bottom: 0.75rem;
+	font-size: 0.875rem;
 }
 .sorteios {
-    font-family: 'Muli', sans-serif;
+	font-family: 'Muli', sans-serif;
 }
 .sorteio {
 	color: var(--info);
@@ -17,10 +40,17 @@ main {
 	font-weight: 700;
 	color: var(--purple);
 }
-.sorteio-premios {
+.sorteio-premio {
 	padding: 0.4rem 0;
 }
-.sorteio-milhar {
+.premio-num {
+	background-color: var(--light);
+	padding: 0.1rem 0.3rem;
+	margin-right: 0.5rem;
+	font-weight: 400;
+	user-select: none;
+}
+.premio-milhar {
 	margin: 0;
 	font-size: 1.35rem;
 	letter-spacing: 0.2rem;

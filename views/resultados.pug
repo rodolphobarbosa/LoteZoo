@@ -1,0 +1,28 @@
+extends layout
+include includes/premios.pug
+
+block content
+	section.jumbotron.text-center.mb-0
+		h2= banca
+		p.h3= data
+	.container-sm.container-md.container-lg.mt-n3.mt-md-n5.sorteios.bg-light.shadow-lg
+		.nav-scroller.py-1.mb-2
+			nav.nav.justify-content-between
+				a.p-2.text-muted(href='#') Anchor1
+				a.p-2.text-muted(href='#') Anchor2
+				a.p-2.text-muted(href='#') Anchor3
+				a.p-2.text-muted(href='#') Anchor4
+				a.p-2.text-muted(href='#') Anchor5
+				a.p-2.text-muted(href='#') Anchor6
+		.row.no-gutters.row-cols-1.row-cols-md-2
+			if sorteios.length > 1
+			each sorteio in sorteios
+				.col.px-4.mb-3.mb-md-4.mb-lg-5
+					.card.rounded-0.shadow.sorteio
+						.card-header.px-3.py-3.text-center
+							h6.card-subtitle.p-1.rounded.border(class=sorteio.poste?"bg-info text-light border-primary":"border-info")= sorteio.extracao
+						.card-body.p-0
+							ul.list-group.list-group-flush.sorteio-resultado
+								+premios(sorteio.resultado)
+			else
+				p.lead Sem Resultados

@@ -15,15 +15,18 @@ exports.ultimas_extracoes = async function(req, res, next) {
     let limit = 20;
     let skip = 0;
     let extracoes = await loteria.req_ultimas();
-    extracoes = orderPoste(extracoes);
-    extracoes = extracoes.slice(skip, limit);
     //- order deu no poste
-    if(!extracoes) {
-        return next();
-    }
+    // extracoes = orderPoste(extracoes);
+    // pagina
+    extracoes = extracoes.slice(skip, limit);
+    
     res.render('extracoes', {title: ':: Últimos Resultados ::', extracoes})
 }
 
-// reqUltimos();
-// reqBanca('bahia');
+exports.banca_sorteios = async function(req, res, next) {
+    let sorteios = await loteria.req_banca(req.params.banca);
+    console.log(sorteios);
+    res.render('resultados', {title: 'Resultados', banca: sorteios.banca, data: sorteios.data, sorteios: sorteios.sorteios})
+}
+
 // reqSorteio('bahia', "15/03/2020", "12:00")
