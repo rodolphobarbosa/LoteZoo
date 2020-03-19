@@ -7,6 +7,7 @@ async function asyncAPI(fx, fxArgs = [], cb) {
 		let response = await fx.apply(null, fxArgs)
 		return cb(null, response)
 	} catch (e) {
+        console.error(e);
 		return cb(e, null)
 	}
 }
@@ -22,7 +23,7 @@ function orderPoste(extracoes) {
 }
 function mapQueries(sorteios) {
     return sorteios.map(sorteio => {
-        sorteio.uri = qs.stringify({data: sorteio.data, extracao: sorteio.extracao});
+        sorteio.uri = qs.stringifyUrl({url: `/resultados/${sorteio.urn}/sorteio`, query: {data: sorteio.data, extracao: sorteio.extracao}});
         return sorteio;
     })
 }
@@ -38,9 +39,8 @@ exports.ultimas_extracoes = function(req, res, next) {
 		// extracoes = orderPoste(extracoes);
         // paginacao
         extracoes = mapQueries(extracoes)
-        console.log(extracoes);
-		extracoes = extracoes.slice(skip, limit)
-		res.render('extracoes', { title: ':: Últimos Resultados ::', extracoes })
+        extracoes = extracoes.slice(skip, limit)
+		res.render('extracoes', { title: ':: LoteZoo :: A loteria do bicho', extracoes })
 	})
 }
 
@@ -59,19 +59,15 @@ exports.banca_sorteios = function(req, res, next) {
 }
 
 exports.banca_sorteio = function(req, res, next) {
-    console.log('Queries: ', req.query)
-    let data = req.query.data
-	let extracao = req.query.extracao
-    console.log(data, extracao)
 	asyncAPI(
 		loteria.req_sorteio,
-		[req.params.banca, data, extracao],
+		[req.params.banca, req.query.data, req.query.extracao],
 		(erro, sorteio) => {
 			if (erro) {
 				return next(erro)
             }
-            console.log(JSON.parse(sorteio));
-			res.json(JSON.parse(sorteio))
+            res.setHeader('Content-Type', 'application/json');
+			res.json(sorteio);
 		}
 	)
 }

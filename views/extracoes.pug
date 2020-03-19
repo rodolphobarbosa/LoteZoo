@@ -4,7 +4,7 @@ include includes/premios.pug
 block content
 	.jumbotron
 		.container
-			h2 Deu no Poste! - Últimos Resultados
+			h2 #[i Loteria do Bicho -] Últimos Resultados
 			p.lead.d-none.d-lg-block Confira em tempo real as últimas extrações das bancas de todo Brasil.#[br] Utilize dos filtros para organizar os resultados.
 			hr.d-none.d-sm-block.my-2
 			p.d-none.d-sm-block As extrações são exibidas o 1º prêmio (Cabeça), consulte o Resultado ou a página da Banca.
@@ -24,7 +24,7 @@ block content
 							span.border.p-1.text-reset.sorteio-data= item.data
 							.btn-group(role='group' aria-label='extracao opções')
 								a.btn.btn-outline-secondary.btn-sm(role='button' href='resultados/'+item.urn) Banca
-								a.btn.btn-outline-info.btn-sm(role='button' href=item.uri data-toggle='modal' data-target='#ResultadoModal' data-banca=item.banca data-extracao=item.extracao) Resultado
+								button.btn.btn-outline-info.btn-sm(type='button' data-toggle='modal' data-target='#ResultadoModal' data-uri=item.uri) Resultado
 
 	#ResultadoModal.modal.fade(tab-index="-1" role="dialog" aria-labelledby='ResultadoCabecalho' aria-hidden='true')
 		.modal-dialog.modal-dialog-centered(role='document')
@@ -36,7 +36,7 @@ block content
 				.modal-body
 					p Resultado
 				.modal-footer
-					span.border.p-1.text-reset.sorteio-data.mr-auto.text-monospace 12/02/1921
+					span.border.p-1.text-reset.sorteio-data.mr-auto.text-monospace Da/ta
 					button.btn.btn-primary(type='button') Imprimir
 					button.btn.btn-secondary(type='button' data-dismiss='modal') Fechar
 
