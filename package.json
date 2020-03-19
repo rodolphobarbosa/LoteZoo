@@ -19,7 +19,8 @@
     "http-errors": "~1.6.3",
     "jquery": "^3.4.1",
     "morgan": "~1.9.1",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "query-string": "^6.11.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"

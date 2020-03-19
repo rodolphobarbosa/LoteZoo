@@ -6,4 +6,6 @@ router.get('/', resultadosController.ultimas_extracoes);
 
 router.get('/:banca', resultadosController.banca_sorteios);
 
+router.get('/:banca/sorteio', resultadosController.banca_sorteio);
+
 module.exports = router;
