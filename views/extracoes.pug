@@ -24,7 +24,7 @@ block content
 							span.border.p-1.text-reset.sorteio-data= item.data
 							.btn-group(role='group' aria-label='extracao opções')
 								a.btn.btn-outline-secondary.btn-sm(role='button' href='resultados/'+item.urn) Banca
-								button.btn.btn-outline-info.btn-sm(type='buttton' data-toggle='modal' data-target='#ResultadoModal') Resultado
+								a.btn.btn-outline-info.btn-sm(role='button' href=item.uri data-toggle='modal' data-target='#ResultadoModal' data-banca=item.banca data-extracao=item.extracao) Resultado
 
 	#ResultadoModal.modal.fade(tab-index="-1" role="dialog" aria-labelledby='ResultadoCabecalho' aria-hidden='true')
 		.modal-dialog.modal-dialog-centered(role='document')
@@ -36,5 +36,9 @@ block content
 				.modal-body
 					p Resultado
 				.modal-footer
+					span.border.p-1.text-reset.sorteio-data.mr-auto.text-monospace 12/02/1921
 					button.btn.btn-primary(type='button') Imprimir
 					button.btn.btn-secondary(type='button' data-dismiss='modal') Fechar
+
+append scripts
+	script(src='/javascripts/extracoes.js')

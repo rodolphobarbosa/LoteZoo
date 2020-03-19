@@ -7,7 +7,7 @@ body {
 	font-family: 'Baloo Da 2', cursive;
 }
 main {
-	padding-top: 3rem;
+	padding-top: 3.5rem;
 }
 .navbar-banca-icone {
 	background-image: url('/images/banca.svg') !important;
@@ -63,6 +63,9 @@ main {
 	font-size: 1.35rem;
 	letter-spacing: 0.2rem;
 }
+.grupo-num {
+	font-size: 1.1rem;
+}
 .grupo-img {
 	width: 2rem;
 	height: auto;
@@ -72,7 +75,8 @@ main {
 	color: var(--gray-dark);
 }
 .sorteio-data {
-	font-size: 0.9rem;
+	font-size: .875rem;
+	/* font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important; */
 	border-color: #ccc;
 }
 .note {

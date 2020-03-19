@@ -7,7 +7,7 @@ block content
 		p.h3.d-inline-block.px-2.py-1.shadow-sm= data
 	.container-sm.container-md.container-lg.mt-n3.mt-md-n5.sorteios.bg-light.shadow-lg
 		.nav-scroller.py-1.mb-2.border-top.border-bottom.border-info
-			nav.nav.justify-content-between
+			nav.nav.justify-content-around
 				each sorteio in sorteios
 					a.p-2.text-muted.text-monospace.font-weight-bold(href='#'+sorteio.ID)= sorteio.extracao
 		.row.no-gutters.row-cols-1.row-cols-md-2
@@ -21,4 +21,4 @@ block content
 							ul.list-group.list-group-flush.sorteio-resultado
 								+premios(sorteio.resultado)
 			else
-				p.lead Sem Resultados
+				p.lead Não foram encontrados resultados, por favor #[a(href='/') atualize] a página ou volte mais tarde.
