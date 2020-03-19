@@ -5,6 +5,7 @@ html(lang='pt-br')
 		meta(charset='utf-8')
 		meta(name='viewport' content='width=device-width, initial-scale=1')
 		title= title
+		link(rel='icon' type='image/pnc' href='/images/zoo-favicon.png')
 		link(rel='stylesheet' href='/css/bootstrap.min.css')
 		link(href="https://fonts.googleapis.com/css?family=Baloo+Da+2|Muli&display=swap" rel="stylesheet")
 		link(rel='stylesheet' href='/stylesheets/style.css')
@@ -12,7 +13,9 @@ html(lang='pt-br')
 		header
 			block header
 				nav.navbar.navbar-expand-sm.fixed-top.navbar-dark.bg-dark.mr-auto
-					a.navbar-brand(href='/') DeuNoPoste
+					h1.navbar-brand.brand LoteZoo
+						small.slogan A loteria do bicho
+						a.stretched-link.text-reset(href='/')
 					button.navbar-toggler(type='button' data-toggle='collapse' data-target='#topNav' aria-controls='topNav' aria-expanded='false' aria-label='Procurar menu')
 						span.navbar-toggler-icon.navbar-banca-icone
 					#topNav.collapse.navbar-collapse
@@ -29,6 +32,6 @@ html(lang='pt-br')
 						block iconesRights
 							+citeRights([ ["Freepik", "https://www.flaticon.com/authors/freepik"], ["monkik", "https://www.flaticon.com/authors/monkik"], ["Smashicons", "https://www.flaticon.com/authors/smashicons"], ["photo3idea_studio", "https://www.flaticon.com/authors/photo3idea-studio"] ])
 		block scripts
-			script(src='/dist/jquery.slim.min.js')
+			script(src='/dist/jquery.min.js')
 			script(src='/umd/popper.min.js')
 			script(src='/js/bootstrap.min.js')

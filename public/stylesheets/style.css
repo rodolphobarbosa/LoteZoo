@@ -9,6 +9,32 @@ body {
 main {
 	padding-top: 3.5rem;
 }
+.navbar-brand {
+	font-size: 1.4rem;
+}
+.brand {
+	position: relative;
+	padding: 0 1rem 0 3rem;
+	height: 2.5rem;
+	margin: 0;
+	/* text-transform: uppercase; */
+}
+.brand::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 2.5rem;
+	height: 2.5rem;
+	background-image: url('/images/zoo.svg');
+	background-size: 100%;
+}
+.slogan {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	font-size: .7rem;
+}
 .navbar-banca-icone {
 	background-image: url('/images/banca.svg') !important;
 }
@@ -33,7 +59,8 @@ main {
 .border-cinza {
 	border-color: var(--cinza-escuro);
 }
-.sorteios, #ResultadoModal {
+.sorteios,
+#ResultadoModal {
 	font-family: 'Muli', sans-serif;
 }
 .sorteio {
@@ -45,7 +72,16 @@ main {
 }
 .bg-striped {
 	background-color: var(--cinza-claro);
-	background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+	background-image: linear-gradient(
+		45deg,
+		rgba(255, 255, 255, 0.15) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, 0.15) 50%,
+		rgba(255, 255, 255, 0.15) 75%,
+		transparent 75%,
+		transparent
+	);
 	background-size: 1rem 1rem;
 }
 .sorteio-premio {
@@ -75,7 +111,7 @@ main {
 	color: var(--gray-dark);
 }
 .sorteio-data {
-	font-size: .875rem;
+	font-size: 0.875rem;
 	/* font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important; */
 	border-color: #ccc;
 }
