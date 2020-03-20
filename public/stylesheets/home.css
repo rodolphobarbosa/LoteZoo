@@ -2,6 +2,10 @@
     min-height: calc(100vh - var(--header-height));
 }
 .feature-img {
+    overflow: hidden;
     width: 140px;
     height: auto;
+    margin: 0 auto;
+    border-bottom-left-radius: 20%;
+    border-bottom-right-radius: 50%;
 }
