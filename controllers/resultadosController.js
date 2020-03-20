@@ -27,20 +27,36 @@ function mapQueries(sorteios) {
         return sorteio;
     })
 }
+function paginar(pagina, resultados, maxResultados = 12) {
+	let maxPaginas = Math.ceil(resultados/maxResultados);
+	pagina = pagina > maxPaginas ? maxPaginas : pagina;
+	let paginas = {};
+	paginas.queries = [];
+	paginas.ignorar = ((pagina-1) * maxResultados);
+	paginas.buscar = (pagina * maxResultados);
+	for(let p = 1; p <= maxPaginas; p++) {
+		if(p == pagina) {
+			paginas.queries.push(null);
+			continue;
+		}
+		paginas.queries.push( qs.stringifyUrl({url: '/resultados', query: {pagina: p}}) );
+	}
+	return paginas
+}
 
 exports.ultimas_extracoes = function(req, res, next) {
-	let limit = 12
-	let skip = 0
+	let pagina = req.query.pagina ? req.query.pagina : 1;
 	asyncAPI(loteria.req_ultimas, null, (erro, extracoes) => {
 		if (erro) {
 			return next(erro)
 		}
+		// paginacao
+		paginas = paginar(pagina, extracoes.length);
+        extracoes = extracoes.slice(paginas.ignorar, paginas.buscar);
+		extracoes = mapQueries(extracoes);
 		//- order deu no poste
 		// extracoes = orderPoste(extracoes);
-        // paginacao
-        extracoes = mapQueries(extracoes)
-        extracoes = extracoes.slice(skip, limit)
-		res.render('extracoes', { title: 'LoteZoo - Resultados Hoje', extracoes })
+		res.render('extracoes', { title: 'LoteZoo - Resultados Hoje', extracoes, paginas: paginas.queries })
 	})
 }
 
@@ -71,5 +87,3 @@ exports.banca_sorteio = function(req, res, next) {
 		}
 	)
 }
-
-// reqSorteio('bahia', "15/03/2020", "12:00")

@@ -26,3 +26,11 @@ block content
 					img.shadow-sm.img-fluid(src='/images/impresso.svg')
 				h3.my-2 Impressão
 				p.px-4.px-sm-2.px-lg-5 Resultados prontos e formatados para Imprimir.
+
+block footer
+				.row.no-gutters.justify-content-center.p-2
+					blockquote.blockquote.text-center.text-muted.note
+						p.m-0 Desenvolvido por 
+							a.text-light(href="https://github.com/RuanSena" target="_blank") RuanSena
+						block iconesRights
+							+citeRights([["Freepik", "https://www.flaticon.com/authors/freepik"]])

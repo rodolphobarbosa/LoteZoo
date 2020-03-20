@@ -2,6 +2,7 @@ extends layout
 include includes/premios.pug
 
 block content
+	-console.log(paginas);
 	.container-fluid.container-ad
 		h2.display-2 UM AD BEM GRANDAUM
 	.container-md.container-lg.px-sm-1.container-sorteios
@@ -20,6 +21,36 @@ block content
 							.btn-group(role='group' aria-label='extracao opções')
 								a.btn.btn-outline-secondary.btn-sm(role='button' href='resultados/'+item.urn) Banca
 								button.btn.btn-outline-info.btn-sm(type='button' data-toggle='modal' data-target='#ResultadoModal' data-uri=item.uri) Resultado
+		.row.paginacao.justify-content-end.justify-content-sm-center
+			nav(aria-label='Páginas extrações')
+				ul.pagination
+					if paginas[0]
+						li.page-item
+							a.page-link(href=paginas[0] aria-label='Anterior')
+								span(aria-hidden='true') &laquo;
+								span.sr-only Anterior
+					else
+						li.page-item.disabled
+							span.page-link &laquo;
+							span.sr-only Anterior
+					each pagina, i in paginas
+						if pagina
+							li.page-item
+								a.page-link(href=pagina)= i+1
+						else
+							li.page-item.active
+								span.page-link= i+1
+									span.sr-only (atual)
+					if paginas[paginas.length-1]
+						li.page.item
+							a.page-link(href=paginas[paginas.length-1] aria-label='Próxima')
+								span(aria-hidden='true') &raquo;
+								span.sr-only Próxima
+					else
+						li.page-item.disabled
+							span.page-link &raquo;
+							span.sr-only Próxima
+
 
 	#ResultadoModal.modal.fade(tab-index="-1" role="dialog" aria-labelledby='ResultadoCabecalho' aria-hidden='true')
 		.modal-dialog.modal-dialog-centered(role='document')
