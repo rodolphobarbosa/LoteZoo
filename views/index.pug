@@ -1,5 +1,25 @@
 extends layout
-
+append head
+	link(rel="stylesheet" href="/stylesheets/home.css")
 block content
-  h1= title
-  p Welcome to #{title}
+	.container.container-home
+		.jumbotron.bg-transparent.px-0.px-sm-3.px-md-4.pt-4.mb-0.pb-0
+			.container.px-sm-3.d-flex.flex-column.align-items-center
+				h2 #[i LoteZoo -] Loteria do Bicho
+				p.lead Confira em tempo real as últimas extrações das bancas de todo Brasil.#[br] #[i Utilize dos filtros para organizar os resultados.]
+				p.d-none.d-sm-block.mb-0 As extrações são exibidas o 1º prêmio (Cabeça), consulte o Resultado ou a página da Banca.
+				a.btn.btn-primary.btn-lg.my-4(href='/resultados' role='button') Ir para Resultados &raquo;
+		hr.mt-0.mb-4.mb-lg-5
+		.row.row-cols-sm-2.justify-content-center
+			.col-md-4.text-center
+				img.rounded-circle(src='http://placecorgi.com/140' alt='feature')
+				h2 Tempo Real
+				p Acompanhe as extrações logo quando são liberadas.
+			.col-md-4.text-center
+				img.rounded-circle(src='http://placecorgi.com/140' alt='feature')
+				h2 Bancas
+				p Consulte os Resultados de cada Banca na data desejada.
+			.col-md-4.text-center
+				img.rounded-circle(src='http://placecorgi.com/140' alt='feature')
+				h2 Impressão
+				p Resultados prontos e formatados para impressão de uso pessoal.

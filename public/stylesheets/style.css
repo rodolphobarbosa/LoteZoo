@@ -2,12 +2,14 @@
 	--cinza-escuro: #c2c3c4;
 	--cinza: #eceff1;
 	--cinza-claro: #eceef0;
+
+	--header-height: 3.5rem;
 }
 body {
 	font-family: 'Baloo Da 2', cursive;
 }
-main {
-	padding-top: 3.5rem;
+header {
+	height: var(--header-height) !important;
 }
 .navbar-brand {
 	font-size: 1.4rem;
