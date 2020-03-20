@@ -58,10 +58,18 @@ header {
 	white-space: nowrap;
 	-webkit-overflow-scrolling: touch;
 }
+.container-ad {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 200px;
+}
+.container-sorteios {
+	padding-top: 2rem;
+}
 .border-cinza {
 	border-color: var(--cinza-escuro);
 }
-.sorteios,
 #ResultadoModal {
 	font-family: 'Muli', sans-serif;
 }

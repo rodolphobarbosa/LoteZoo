@@ -29,7 +29,7 @@ function mapQueries(sorteios) {
 }
 
 exports.ultimas_extracoes = function(req, res, next) {
-	let limit = 20
+	let limit = 12
 	let skip = 0
 	asyncAPI(loteria.req_ultimas, null, (erro, extracoes) => {
 		if (erro) {
@@ -40,7 +40,7 @@ exports.ultimas_extracoes = function(req, res, next) {
         // paginacao
         extracoes = mapQueries(extracoes)
         extracoes = extracoes.slice(skip, limit)
-		res.render('extracoes', { title: ':: LoteZoo :: A loteria do bicho', extracoes })
+		res.render('extracoes', { title: 'LoteZoo - Resultados Hoje', extracoes })
 	})
 }
 
