@@ -20,9 +20,10 @@ block content
 							.btn-group(role='group' aria-label='extracao opções')
 								a.btn.btn-outline-secondary.btn-sm.sorteio-opt(role='button' href='resultados/'+item.urn) Banca
 								button.btn.btn-outline-info.btn-sm.sorteio-opt.sorteio-res(type='button' data-uri=item.uri) Resultado
+	.container-fluid.bg-dark
 		.row.paginacao.justify-content-end.justify-content-sm-center
 			nav(aria-label='Páginas extrações')
-				ul.pagination
+				ul.pagination.mb-2
 					if paginas[0]
 						li.page-item
 							a.page-link(href=paginas[0] aria-label='Anterior')
@@ -61,7 +62,7 @@ block content
 						span(aria-hidden='true') &times;
 				.modal-body
 				.modal-footer
-					span.border.py-1.px-2.text-reset.sorteio-data.mr-auto
+					span.border.py-1.px-2.sorteio-data.mr-auto.text-muted 03/07/1982
 					button.btn.btn-primary.btn-sm(type='button') Imprimir
 					button.btn.btn-secondary.btn-sm(type='button' data-dismiss='modal') Fechar
 

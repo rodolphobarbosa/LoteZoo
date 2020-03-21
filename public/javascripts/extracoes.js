@@ -1,7 +1,7 @@
 function atualizaModal(modal, sorteio) {
-	modal.find('.sorteio-banca').text(sorteio.banca)
-	modal.find('.sorteio-extracao').text(sorteio.extracao)
-  modal.find('.sorteio-data').text(sorteio.data)
+  modal.find('.sorteio-banca').text(sorteio.banca)
+	modal.find('.sorteio-extracao').show().text(sorteio.extracao)
+  modal.find('.sorteio-data').text(sorteio.data).removeClass('text-muted');
   let resultado = $('<ul class="list-group list-group-flush sorteio-resultado"></ul>');
   sorteio.resultado.forEach((premio, i) => {
     resultado.append(`
@@ -28,6 +28,37 @@ function atualizaModal(modal, sorteio) {
   });
   modal.find('.modal-body').html(resultado);
 }
+function alertaModal(modal, status, erro) {
+  let titulo = modal.find('#ModalTitulo');
+  modal.find('.sorteio-extracao').hide();
+  modal.find('.sorteio-data').addClass('text-muted');
+  let txt = modal.find('.modal-body');
+  modal.find('.btn-primary').attr('disabled', 'true');
+  modal.find('.btn-primary').attr('aria-disabled', 'true');
+  switch(status) {
+    case('timeout'):
+      titulo.text('Tempo esgotado')
+      break;
+    case('error'):
+      titulo.text('Erro ao buscar')
+      break;
+    case('abort'):
+      titulo.text('Cancelado')
+      break;
+    default:
+      titulo.text('Falha na conexão')
+  }
+  switch(erro) {
+    case('Not Found'):
+      txt.text('Resultado não encontrado.')
+      break;
+    case('Internal Server Error.'):
+      txt.html('Erro no Servidor, porfavor <a href="mailto:ruansenadev@gmail.com?Subject=LoteZoo%20Suporte">Contate</a> o suporte.')
+      break;
+    default:
+      txt.text(erro)
+  }
+}
 
 $(function() {
 	const sorteiosBtns = $('.sorteio-res')
@@ -38,20 +69,18 @@ $(function() {
 		let sorteio_banca = extracao.find('.sorteio-banca').text()
 		let sorteio_extracao = extracao.find('.sorteio-extracao').text()
 		let sorteio_data = extracao.find('.sorteio-data').text()
-		console.log(sorteio_banca, sorteio_extracao, sorteio_data)
 		let uri = btn.data('uri')
 		$.ajax({
 			url: uri,
 			dataType: 'json',
 			error: function(jqXHR, status, erro) {
-				alert('status: ' + erro)
+        alertaModal(sorteioModal, status, erro);
+        sorteioModal.modal('show');
 			},
 			success: function(sorteio) {
 				// retornou sorteio atualiza o modal
         atualizaModal(sorteioModal, sorteio);
 				sorteioModal.modal('show')
-				// sorteioModal.on('show.bs.modal', function(e) {
-				// })
 			}
 		})
 	})
