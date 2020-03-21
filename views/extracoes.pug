@@ -2,25 +2,24 @@ extends layout
 include includes/premios.pug
 
 block content
-	-console.log(paginas);
 	.container-fluid.container-ad
-		h2.display-2 UM AD BEM GRANDAUM
+		h2.h1 PROPAGANDA
 	.container-md.container-lg.px-sm-1.container-sorteios
 		.row.no-gutters.row-cols-1.row-cols-sm-2.row-cols-lg-3
 			each item in extracoes
-				.col.px-4.px-sm-1.px-md-2.mb-3.mb-md-4.mb-lg-5
+				.col.px-sm-1.px-md-2.mb-3.mb-md-4.mb-lg-5
 					.card.rounded-0.shadow.sorteio(id=item.ID class=item.poste?"border-info":"border-cinza")
 						.card-header.d-flex.align-items-center.justify-content-between.px-3.py-3
-							h6.card-title.m-0= item.banca
-							h6(title='Extração').card-subtitle.p-1.text-monospace.rounded.border.border-info= item.extracao
+							h6.sorteio-banca.card-title.m-0= item.banca
+							h6.sorteio-extracao(title='Extração').card-subtitle.p-1.text-monospace.rounded.border.border-info= item.extracao
 						.card-body.p-0
 							ul.list-group.list-group-flush.sorteio-resultado
 								+premios(item.resultado, true)
-						.card-footer.d-flex.align-items-baseline.justify-content-between.px-3.px-sm-2.px-md-3.py-2.text-muted
-							span.border.p-1.text-reset.sorteio-data= item.data
+						.card-footer.d-flex.align-items-baseline.justify-content-between.px-2.px-md-3.py-2.text-muted
+							span.border.p-1.px-2.text-reset.sorteio-data= item.data
 							.btn-group(role='group' aria-label='extracao opções')
-								a.btn.btn-outline-secondary.btn-sm(role='button' href='resultados/'+item.urn) Banca
-								button.btn.btn-outline-info.btn-sm(type='button' data-toggle='modal' data-target='#ResultadoModal' data-uri=item.uri) Resultado
+								a.btn.btn-outline-secondary.btn-sm.sorteio-opt(role='button' href='resultados/'+item.urn) Banca
+								button.btn.btn-outline-info.btn-sm.sorteio-opt.sorteio-res(type='button' data-uri=item.uri) Resultado
 		.row.paginacao.justify-content-end.justify-content-sm-center
 			nav(aria-label='Páginas extrações')
 				ul.pagination
@@ -52,19 +51,19 @@ block content
 							span.sr-only Próxima
 
 
-	#ResultadoModal.modal.fade(tab-index="-1" role="dialog" aria-labelledby='ResultadoCabecalho' aria-hidden='true')
+	#Modal.modal.fade(tab-index="-1" role="dialog" aria-labelledby='ModalTitulo' aria-hidden='true')
 		.modal-dialog.modal-dialog-centered(role='document')
 			.modal-content
-				.modal-header
-					h5#ResultadoCabecalho.modal-title Banca - #[span.text-monospace Extração]
+				.modal-header.d-flex.align-items-center
+					h5#ModalTitulo.modal-title.sorteio-banca
+					h6.sorteio-extracao.text-monospace.ml-auto.p-1.mb-0.rounded.border.border-secondary
 					button.close(type="button" data-dismiss='modal' aria-label='Fechar')
 						span(aria-hidden='true') &times;
 				.modal-body
-					p Resultado
 				.modal-footer
-					span.border.p-1.text-reset.sorteio-data.mr-auto.text-monospace Da/ta
-					button.btn.btn-primary(type='button') Imprimir
-					button.btn.btn-secondary(type='button' data-dismiss='modal') Fechar
+					span.border.py-1.px-2.text-reset.sorteio-data.mr-auto
+					button.btn.btn-primary.btn-sm(type='button') Imprimir
+					button.btn.btn-secondary.btn-sm(type='button' data-dismiss='modal') Fechar
 
 append scripts
 	script(src='/javascripts/extracoes.js')
