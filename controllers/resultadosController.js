@@ -7,7 +7,7 @@ async function asyncAPI(fx, fxArgs = [], cb) {
 		let response = await fx.apply(null, fxArgs)
 		return cb(null, response)
 	} catch (e) {
-        console.error(e);
+		console.error(e)
 		return cb(e, null)
 	}
 }
@@ -22,41 +22,54 @@ function orderPoste(extracoes) {
 	return poste.concat(extracoes)
 }
 function mapQueries(sorteios) {
-    return sorteios.map(sorteio => {
-        sorteio.uri = qs.stringifyUrl({url: `/resultados/${sorteio.urn}/sorteio`, query: {data: sorteio.data, extracao: sorteio.extracao}});
-        return sorteio;
-    })
+	return sorteios.map((sorteio) => {
+		sorteio.uri = qs.stringifyUrl({
+			url: `/resultados/${sorteio.urn}/sorteio`,
+			query: { data: sorteio.data, extracao: sorteio.extracao }
+		})
+		return sorteio
+	})
 }
 function paginar(pagina, resultados, maxResultados = 12) {
-	let maxPaginas = Math.ceil(resultados/maxResultados);
-	pagina = pagina > maxPaginas ? maxPaginas : pagina;
-	let paginas = {};
-	paginas.queries = [];
-	paginas.ignorar = ((pagina-1) * maxResultados);
-	paginas.buscar = (pagina * maxResultados);
-	for(let p = 1; p <= maxPaginas; p++) {
-		if(p == pagina) {
-			paginas.queries.push(null);
-			continue;
+	let maxPaginas = Math.ceil(resultados / maxResultados)
+	pagina = pagina > maxPaginas ? maxPaginas : pagina
+	let paginas = {}
+	paginas.queries = []
+	paginas.ignorar = (pagina - 1) * maxResultados
+	paginas.buscar = pagina * maxResultados
+	for (let p = 1; p <= maxPaginas; p++) {
+		if (p == pagina) {
+			paginas.queries.push(null)
+			continue
+		} else if (p == 1) {
+			paginas.queries.push('/resultados')
+			continue
+		} else {
+			paginas.queries.push(
+				qs.stringifyUrl({ url: '/resultados', query: { pagina: p } })
+			)
 		}
-		paginas.queries.push( qs.stringifyUrl({url: '/resultados', query: {pagina: p}}) );
 	}
 	return paginas
 }
 
 exports.ultimas_extracoes = function(req, res, next) {
-	let pagina = req.query.pagina ? req.query.pagina : 1;
+	let pagina = req.query.pagina ? req.query.pagina : 1
 	asyncAPI(loteria.req_ultimas, null, (erro, extracoes) => {
 		if (erro) {
 			return next(erro)
 		}
 		// paginacao
-		paginas = paginar(pagina, extracoes.length);
-        extracoes = extracoes.slice(paginas.ignorar, paginas.buscar);
-		extracoes = mapQueries(extracoes);
+		paginas = paginar(pagina, extracoes.length)
+		extracoes = extracoes.slice(paginas.ignorar, paginas.buscar)
+		extracoes = mapQueries(extracoes)
 		//- order deu no poste
 		// extracoes = orderPoste(extracoes);
-		res.render('extracoes', { title: 'LoteZoo - Resultados Hoje', extracoes, paginas: paginas.queries })
+		res.render('extracoes', {
+			title: 'LoteZoo - Resultados Hoje',
+			extracoes,
+			paginas: paginas.queries
+		})
 	})
 }
 
@@ -64,7 +77,7 @@ exports.banca_sorteios = function(req, res, next) {
 	asyncAPI(loteria.req_banca, [req.params.banca], (erro, resultado) => {
 		if (erro) {
 			return next(erro)
-        }
+		}
 		res.render('resultados', {
 			title: 'Resultados',
 			banca: resultado.banca,
@@ -81,9 +94,9 @@ exports.banca_sorteio = function(req, res, next) {
 		(erro, sorteio) => {
 			if (erro) {
 				return next(erro)
-            }
-            res.setHeader('Content-Type', 'application/json');
-			res.json(sorteio);
+			}
+			res.setHeader('Content-Type', 'application/json')
+			res.json(sorteio)
 		}
 	)
 }
