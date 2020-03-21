@@ -58,6 +58,9 @@ header {
 	white-space: nowrap;
 	-webkit-overflow-scrolling: touch;
 }
+#topNav.collapsing, #topNav.show {
+	margin-top: .4rem;
+}
 .container-ad {
 	display: flex;
 	align-items: center;
@@ -68,7 +71,7 @@ header {
 .container-sorteios {
 	padding-top: 2rem;
 }
-.border-cinza {
+.border-cinza, .page-link {
 	border-color: var(--cinza-escuro);
 }
 .sorteio {
