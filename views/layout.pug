@@ -6,7 +6,7 @@ html(lang='pt-br')
 			meta(charset='utf-8')
 			meta(name='viewport' content='width=device-width, initial-scale=1')
 			title= title
-			link(rel='icon' type='image/pnc' href='/images/zoo-favicon.png')
+			link(rel='icon' type='image/png' href='/images/zoo-favicon.png')
 			link(rel='stylesheet' href='/css/bootstrap.min.css')
 			link(href="https://fonts.googleapis.com/css?family=Baloo+Da+2|Muli&display=swap" rel="stylesheet")
 			link(rel='stylesheet' href='/stylesheets/style.css')
@@ -17,11 +17,15 @@ html(lang='pt-br')
 					h1.navbar-brand.brand LoteZoo
 						small.slogan A loteria do bicho
 						a.stretched-link.text-reset(href='/')
-					button.navbar-toggler(type='button' data-toggle='collapse' data-target='#topNav' aria-controls='topNav' aria-expanded='false' aria-label='Procurar menu')
+					button.navbar-toggler.navbar-banca(type='button' data-toggle='collapse' data-target='#topNav' aria-controls='topNav' aria-expanded='false' aria-label='Procurar menu')
 						span.navbar-toggler-icon.navbar-banca-icone
-					#topNav.collapse.navbar-collapse
-						form.form-inline.ml-auto
-							input.form-control(type='text' placeholder='Banca' aria-label='Procurar')
+					#topNav.collapse.navbar-collapse.ml-auto
+						.dropdown.mx-auto
+							input#procurar.form-control(type='text' placeholder='Banca, extração grupo...' aria-label='Procurar' data-toggle="dropdown" data-query='/resultados?searchMap=true')
+							#procurar-menu.dropdown-menu.dropdown-procurar.shadow-sm
+							//- 	a.dropdown-item.procurar-item.item-banca(href='#') Banca
+							//- 	a.dropdown-item.procurar-item.item-extracao(href='#') Extração
+							//- 	a.dropdown-item.procurar-item.item-grupo(href='#') Grupo
 		main(role='main')
 			block content
 		footer.bg-dark
@@ -36,3 +40,5 @@ html(lang='pt-br')
 			script(src='/dist/jquery.min.js')
 			script(src='/umd/popper.min.js')
 			script(src='/js/bootstrap.min.js')
+			script(src='/fuse.js')
+			script(src='/javascripts/main.js')

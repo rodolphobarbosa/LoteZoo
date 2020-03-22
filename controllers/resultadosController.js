@@ -54,10 +54,16 @@ function paginar(pagina, resultados, maxResultados = 12) {
 }
 
 exports.ultimas_extracoes = function(req, res, next) {
-	let pagina = req.query.pagina ? req.query.pagina : 1
-	asyncAPI(loteria.req_ultimas, null, (erro, extracoes) => {
+	let searchMap = req.query.searchMap ? true : null ;
+	let pagina = req.query.pagina ? req.query.pagina : 1;
+	asyncAPI(loteria.req_ultimas, [searchMap], (erro, extracoes) => {
 		if (erro) {
 			return next(erro)
+		}
+		if(searchMap) {
+			res.setHeader('Content-Type', 'application/json')
+			res.json(extracoes);
+			return
 		}
 		// paginacao
 		paginas = paginar(pagina, extracoes.length)
