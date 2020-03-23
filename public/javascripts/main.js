@@ -3,7 +3,7 @@ var ultimos_dados
 const search = $('#procurar')
 const searchMenu = $('#procurar-menu')
 const topNav = $('#topNav')
-const max_resultados = 6
+const max_resultados = 5
 const queryUri = search.data('query')
 
 function checkMatches(nova = [], ultima = []) {
@@ -25,7 +25,7 @@ function bindFuse(dados) {
 		includeMatches: true,
 		threshold: 0.3,
 		location: 1,
-		distance: 100,
+		distance: 10,
 		minMatchCharLength: 2,
 		keys: [
 			{ name: 'banca', weight: 0.7 },
@@ -64,9 +64,7 @@ function atualizaMenu(resultados) {
 		let match = res.matches[0];
 		let resItem = res.item;
 		let ref = {};
-		let item = $(`<div class='dropdown-item procurar-item item-extracao text-info'></div>`)
-		let itemAnchor = $(`<a class='stretched-link text-decoration-none text-wrap text-break text-dark busca-info' href=${resItem['uri']}></a>`)
-		delete resItem['uri'];
+		let item = $(`<div class='dropdown-item procurar-item item-extracao text-info overflow-hidden'></div>`)
 		if(match) {
 			for(let prop in resItem) {
 				if(prop == match.key) {
@@ -78,8 +76,14 @@ function atualizaMenu(resultados) {
 		} else {
 			Object.assign(ref, resItem);
 		}
+		let itemAnchor = $(`<a class='stretched-link text-decoration-none text-wrap text-break text-dark busca-info' href=${ref['uri']}></a>`);
+		delete ref['uri']
 		for(let key in ref) {
-			itemAnchor.append(ref[key]+' ');
+			if(key == 'data') {
+				item.attr('data-content', ref[key]);
+				continue
+			}
+			itemAnchor.append(`<span class='busca-el'>${ref[key]}</span>`);
 		}
 		item.append(itemAnchor);
 		searchMenu.append(item);
