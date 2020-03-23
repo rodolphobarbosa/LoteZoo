@@ -65,10 +65,6 @@ $(function() {
 	const sorteioModal = $('#Modal')
 	sorteiosBtns.click(function(ev) {
 		const btn = $(this)
-		const extracao = btn.parentsUntil('.col', '.sorteio')
-		let sorteio_banca = extracao.find('.sorteio-banca').text()
-		let sorteio_extracao = extracao.find('.sorteio-extracao').text()
-		let sorteio_data = extracao.find('.sorteio-data').text()
 		let uri = btn.data('uri')
 		$.ajax({
 			url: uri,

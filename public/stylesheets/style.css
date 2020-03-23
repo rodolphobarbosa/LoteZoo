@@ -43,14 +43,11 @@ header {
 .navbar-banca-icone {
 	background-image: url('/images/procurar.svg') !important;
 }
-#topNav {
-	min-width: 280px;
+#topNav .dropdown {
 	max-width: 350px;
+	min-width: 280px;
 }
-#topNav.collapsing .dropdown,
-#topNav.show .dropdown {
-	margin-top: 0.4rem;
-}
+
 .searchable:focus {
 	border-color: var(--info);
 	background-color: white;
@@ -73,10 +70,15 @@ header {
 	background-color: var(--light);
 	margin-top: 0;
 }
+.dropdown-item {
+	height: 3em;
+}
 .procurar-item {
 	position: relative;
 	background-color: white;
 	border-top: 1px solid var(--cinza);
+	padding: .2rem 2rem .2rem 1rem;
+	line-height: 1.2;
 }
 .procurar-item:last-child {
 	border-bottom: 1px solid var(--cinza);
@@ -84,20 +86,23 @@ header {
 .procurar-item::after {
 	content: '';
 	position: absolute;
-	right: 1.5em;
-	top: 0.5em;
-	width: 1em;
-	height: 1em;
+	right: .5rem;
+	top: .75rem;
+	width: 1.5rem;
+	height: 1.5rem;
 	background-size: 100%;
+}
+.busca-info {
+	display: flex;
+	width: 100%;
+	flex-flow: row wrap;
+	padding-top: .1rem;
 }
 .item-banca::after {
 	background-image: url('/images/banca32.png');
 }
 .item-extracao::after {
 	background-image: url('/images/extracao32.png');
-}
-.item-grupo::after {
-	background-image: url('/images/animal32.png');
 }
 .nav-scroller {
 	position: relative;
