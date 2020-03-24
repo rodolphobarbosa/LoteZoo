@@ -81,12 +81,12 @@ exports.ultimas_extracoes = function(req, res, next) {
 }
 
 exports.banca_sorteios = function(req, res, next) {
-	// data /_(\d{2})_(\d{2})_(\d{4})/
-	console.log(req.params)
 	asyncAPI(loteria.req_banca, [req.params.banca, req.params.data], (erro, resultado) => {
 		if (erro) {
 			return next(erro)
 		}
+		// order primeiros do data
+		resultado.sorteios.reverse();
 		res.render('resultados', {
 			title: 'Resultados',
 			banca: resultado.banca,
