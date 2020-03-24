@@ -11,7 +11,7 @@ async function asyncAPI(fx, fxArgs = [], cb) {
 		return cb(e, null)
 	}
 }
-
+// Filters
 function orderPoste(extracoes) {
 	let poste = []
 	extracoes.forEach((extracao, i) => {
@@ -21,6 +21,7 @@ function orderPoste(extracoes) {
 	})
 	return poste.concat(extracoes)
 }
+// Built-in fxs 
 function mapQueries(sorteios) {
 	return sorteios.map((sorteio) => {
 		sorteio.uri = qs.stringifyUrl({
@@ -80,7 +81,9 @@ exports.ultimas_extracoes = function(req, res, next) {
 }
 
 exports.banca_sorteios = function(req, res, next) {
-	asyncAPI(loteria.req_banca, [req.params.banca], (erro, resultado) => {
+	// data /_(\d{2})_(\d{2})_(\d{4})/
+	console.log(req.params)
+	asyncAPI(loteria.req_banca, [req.params.banca, req.params.data], (erro, resultado) => {
 		if (erro) {
 			return next(erro)
 		}
