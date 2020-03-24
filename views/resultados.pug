@@ -11,10 +11,10 @@ block content
 				each sorteio in sorteios
 					a.p-2.text-muted.text-monospace.font-weight-bold(href='#'+sorteio.ID)= sorteio.extracao
 		.row.no-gutters.row-cols-1.row-cols-md-2.pt-4
-			if sorteios.length > 1
-			each sorteio, i in sorteios
-				.col.px-4.mb-3.mb-md-4.mb-lg-5.mx-auto
-					.card.rounded-0.shadow.sorteio(id=sorteio.ID)
+			if sorteios.length
+			each sorteio in sorteios
+				.col.px-4.mb-3.mb-md-4.mb-lg-5.mx-auto(id=sorteio.ID)
+					.card.rounded-0.shadow.sorteio
 						.card-header.px-3.py-3.text-center
 							h6.card-subtitle.p-1.text-monospace.rounded.border(class=sorteio.poste?"bg-info text-light border-primary":"border-info")= sorteio.extracao
 						.card-body.p-0
@@ -22,3 +22,5 @@ block content
 								+premios(sorteio.resultado)
 			else
 				p.lead Não foram encontrados resultados, por favor #[a(href='/') atualize] a página ou volte mais tarde.
+append scripts
+	script(src="/javascripts/resultados.js")
