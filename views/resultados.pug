@@ -7,19 +7,19 @@ block content
 		p.h3.d-inline-block.px-2.py-1.shadow-sm= data
 	.container-sm.container-md.container-lg.mt-n3.mt-md-n5.sorteios.bg-light.shadow-lg.pt-4
 		if sorteios.length
-			.nav-scroller.py-1.mb-2.border-top.border-bottom.border-info
-				nav.nav.justify-content-around
+			.nav-scroller.py-2.mb-2.border-top.border-bottom.border-info
+				nav.nav.justify-content-around.pb-0
 					each sorteio in sorteios
-						a.p-2.text-muted.text-monospace.font-weight-bold(href='#'+sorteio.ID)= sorteio.extracao
+						a.px-2.py-1.text-muted.text-monospace.font-weight-bold.border.border-secondary.rounded(href='#'+sorteio.ID)= sorteio.extracao
 			.row.no-gutters.row-cols-1.row-cols-md-2.pt-4
-			each sorteio in sorteios
-				.col.px-4.mb-3.mb-md-4.mb-lg-5.mx-auto(id=sorteio.ID)
-					.card.rounded-0.shadow.sorteio
-						.card-header.px-3.py-3.text-center
-							h6.card-subtitle.p-1.text-monospace.rounded.border(class=sorteio.poste?"bg-info text-light border-primary":"border-info")= sorteio.extracao
-						.card-body.p-0
-							ul.list-group.list-group-flush.sorteio-resultado
-								+premios(sorteio.resultado)
+				each sorteio in sorteios
+					.col.px-4.mb-3.mb-md-4.mb-lg-5.mx-auto(id=sorteio.ID)
+						.card.rounded-0.shadow.sorteio
+							.card-header.px-3.py-3.text-center
+								h6.card-subtitle.p-1.text-monospace.rounded.border(class=sorteio.poste?"bg-info text-light border-primary":"border-info")= sorteio.extracao
+							.card-body.p-0
+								ul.list-group.list-group-flush.sorteio-resultado
+									+premios(sorteio.resultado)
 		else
 			p.lead.mb-0.text-center Não foram encontrados resultados para esta data.
 append scripts
