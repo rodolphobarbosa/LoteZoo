@@ -6,12 +6,12 @@ block content
 		h2= banca
 		p.h3.d-inline-block.px-2.py-1.shadow-sm= data
 	.container-sm.container-md.container-lg.mt-n3.mt-md-n5.sorteios.bg-light.shadow-lg.pt-4
-		.nav-scroller.py-1.mb-2.border-top.border-bottom.border-info
-			nav.nav.justify-content-around
-				each sorteio in sorteios
-					a.p-2.text-muted.text-monospace.font-weight-bold(href='#'+sorteio.ID)= sorteio.extracao
-		.row.no-gutters.row-cols-1.row-cols-md-2.pt-4
-			if sorteios.length
+		if sorteios.length
+			.nav-scroller.py-1.mb-2.border-top.border-bottom.border-info
+				nav.nav.justify-content-around
+					each sorteio in sorteios
+						a.p-2.text-muted.text-monospace.font-weight-bold(href='#'+sorteio.ID)= sorteio.extracao
+			.row.no-gutters.row-cols-1.row-cols-md-2.pt-4
 			each sorteio in sorteios
 				.col.px-4.mb-3.mb-md-4.mb-lg-5.mx-auto(id=sorteio.ID)
 					.card.rounded-0.shadow.sorteio
@@ -20,7 +20,7 @@ block content
 						.card-body.p-0
 							ul.list-group.list-group-flush.sorteio-resultado
 								+premios(sorteio.resultado)
-			else
-				p.lead Não foram encontrados resultados, por favor #[a(href='/') atualize] a página ou volte mais tarde.
+		else
+			p.lead.mb-0.text-center Não foram encontrados resultados para esta data.
 append scripts
 	script(src="/javascripts/resultados.js")
