@@ -56,7 +56,7 @@ function alertaModal(modal, status, erro) {
       txt.html('Erro no Servidor, porfavor <a href="mailto:ruansenadev@gmail.com?Subject=LoteZoo%20Suporte">Contate</a> o suporte.')
       break;
     default:
-      txt.text(erro)
+      txt.text(erro || "Verifique os cabos de rede.")
   }
 }
 

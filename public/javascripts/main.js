@@ -23,9 +23,9 @@ function bindFuse(dados) {
 	let options = {
 		shouldSort: true,
 		includeMatches: true,
-		threshold: 0.3,
-		location: 1,
-		distance: 10,
+		threshold: 0.5,
+		location: 0,
+		distance: 30,
 		minMatchCharLength: 2,
 		keys: [
 			{ name: 'banca', weight: 0.7 },
@@ -49,7 +49,6 @@ function bindFuse(dados) {
 				return
 			}
 			encontrado = encontrado.slice(0, max_resultados);
-			console.log(encontrado);
             atualizaMenu(encontrado);
 			return
 		}
@@ -100,7 +99,7 @@ $(function() {
 	search.focus(function(ev) {
 		// checa se ja foi buscado os dados se não busca e binda search engine
 		if (!ultimos_dados) {
-			$.ajax({
+			$.get({
 				url: queryUri,
 				dataType: 'json',
 				success: function(dados) {
@@ -108,16 +107,17 @@ $(function() {
 					search.addClass('searchable')
 					// ja pode procurar
 					ultimos_dados = dados
-				},
-				error: function() {
-					search.addClass('unsearchable')
 				}
+			}).fail(function() {
+				search.addClass('unsearchable');
 			})
 		} else {
-			searchMenu.show();
+			// searchMenu.show();
 		}
+		searchMenu.focusin();
 	})
-	topNav.focusout(function(ev) {
+
+	searchMenu.focusout(function(e) {
 		fecharMenu(true)
 	})
 })
