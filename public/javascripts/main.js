@@ -117,7 +117,7 @@ $(function() {
 		searchMenu.focusin();
 	})
 
-	searchMenu.focusout(function(e) {
-		fecharMenu(true)
+	$(document).click(function(e) {
+		if(searchMenu.is(':visible')) fecharMenu(true);
 	})
 })
