@@ -82,6 +82,8 @@ header {
 	border-top: 1px solid var(--cinza);
 	padding: 0.2rem 2rem 0.2rem 1rem;
 	line-height: 1.2;
+	cursor: default;
+	user-select: none;
 }
 .procurar-item:last-child {
 	border-bottom: 1px solid var(--cinza);
@@ -152,6 +154,7 @@ header {
 	border-color: var(--cinza-escuro);
 }
 .sorteio {
+	border-width: 2px;
 	color: var(--info);
 	font-size: 1.2rem;
 }

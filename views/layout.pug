@@ -21,11 +21,10 @@ html(lang='pt-br')
 						span.navbar-toggler-icon.navbar-banca-icone
 					#topNav.collapse.navbar-collapse.w-100.mt-2.mt-sm-0.mr-sm-2.mr-md-3.mr-lg-5
 						.dropdown.ml-auto
-							input#procurar.form-control(type='text' placeholder='Extração, banca/grupo...' aria-label='Procurar' data-query='/resultados?searchMap=true')
-							#procurar-menu.dropdown-menu.dropdown-procurar.shadow-sm
-							//- 	a.dropdown-item.procurar-item.item-banca(href='#') Banca
-							//- 	a.dropdown-item.procurar-item.item-extracao(href='#') Extração
-							//- 	a.dropdown-item.procurar-item.item-grupo(href='#') Grupo
+							form#procurar(action="" method="post" autocomplete="off" spellcheck="false")
+								input#procurar-data(type="hidden" name="data" value="")
+								input#procurar-campo.form-control(type='text' value="" placeholder='Extração, banca/grupo...' aria-label='Procurar' data-query='/resultados?searchMap=true')
+								#procurar-menu.dropdown-menu.dropdown-procurar.shadow-sm
 		main(role='main')
 			block content
 		footer.bg-dark

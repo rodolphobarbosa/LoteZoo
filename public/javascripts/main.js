@@ -1,10 +1,12 @@
 var ultima_procura = []
 var ultimos_dados
 const search = $('#procurar')
+const searchData = $('#procurar-data')
+const searchInput = $('#procurar-campo')
 const searchMenu = $('#procurar-menu')
 const topNav = $('#topNav')
 const max_resultados = 5
-const queryUri = search.data('query')
+const queryUri = searchInput.data('query')
 
 function checkMatches(nova = [], ultima = []) {
 	// se tem o msm num de matches
@@ -37,7 +39,7 @@ function bindFuse(dados) {
 	// inicializa fuse
 	fuse = new Fuse(dados, options)
 	// binda fuse ao change do search
-	search.bind('keydown', fuse, function(event) {
+	searchInput.bind('keydown', fuse, function(event) {
 		let encontrado = fuse.search($(this).val())
 		// checa se tem novos resultados
 		if (!checkMatches(encontrado, ultima_procura)) {
@@ -48,55 +50,61 @@ function bindFuse(dados) {
 				fecharMenu()
 				return
 			}
-			encontrado = encontrado.slice(0, max_resultados);
-            atualizaMenu(encontrado);
+			encontrado = encontrado.slice(0, max_resultados)
+			atualizaMenu(encontrado)
 			return
 		}
 	})
 }
-function formatResultados(resultados) {
-
-}
+function formatResultados(resultados) {}
 function atualizaMenu(resultados) {
-    searchMenu.empty();
+	searchMenu.empty()
 	resultados.forEach((res) => {
-		let match = res.matches[0];
-		let resItem = res.item;
-		let ref = {};
-		let item = $(`<div class='dropdown-item procurar-item item-extracao text-info overflow-hidden'></div>`)
-		if(match) {
-			for(let prop in resItem) {
-				if(prop == match.key) {
-					item.text(match.value);
+		let match = res.matches[0]
+		let resItem = res.item
+		let ref = {}
+		let item = $(
+			`<div class='dropdown-item procurar-item item-extracao text-info overflow-hidden'></div>`
+		)
+		if (match) {
+			for (let prop in resItem) {
+				if (prop == match.key) {
+					item.text(match.value)
 					continue
 				}
-				ref[prop] = resItem[prop];
+				ref[prop] = resItem[prop]
 			}
 		} else {
-			Object.assign(ref, resItem);
+			Object.assign(ref, resItem)
 		}
-		let itemAnchor = $(`<a class='stretched-link text-decoration-none text-wrap text-break text-dark busca-info' href=${ref['uri']}></a>`);
+		let itemInfo = $(
+			`<div class='text-wrap text-break text-dark busca-info'></div>`
+		)
+		item.attr('data-content', ref['data'])
+		item.attr('data-uri', ref['uri'])
+		delete ref['data']
 		delete ref['uri']
-		for(let key in ref) {
-			if(key == 'data') {
-				item.attr('data-content', ref[key]);
-				continue
-			}
-			itemAnchor.append(`<span class='busca-el'>${ref[key]}</span>`);
+		for (let key in ref) {
+			itemInfo.append(`<span class='busca-el'>${ref[key]}</span>`)
 		}
-		item.append(itemAnchor);
-		searchMenu.append(item);
-    })
-	searchMenu.show();
+		item.append(itemInfo)
+		item.on('click touchend', function(ev) {
+			searchData.attr('value', $(this).data('content'))
+			search.attr('action', $(this).data('uri'))
+			search.submit()
+		})
+		searchMenu.append(item)
+	})
+	searchMenu.show()
 }
 function fecharMenu(blur = false) {
-	searchMenu.hide();
-    if (blur) {
-        search.removeClass('unsearchable');
-    }
+	searchMenu.hide()
+	if (blur) {
+		searchInput.removeClass('unsearchable')
+	}
 }
 $(function() {
-	search.focus(function(ev) {
+	searchInput.focus(function(ev) {
 		// checa se ja foi buscado os dados se não busca e binda search engine
 		if (!ultimos_dados) {
 			$.get({
@@ -104,20 +112,24 @@ $(function() {
 				dataType: 'json',
 				success: function(dados) {
 					bindFuse(dados)
-					search.addClass('searchable')
+					searchInput.addClass('searchable')
 					// ja pode procurar
 					ultimos_dados = dados
 				}
 			}).fail(function() {
-				search.addClass('unsearchable');
+				searchInput.addClass('unsearchable')
 			})
-		} else {
-			// searchMenu.show();
+		} else if($('.procurar-item').length) {
+			searchMenu.show();
 		}
-		searchMenu.focusin();
+		searchMenu.focusin()
+	})
+	// fechar search dropdown
+	$(document).on('click touchend', function(e) {
+		if (searchMenu.is(':visible')) fecharMenu(true)
 	})
 
-	$(document).click(function(e) {
-		if(searchMenu.is(':visible')) fecharMenu(true);
+	$(document).on('keydown', search, function(ev) {
+		return ev.key !== "Enter";
 	})
 })

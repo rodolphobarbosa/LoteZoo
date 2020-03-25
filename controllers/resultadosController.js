@@ -102,18 +102,10 @@ exports.banca_sorteios = function(req, res, next) {
 }
 
 exports.banca_sorteios_data = [
-	// checa formato se eh mesmo data
-	check('data').isISO8601(),
-
+	// checar formato se eh mesmo data
 	function(req, res, next) {
-		// valida dados da requisicao
-		const erros = validationResult(req)
-		if (!erros.isEmpty()) {
-			return next(erros)
-		}
-		let dataBanca = moment(req.body.data).format('DD_MM_YYYY')
-		console.log(req.body.data, dataBanca)
-		// se a data esta no formato correto busca a data renderiza pagina normalmente
+		// validar dados da requisicao
+		let dataBanca = moment(req.body.data, 'DD/MM/YYYY').format('DD_MM_YYYY')
 		asyncAPI(loteria.req_banca, [req.params.banca, dataBanca], (erro, resultado) => {
 			if (erro) {
 				return next(erro)
