@@ -1,6 +1,10 @@
 const loteria = require('./data/loteria')
 const qs = require('query-string')
-// const fs = require ('fs');
+const moment = require('moment');
+const {check, validationResult} = require('express-validator');
+
+const dataHoje = moment().format('YYYY-MM-DD');
+const dias = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom'];
 
 async function asyncAPI(fx, fxArgs = [], cb) {
 	try {
@@ -85,16 +89,34 @@ exports.banca_sorteios = function(req, res, next) {
 		if (erro) {
 			return next(erro)
 		}
+		const data = moment(resultado.data, "DD/MM/YYYY");
+		console.log(data.day());
 		// order primeiros do data
 		resultado.sorteios.reverse();
 		res.render('resultados', {
 			title: 'Resultados',
 			banca: resultado.banca,
-			data: resultado.data,
+			data: [dias[data.day()], data.format('YYYY-MM-DD'), dataHoje],
 			sorteios: resultado.sorteios
 		})
 	})
 }
+
+exports.banca_sorteios_data = [
+	// checa formato se eh mesmo data
+	check('data').isISO8601(),
+
+	function(req, res, next) {
+		// valida dados da requisicao
+		const erros = validationResult(req);
+		if(!erros.isEmpty()) {
+			return next(erros);
+		}
+		// se a data esta no formato correto busca a data renderiza pagina normalmente
+
+		
+	}
+];
 
 exports.banca_sorteio = function(req, res, next) {
 	asyncAPI(

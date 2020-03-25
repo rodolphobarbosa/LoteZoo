@@ -2,10 +2,17 @@ extends layout
 include includes/premios.pug
 
 block content
-	section.jumbotron.text-center.mb-0
-		h2= banca
-		p.h3.d-inline-block.px-2.py-1.shadow-sm= data
-	.container-sm.container-md.container-lg.mt-n3.mt-md-n5.sorteios.bg-light.shadow-lg.pt-4
+	section#banca.jumbotron.text-center.mb-0
+		.bancaTitulo
+			h2= banca
+		.bancaData
+			.input-group.mb-3
+				.input-group-prepend
+					span#data-addon.input-group-text= data[0]
+				input#bancaData.form-control(type="date" name="data" value=data[1] max=data[2] aria-label='Data do Sorteio' aria-describedby='data-addon')
+				.input-group-append
+					button#btnData.btn.btn-outline-secondary(type='button') Buscar Resultados
+	.container-sm.container-md.container-lg.sorteios.bg-light.shadow-lg.pt-4
 		if sorteios.length
 			.nav-scroller.py-2.mb-2.border-top.border-bottom.border-info
 				nav.nav.justify-content-around.pb-0
