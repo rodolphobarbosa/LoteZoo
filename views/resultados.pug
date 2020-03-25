@@ -2,17 +2,22 @@ extends layout
 include includes/premios.pug
 
 block content
-	section#banca.jumbotron.text-center.mb-0
+	section.jumbotron.text-center.mb-0
 		.bancaTitulo
 			h2= banca
-		.bancaData
-			.input-group.mb-3
-				.input-group-prepend
-					span#data-addon.input-group-text= data[0]
-				input#bancaData.form-control(type="date" name="data" value=data[1] max=data[2] aria-label='Data do Sorteio' aria-describedby='data-addon')
-				.input-group-append
-					button#btnData.btn.btn-outline-secondary(type='button') Buscar Resultados
-	.container-sm.container-md.container-lg.sorteios.bg-light.shadow-lg.pt-4
+		.bancaData.mb-3
+			form(action="" method="post")
+				.form-row
+					.col-8.mb-5.mx-auto
+						input#data-readonly.banca-data.form-control.mx-auto(type="date" value=data[1] readonly)
+					.col-12
+						#data.input-group.mx-auto
+							.input-group-prepend
+								span#data-abbr.data-abbr.input-group-text.bg-light= data[0]
+							input#bancaData.banca-data.form-control(type="date" name="data" value=data[1] max=data[2] aria-label='Data do Sorteio' aria-describedby='data-abbr')
+							.input-group-append
+								button#btnData.btn.btn-outline-primary.bg-dark(type='submit') Buscar
+	.container-sm.container-md.container-lg.sorteios.bg-light.shadow-lg.pt-4.mt-n4
 		if sorteios.length
 			.nav-scroller.py-2.mb-2.border-top.border-bottom.border-info
 				nav.nav.justify-content-around.pb-0
@@ -20,7 +25,7 @@ block content
 						a.px-2.py-1.text-muted.text-monospace.font-weight-bold.border.border-secondary.rounded(href='#'+sorteio.ID)= sorteio.extracao
 			.row.no-gutters.row-cols-1.row-cols-md-2.pt-4
 				each sorteio in sorteios
-					.col.px-4.mb-3.mb-md-4.mb-lg-5.mx-auto(id=sorteio.ID)
+					.col.px-0.px-sm-2.px-md-3.mb-3.mb-md-4.mb-lg-5.mx-auto(id=sorteio.ID)
 						.card.rounded-0.shadow.sorteio
 							.card-header.px-3.py-3.text-center
 								h6.card-subtitle.p-1.text-monospace.rounded.border(class=sorteio.poste?"bg-info text-light border-primary":"border-info")= sorteio.extracao

@@ -1,10 +1,11 @@
+const dataBanca = $('#data-readonly').val();
 const dataInput = $('#bancaData');
 const dataBtn = $('#btnData');
-const dataAddon = $('#data-addon');
+const dataAbbr = $('#data-abbr');
 const dias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
 
 $(function() {
-    dataBtn.attr('disabled', data == dataMax)
+    dataBtn.attr('disabled', data == dataBanca)
     // SMOOTH SCROLL
     $(document).on('click', 'a[href^="#"]', function(e) {
         // anchor id
@@ -22,13 +23,12 @@ $(function() {
         $('body, html').animate({scrollTop: pos});
     });
 
-    const dataMax = dataInput.attr('max');
     dataInput.change(function(ev) {
         let data = $(this).val();
         let dds = Number(data.slice(-2))%7;
         // index dia
         dds = dds ? dds-1 : 6;
-        dataBtn.attr('disabled', data == dataMax);
-        dataAddon.text(dias[dds]);
+        dataBtn.attr('disabled', (data == dataBanca || !data ));
+        dataAbbr.text(dias[dds]);
     })
 });
