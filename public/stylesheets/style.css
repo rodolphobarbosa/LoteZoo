@@ -257,5 +257,5 @@ header {
 	max-width: 32rem;
 }
 #btnData:disabled {
-	cursor: not-allowed;
+	cursor: default;
 }

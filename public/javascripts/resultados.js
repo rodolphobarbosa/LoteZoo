@@ -5,7 +5,7 @@ const dataAbbr = $('#data-abbr');
 const dias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
 
 $(function() {
-    dataBtn.attr('disabled', data == dataBanca)
+    dataBtn.attr('disabled', dataInput.val() == dataBanca)
     // SMOOTH SCROLL
     $(document).on('click', 'a[href^="#"]', function(e) {
         // anchor id
