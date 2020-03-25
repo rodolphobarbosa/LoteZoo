@@ -8,7 +8,7 @@ router.get('/', resultadosController.ultimas_extracoes);
 router.get('/:banca', resultadosController.banca_sorteios);
 // json sorteio
 router.get('/:banca/sorteio', resultadosController.banca_sorteio);
-// pagina banca outro dia
-router.get('/:banca/:data', resultadosController.banca_sorteios);
+// pagina banca data
+router.post('/:banca', resultadosController.banca_sorteios_data);
 
 module.exports = router;

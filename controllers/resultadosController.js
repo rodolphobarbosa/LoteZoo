@@ -1,10 +1,10 @@
 const loteria = require('./data/loteria')
 const qs = require('query-string')
-const moment = require('moment');
-const {check, validationResult} = require('express-validator');
+const moment = require('moment')
+const { check, validationResult } = require('express-validator')
 
-const dataHoje = moment().format('YYYY-MM-DD');
-const dias = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom'];
+const dataHoje = moment().format('YYYY-MM-DD')
+const dias = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom']
 
 async function asyncAPI(fx, fxArgs = [], cb) {
 	try {
@@ -25,7 +25,7 @@ function orderPoste(extracoes) {
 	})
 	return poste.concat(extracoes)
 }
-// Built-in fxs 
+// Built-in fxs
 function mapQueries(sorteios) {
 	return sorteios.map((sorteio) => {
 		sorteio.uri = qs.stringifyUrl({
@@ -59,15 +59,15 @@ function paginar(pagina, resultados, maxResultados = 12) {
 }
 
 exports.ultimas_extracoes = function(req, res, next) {
-	let searchMap = req.query.searchMap ? true : null ;
-	let pagina = req.query.pagina ? req.query.pagina : 1;
+	let searchMap = req.query.searchMap ? true : null
+	let pagina = req.query.pagina ? req.query.pagina : 1
 	asyncAPI(loteria.req_ultimas, [searchMap], (erro, extracoes) => {
 		if (erro) {
 			return next(erro)
 		}
-		if(searchMap) {
+		if (searchMap) {
 			res.setHeader('Content-Type', 'application/json')
-			res.json(extracoes);
+			res.json(extracoes)
 			return
 		}
 		// paginacao
@@ -85,14 +85,13 @@ exports.ultimas_extracoes = function(req, res, next) {
 }
 
 exports.banca_sorteios = function(req, res, next) {
-	asyncAPI(loteria.req_banca, [req.params.banca, req.params.data], (erro, resultado) => {
+	asyncAPI(loteria.req_banca, [req.params.banca], (erro, resultado) => {
 		if (erro) {
 			return next(erro)
 		}
-		const data = moment(resultado.data, "DD/MM/YYYY");
-		console.log(data.day());
+		const data = moment(resultado.data, 'DD/MM/YYYY')
 		// order primeiros do data
-		resultado.sorteios.reverse();
+		resultado.sorteios.reverse()
 		res.render('resultados', {
 			title: 'Resultados',
 			banca: resultado.banca,
@@ -108,15 +107,29 @@ exports.banca_sorteios_data = [
 
 	function(req, res, next) {
 		// valida dados da requisicao
-		const erros = validationResult(req);
-		if(!erros.isEmpty()) {
-			return next(erros);
+		const erros = validationResult(req)
+		if (!erros.isEmpty()) {
+			return next(erros)
 		}
+		let dataBanca = moment(req.body.data).format('DD_MM_YYYY')
+		console.log(req.body.data, dataBanca)
 		// se a data esta no formato correto busca a data renderiza pagina normalmente
-
-		
+		asyncAPI(loteria.req_banca, [req.params.banca, dataBanca], (erro, resultado) => {
+			if (erro) {
+				return next(erro)
+			}
+			const data = moment(resultado.data, 'DD/MM/YYYY')
+			// order primeiros do data
+			resultado.sorteios.reverse()
+			res.render('resultados', {
+				title: 'Resultados',
+				banca: resultado.banca,
+				data: [dias[data.day()], data.format('YYYY-MM-DD'), dataHoje],
+				sorteios: resultado.sorteios
+			})
+		})
 	}
-];
+]
 
 exports.banca_sorteio = function(req, res, next) {
 	asyncAPI(
