@@ -80,7 +80,7 @@ header {
 	position: relative;
 	background-color: white;
 	border-top: 1px solid var(--cinza);
-	padding: .2rem 2rem .2rem 1rem;
+	padding: 0.2rem 2rem 0.2rem 1rem;
 	line-height: 1.2;
 }
 .procurar-item:last-child {
@@ -89,8 +89,8 @@ header {
 .procurar-item::after {
 	content: '';
 	position: absolute;
-	right: .5rem;
-	top: .3rem;
+	right: 0.5rem;
+	top: 0.3rem;
 	width: 1.5rem;
 	height: 1.5rem;
 	background-size: 100%;
@@ -104,18 +104,18 @@ header {
 .item-extracao::before {
 	content: attr(data-content);
 	position: absolute;
-	right: .5rem;
+	right: 0.5rem;
 	top: 1.7rem;
-	color: var(--secondary)
+	color: var(--secondary);
 }
 .busca-info {
 	display: flex;
 	width: 100%;
 	flex-flow: row wrap;
-	padding-top: .1rem;
+	padding-top: 0.1rem;
 }
 .busca-el {
-	padding: 0 .2rem;
+	padding: 0 0.2rem;
 }
 .nav-scroller {
 	position: relative;
@@ -227,4 +227,35 @@ header {
 }
 #ModalTitulo {
 	font-size: 1em;
+}
+
+/* #data {
+	position: relative;
+	max-width: 350px;
+	min-width: 280px;
+	margin-left: auto;
+	margin-right: auto;
+} */
+.data-abbr {
+	font-weight: 600;
+	text-decoration: underline;
+}
+.data-abbr,
+.banca-data {
+	font-size: 1.2rem;
+}
+#data-readonly {
+	text-align: center;
+	max-width: 18rem;
+}
+#data-readonly::-webkit-inner-spin-button,
+#data-readonly::-webkit-calendar-picker-indicator {
+	-webkit-appearance: none;
+	display: none;
+}
+#data {
+	max-width: 32rem;
+}
+#btnData:disabled {
+	cursor: not-allowed;
 }
