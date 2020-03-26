@@ -1,0 +1,59 @@
+.pagina {
+	position: relative;
+	cursor: default;
+	overflow: hidden;
+	width: 51rem;
+	height: 66rem;
+    margin: 2rem auto;
+    font-family: 'Muli', sans-serif;
+	background-color: white;
+}
+.pagina-cabecalho,
+.pagina-rodape {
+	min-height: 6rem;
+    max-height: 26.4rem;
+}
+.pagina-cabecalho,
+.pagina-conteudo,
+.pagina-rodape {
+    position: absolute;
+    left: 0;
+	width: 100%;
+	padding-left: 3rem;
+	padding-right: 3rem;
+}
+.pagina-cabecalho {
+    top: 0;
+    padding-top: 1rem;
+}
+.pagina-conteudo {
+    top: 50%;
+    transform: translateY(-50%);
+    max-height: 54rem;
+}
+.pagina-rodape {
+    bottom: 0;
+    padding-bottom: 2rem;
+}
+
+.tab {
+	width: auto;
+	font-size: 1rem;
+}
+.tab-premio td {
+	font-size: 1.2em;
+}
+.tab-milhar {
+    font-size: 1.3em !important;
+    letter-spacing: .2rem;
+    font-weight: 600;
+}
+.tab-img {
+	width: 2rem;
+	height: auto;
+	user-select: none;
+}
+.pagina-rodape {
+	font-family: 'Roboto Slab', serif;
+	/* font-family: 'Lora', serif; */
+}

@@ -1,4 +1,59 @@
 extends layout
 
+block head
+	meta(charset='utf-8')
+	//- meta(name='viewport' content='width=device-width, initial-scale=1')
+	title= title
+	link(rel='icon' type='image/png' href='/images/zoo-favicon.png')
+	link(rel='stylesheet' href='/css/bootstrap.min.css')
+	link(href="https://fonts.googleapis.com/css?family=Baloo+Da+2|Muli&display=swap" rel="stylesheet")
+	link(href="https://fonts.googleapis.com/css?family=Lora|Roboto+Slab&display=swap" rel="stylesheet")
+	link(rel='stylesheet' href='/stylesheets/style.css')
+	link(rel='stylesheet' href='/stylesheets/print.css')
+
+block header
+	nav.navbar.navbar-expand-sm.fixed-top.navbar-dark.bg-dark.d-print-none
+		h1.navbar-brand.brand.mx-auto LoteZoo
+			small.slogan A loteria do bicho
+			a.stretched-link.text-reset(href='/')
 block content
-    h2 Erro de Rota :o
+	section.pagina.shadow-lg
+		.pagina-cabecalho.d-flex.align-items-center.justify-content-around
+			h3.navbar-brand.brand.mr-2 LoteZoo
+				small.slogan A loteria do bicho
+			h1.h2= sorteio.extracao
+			h2.h3= sorteio.banca
+		.pagina-conteudo
+			table.table.table-striped.table-responsive-md.tab
+				thead
+					tr
+						th(scope='col')
+						th(scope='col') Milhar
+						th(scope='col').text-center Grupo
+						th(scope='col').text-right Zoo
+						th(scope='col') Nome
+				tbody
+				each premio, i in sorteio.resultado
+					tr.align-middle.tab-premio
+						th.align-middle.text-muted.text-right(scope='row')= (i+1)+"º" 
+						td.align-middle.tab-milhar= premio.milhar
+						td.align-middle.text-center= premio.grupo.num
+						td.align-middle.text-right #[img.tab-img(src='/images/grupos/svg/'+premio.grupo.svg)]
+						td.align-middle= premio.grupo.nome
+		.pagina-rodape.d-flex.flex-column.justify-content-between.align-items-center
+			.row.w-75
+				span#url= "/resultados/"+sorteio.urn
+				span.ml-auto= sorteio.data
+			.row
+				blockquote.blockquote.text-center.note
+					block iconesRights
+						+citeRights([ ["Freepik", "https://www.flaticon.com/authors/freepik"], ["monkik", "https://www.flaticon.com/authors/monkik"], ["Smashicons", "https://www.flaticon.com/authors/smashicons"], ["photo3idea_studio", "https://www.flaticon.com/authors/photo3idea-studio"] ], false)
+
+
+
+block footer
+block scripts
+	script(src='/dist/jquery.min.js')
+	script(src='/umd/popper.min.js')
+	script(src='/js/bootstrap.min.js')
+	script(src='/javascripts/print.js')
