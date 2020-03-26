@@ -220,7 +220,7 @@ header {
 	font-size: 1.1rem;
 }
 .pagination {
-	border: 1px solid var(--gray)
+	border: 1px solid var(--gray);
 }
 .note {
 	font-size: 0.9rem;

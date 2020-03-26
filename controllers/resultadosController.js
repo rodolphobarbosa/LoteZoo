@@ -164,6 +164,7 @@ exports.imprimir_sorteio = function(req, res, next) {
 			if (erro) {
 				return next(erro)
 			}
+			console.log(sorteio)
 			res.render('imprimir', {title: `Impressão - ${sorteio.extracao}`, sorteio})
 		}
 	)

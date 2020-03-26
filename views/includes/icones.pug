@@ -1,14 +1,14 @@
-mixin citeRights(refs = [])
+mixin citeRights(refs = [], dark = true)
 	-let nested = refs.slice(0, refs.length-1)
 	footer.blockquote-footer Icons made by 
 		if refs.length > 0
 			each ref in nested
-				a.text-decoration-none.text-light(href=ref[1] target="_blank" rel="noopener noreferrer")
+				a.text-decoration-none(href=ref[1] class=dark?"text-light":"text-reset" target="_blank" rel="noopener noreferrer")
 					cite(title=ref[0])= ref[0]+', '
-			a.text-decoration-none.text-light(href=refs[refs.length-1][1] target="_blank" rel="noopener noreferrer")
+			a.text-decoration-none(href=refs[refs.length-1][1] class=dark?"text-light":"text-reset" target="_blank" rel="noopener noreferrer")
 				cite(title=refs[refs.length-1][0])= refs[refs.length-1][0]+' '
-			| from #[a.text-decoration-none.text-light(href="https://www.flaticon.com/" target="_blank" rel="noopener noreferrer" title="Flaticon") www.flaticon.com]
+			| from #[a.text-decoration-none(href="https://www.flaticon.com/" class=dark?"text-light":"text-reset" target="_blank" rel="noopener noreferrer" title="Flaticon") www.flaticon.com]
 		else
-			a.text-decoration-none.text-light(href=refs[0][1] target="_blank" rel="noopener noreferrer")
+			a.text-decoration-none(href=refs[0][1] class=dark?"text-light":"text-reset" target="_blank" rel="noopener noreferrer")
 				cite(title=refs[0][0])= refs[0][0]+' '
-			| from #[a.text-decoration-none.text-light(href="https://www.flaticon.com/" target="_blank" rel="noopener noreferrer" title="Flaticon") www.flaticon.com]
+			| from #[a.text-decoration-none(href="https://www.flaticon.com/" class=dark?"text-light":"text-reset" target="_blank" rel="noopener noreferrer" title="Flaticon") www.flaticon.com]
