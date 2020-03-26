@@ -119,7 +119,7 @@ exports.banca_sorteios_data = [
 	// checar formato se eh mesmo data
 	function(req, res, next) {
 		// validar dados da requisicao
-		let dataBanca = moment(req.body.data, 'DD/MM/YYYY').format('DD_MM_YYYY')
+		let dataBanca = req.body.data.indexOf('/') > -1 ? moment(req.body.data, 'DD/MM/YYYY').format('DD_MM_YYYY') : moment(req.body.data, 'YYYY-MM-DD').format('DD_MM_YYYY');
 		asyncAPI(
 			loteria.req_banca,
 			[req.params.banca, dataBanca],
@@ -164,7 +164,7 @@ exports.imprimir_sorteio = function(req, res, next) {
 			if (erro) {
 				return next(erro)
 			}
-			res.render('imprimir', {title: 'Impressão', sorteio})
+			res.render('imprimir', {title: `Impressão - ${sorteio.extracao}`, sorteio})
 		}
 	)
 }

@@ -68,18 +68,12 @@ $(function() {
 	sorteiosBtns.click(function(ev) {
 		const btn = $(this)
 		let uri = btn.data('uri')
-		$.ajax({
-			url: uri,
-			dataType: 'json',
-			error: function(jqXHR, status, erro) {
-        alertaModal(sorteioModal, status, erro);
-        sorteioModal.modal('show');
-			},
-			success: function(sorteio) {
-				// retornou sorteio atualiza o modal
+		$.getJSON( uri, function(sorteio) {
         renderizaModal(sorteioModal, sorteio);
 				sorteioModal.modal('show')
-			}
-		})
+			}).fail(function(jqXHR, status, erro) {
+      alertaModal(sorteioModal, status, erro);
+      sorteioModal.modal('show');
+    })
 	})
 })
