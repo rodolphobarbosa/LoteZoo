@@ -26,14 +26,27 @@ function orderPoste(extracoes) {
 	return poste.concat(extracoes)
 }
 // Built-in fxs
-function mapQueries(sorteios) {
-	return sorteios.map((sorteio) => {
-		sorteio.uri = qs.stringifyUrl({
-			url: `/resultados/${sorteio.urn}/sorteio`,
-			query: { data: sorteio.data, extracao: sorteio.extracao }
+// uri para requisitar modal
+function mapResultado(extracoes) {
+	return extracoes.map((extracao) => {
+		extracao.uri = qs.stringifyUrl({
+			url: `/resultados/${extracao.urn}/sorteio`,
+			query: { data: extracao.data, extracao: extracao.extracao }
 		})
-		return sorteio
+		return extracao
 	})
+}
+// uri para requisitar pagina impressao
+function formatImprimir(sorteio) {
+	sorteio.print = qs.stringifyUrl({
+		url: '/resultados/imprimir',
+		query: {
+			banca: sorteio.urn,
+			data: sorteio.data,
+			extracao: sorteio.extracao
+		}
+	})
+	return sorteio;
 }
 function paginar(pagina, resultados, maxResultados = 12) {
 	let maxPaginas = Math.ceil(resultados / maxResultados)
@@ -65,6 +78,7 @@ exports.ultimas_extracoes = function(req, res, next) {
 		if (erro) {
 			return next(erro)
 		}
+		// search ultimas extracoes json
 		if (searchMap) {
 			res.setHeader('Content-Type', 'application/json')
 			res.json(extracoes)
@@ -73,7 +87,7 @@ exports.ultimas_extracoes = function(req, res, next) {
 		// paginacao
 		paginas = paginar(pagina, extracoes.length)
 		extracoes = extracoes.slice(paginas.ignorar, paginas.buscar)
-		extracoes = mapQueries(extracoes)
+		extracoes = mapResultado(extracoes)
 		//- order deu no poste
 		// extracoes = orderPoste(extracoes);
 		res.render('extracoes', {
@@ -106,20 +120,24 @@ exports.banca_sorteios_data = [
 	function(req, res, next) {
 		// validar dados da requisicao
 		let dataBanca = moment(req.body.data, 'DD/MM/YYYY').format('DD_MM_YYYY')
-		asyncAPI(loteria.req_banca, [req.params.banca, dataBanca], (erro, resultado) => {
-			if (erro) {
-				return next(erro)
+		asyncAPI(
+			loteria.req_banca,
+			[req.params.banca, dataBanca],
+			(erro, resultado) => {
+				if (erro) {
+					return next(erro)
+				}
+				const data = moment(resultado.data, 'DD/MM/YYYY')
+				// order primeiros do data
+				resultado.sorteios.reverse()
+				res.render('resultados', {
+					title: 'Resultados',
+					banca: resultado.banca,
+					data: [dias[data.day()], data.format('YYYY-MM-DD'), dataHoje],
+					sorteios: resultado.sorteios
+				})
 			}
-			const data = moment(resultado.data, 'DD/MM/YYYY')
-			// order primeiros do data
-			resultado.sorteios.reverse()
-			res.render('resultados', {
-				title: 'Resultados',
-				banca: resultado.banca,
-				data: [dias[data.day()], data.format('YYYY-MM-DD'), dataHoje],
-				sorteios: resultado.sorteios
-			})
-		})
+		)
 	}
 ]
 
@@ -131,8 +149,22 @@ exports.banca_sorteio = function(req, res, next) {
 			if (erro) {
 				return next(erro)
 			}
+			sorteio = formatImprimir(sorteio);
 			res.setHeader('Content-Type', 'application/json')
 			res.json(sorteio)
+		}
+	)
+}
+
+exports.imprimir_sorteio = function(req, res, next) {
+	asyncAPI(
+		loteria.req_sorteio,
+		[req.query.banca, req.query.data, req.query.extracao],
+		(erro, sorteio) => {
+			if (erro) {
+				return next(erro)
+			}
+			res.render('imprimir', {title: 'Impressão', sorteio})
 		}
 	)
 }

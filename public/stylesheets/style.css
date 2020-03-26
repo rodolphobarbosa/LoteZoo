@@ -219,6 +219,9 @@ header {
 	padding: 2rem 3rem;
 	font-size: 1.1rem;
 }
+.pagination {
+	border: 1px solid var(--gray)
+}
 .note {
 	font-size: 0.9rem;
 	margin-bottom: 0;

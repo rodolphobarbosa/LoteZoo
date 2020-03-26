@@ -1,7 +1,9 @@
-function atualizaModal(modal, sorteio) {
+function renderizaModal(modal, sorteio) {
   modal.find('.sorteio-banca').text(sorteio.banca)
 	modal.find('.sorteio-extracao').show().text(sorteio.extracao)
   modal.find('.sorteio-data').text(sorteio.data).removeClass('text-muted');
+  console.log(sorteio);
+  modal.find('.btn-primary').attr('href', sorteio.print)
   let resultado = $('<ul class="list-group list-group-flush sorteio-resultado"></ul>');
   sorteio.resultado.forEach((premio, i) => {
     resultado.append(`
@@ -75,7 +77,7 @@ $(function() {
 			},
 			success: function(sorteio) {
 				// retornou sorteio atualiza o modal
-        atualizaModal(sorteioModal, sorteio);
+        renderizaModal(sorteioModal, sorteio);
 				sorteioModal.modal('show')
 			}
 		})
