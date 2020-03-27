@@ -1,20 +1,16 @@
 const sorteiosBtns = $('.SORTEIO__BTN--RES')
-const sorteioModal = $('#Modal')
+const sorteioModal = $('#MODAL')
+const sorteioTitulo = $('#MODAL__TITULO')
 
 function renderizaModal(modal, sorteio) {
-	modal.find('.sorteio-banca').text(sorteio.banca)
+	sorteioTitulo.text(sorteio.banca)
 	modal
-		.find('.sorteio-extracao')
+		.find('.SORTEIO__EXTRACAO')
 		.show()
 		.text(sorteio.extracao)
-	modal
-		.find('.sorteio-data')
-		.text(sorteio.data)
-		.removeClass('text-muted')
-	modal.find('.btn-primary').attr('href', sorteio.print)
-	let resultado = $(
-		'<div class="SORTEIO__RESULTADO"></div>'
-	)
+	modal.find('.SORTEIO__DATA').text(sorteio.data)
+	modal.find('.SORTEIO__BTN--PRINT').attr('href', sorteio.print)
+	let resultado = $("<div class='SORTEIO__RESULTADO'></div>")
 	sorteio.resultado.forEach((premio, i) => {
 		resultado.append(`
       <div class='PREMIO ${i % 2 == 0 ? 'PREMIO--STRIPED' : ''}'>
@@ -30,42 +26,45 @@ function renderizaModal(modal, sorteio) {
       </div>
     `)
 	})
-	modal.find('.modal-body').html(resultado)
+	modal.find('.modal-body').html(resultado);
 }
 function alertaModal(modal, status, erro) {
-	let titulo = modal.find('#ModalTitulo')
-	// caso ja tenha sido aberto reformata
-	modal.find('.sorteio-extracao').hide()
-	modal.find('.sorteio-data').addClass('text-muted')
-
-	let txt = modal.find('.modal-body')
-	modal.find('.btn-primary').attr('disabled', 'true')
-	modal.find('.btn-primary').attr('aria-disabled', 'true')
+  // caso ja tenha sido aberto reformata
+  modal.find('.SORTEIO__EXTRACAO').hide()
+  modal.find('.SORTEIO__DATA').text('03/07/1982') // easter egg
+	modal.find('.SORTEIO__BTN--PRINT').attr('disabled', 'true').attr('aria-disabled', 'true')
+  sorteioTitulo.addClass('text-secondary')
+	let alerta = $("<div class='alert alert-warning' role='alert'></div>")
 	switch (status) {
 		case 'timeout':
-			titulo.text('Tempo esgotado')
+			sorteioTitulo.text('Tempo esgotado')
 			break
 		case 'error':
-			titulo.text('Erro ao buscar')
+			sorteioTitulo.text('Erro ao buscar')
 			break
 		case 'abort':
-			titulo.text('Cancelado')
+			sorteioTitulo.text('Cancelado')
 			break
 		default:
-			titulo.text('Falha na conexão')
+			sorteioTitulo.text('Falha na conexão')
 	}
 	switch (erro) {
 		case 'Not Found':
-			txt.text('Resultado não encontrado.')
+			alerta.text('Resultado não encontrado.')
 			break
-		case 'Internal Server Error.':
-			txt.html(
-				'Erro no Servidor, porfavor <a href="mailto:ruansenadev@gmail.com?Subject=LoteZoo%20Suporte">Contate</a> o suporte.'
+		case 'Internal Server Error':
+			alerta.html(
+				'Erro no servidor, por favor <a href="mailto:ruansenadev@gmail.com?Subject=LoteZoo%20Suporte" class="alert-link">contate</a> o suporte.'
 			)
 			break
 		default:
-			txt.text(erro || 'Verifique os cabos de rede.')
+			alerta.text(erro || 'Verifique os cabos de rede.')
 	}
+  modal.find('.modal-body').html(alerta);
+  modal.on('hide.bs.modal', function(e){
+    sorteioTitulo.removeClass('text-secondary');
+    modal.find('.SORTEIO__BTN--PRINT').attr('disabled', false).attr('aria-disabled', false);
+  })
 }
 
 $(function() {

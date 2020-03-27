@@ -309,7 +309,7 @@ header {
 	align-items: baseline;
 	justify-content: space-between;
 	padding: 0.6em 0.8em;
-	color: #6c757d;
+	color: var(--secondary)
 }
 .RODAPE__ITEM {
 	display: inline-block;
@@ -386,4 +386,7 @@ header {
 	color: var(--gray-dark);
 	font-size: 1.2em;
 	padding: 0 0.5em;
+}
+#MODAL__TITULO {
+	margin-right: auto
 }

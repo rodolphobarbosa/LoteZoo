@@ -9,7 +9,6 @@ block content
 		.row.no-gutters.row-cols-1.row-cols-md-2.row-cols-xl-3
 			each item in extracoes
 				+extracao(item)
-				
 	.container-fluid.bg-dark
 		.row.paginacao.justify-content-end.justify-content-sm-center
 			nav(aria-label='Páginas extrações')
@@ -42,19 +41,20 @@ block content
 							span.sr-only Próxima
 
 
-	#Modal.modal.fade(tab-index="-1" role="dialog" aria-labelledby='ModalTitulo' aria-hidden='true')
+	#MODAL.modal.fade(tab-index="-1" role="dialog" aria-labelledby='ModalTitulo' aria-hidden='true')
 		.modal-dialog(role='document')
-			.modal-content
-				.modal-header.d-flex.align-items-center
-					h5#ModalTitulo.modal-title.sorteio-banca
-					h6.sorteio-extracao.text-monospace.ml-auto.p-1.mb-0.rounded.border.border-secondary
+			.modal-content.SORTEIO
+				.modal-header.SORTEIO__CABECALHO
+					#MODAL__TITULO.CABECALHO__ITEM
+					.SORTEIO__EXTRACAO
 					button.close(type="button" data-dismiss='modal' aria-label='Fechar')
 						span(aria-hidden='true') &times;
 				.modal-body.p-0
-				.modal-footer
-					span.border.py-1.px-2.sorteio-data.mr-auto.text-muted 03/07/1982
-					a.btn.btn-primary.btn.px-1(role='button' href='') Imprimir
-					button.btn.btn-secondary.btn.px-1(type='button' data-dismiss='modal') Fechar
+				.modal-footer.SORTEIO__RODAPE
+					.RODAPE__ITEM.SORTEIO__DATA
+					.RODAPE__ITEM.btn-group(role='group' aria-label='modal sorteio opções')
+						button.btn.btn-primary.SORTEIO__BTN.SORTEIO__BTN--PRINT(role='button' href='') Imprimir
+						button.btn.btn-secondary.SORTEIO__BTN(type='button' data-dismiss='modal') Fechar
 
 append scripts
 	script(src='/javascripts/extracoes.js')
