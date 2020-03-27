@@ -32,7 +32,7 @@ function alertaModal(modal, status, erro) {
   // caso ja tenha sido aberto reformata
   modal.find('.SORTEIO__EXTRACAO').hide()
   modal.find('.SORTEIO__DATA').text('03/07/1982') // easter egg
-	modal.find('.SORTEIO__BTN--PRINT').attr('disabled', 'true').attr('aria-disabled', 'true')
+	modal.find('.SORTEIO__BTN--PRINT').addClass('disabled').attr('aria-disabled', 'true')
   sorteioTitulo.addClass('text-secondary')
 	let alerta = $("<div class='alert alert-warning' role='alert'></div>")
 	switch (status) {
@@ -63,7 +63,7 @@ function alertaModal(modal, status, erro) {
   modal.find('.modal-body').html(alerta);
   modal.on('hide.bs.modal', function(e){
     sorteioTitulo.removeClass('text-secondary');
-    modal.find('.SORTEIO__BTN--PRINT').attr('disabled', false).attr('aria-disabled', false);
+    modal.find('.SORTEIO__BTN--PRINT').removeClass('disabled').attr('aria-disabled', false);
   })
 }
 

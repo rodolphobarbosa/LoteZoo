@@ -28,15 +28,6 @@ block content
 			.row.no-gutters.row-cols-1.row-cols-md-2.pt-4
 				each sorteio in sorteios
 					+sorteio(sorteio)
-
-					//- .col.px-0.px-sm-2.px-md-3.mb-3.mb-md-4.mb-lg-5.mx-auto(id=sorteio.ID)
-					//- 	.card.rounded-0.shadow.sorteio
-					//- 		.card-header.px-3.py-3.text-center
-					//- 			h6.card-subtitle.p-1.text-monospace.rounded.border(class=sorteio.poste?"bg-info text-light border-primary":"border-info")= sorteio.extracao
-					//- 		.card-body.p-0
-					//- 			ul.list-group.list-group-flush.sorteio-resultado
-					//- 				each premio, i in sorteio.resultado
-					//- 					+premio(premio, i)
 		else
 			p.lead.mb-0.text-center Não foram encontrados resultados para esta data.
 append scripts

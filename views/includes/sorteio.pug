@@ -3,7 +3,7 @@ mixin sorteio(s)
 		.card.SORTEIO(id=s.ID class=s.poste?"SORTEIO--DESTAQUE":"")
 			.card-header.SORTEIO__CABECALHO
 				.CABECALHO__ITEM.CABECALHO__ITEM--GRANDE.SORTEIO__EXTRACAO(class=s.poste?"bg-info text-light border-primary":"border-info")= s.extracao
-				button.CABECALHO__ITEM.btn.btn-outline-primary.SORTEIO__BTN(type='button') Imprimir
+				button.btn.btn-outline-primary.SORTEIO__BTN(type='button') Imprimir
 			.card-body.SORTEIO__RESULTADO
 				each premio, i in s.resultado
 					+premio(premio, i)

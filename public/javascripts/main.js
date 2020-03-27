@@ -6,7 +6,7 @@ const searchInput = $('#procurar-campo')
 const searchMenu = $('#procurar-menu')
 const topNav = $('#topNav')
 const max_resultados = 5
-const queryUri = searchInput.data('query')
+const searchUri = '/resultados/procurar'
 
 function checkMatches(nova = [], ultima = []) {
 	// se tem o msm num de matches
@@ -56,7 +56,6 @@ function bindFuse(dados) {
 		}
 	})
 }
-function formatResultados(resultados) {}
 function atualizaMenu(resultados) {
 	searchMenu.empty()
 	resultados.forEach((res) => {
@@ -108,7 +107,7 @@ $(function() {
 		// checa se ja foi buscado os dados se não busca e binda search engine
 		if (!ultimos_dados) {
 			$.get({
-				url: queryUri,
+				url: searchUri,
 				dataType: 'json',
 				success: function(dados) {
 					bindFuse(dados)
