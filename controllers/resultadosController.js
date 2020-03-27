@@ -1,10 +1,9 @@
 const loteria = require('./data/loteria')
 const qs = require('query-string')
 const moment = require('moment')
-const { check, validationResult } = require('express-validator')
 
 const dataHoje = moment().format('YYYY-MM-DD')
-const dias = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom']
+const dias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab']
 
 async function asyncAPI(fx, fxArgs = [], cb) {
 	try {
@@ -16,6 +15,11 @@ async function asyncAPI(fx, fxArgs = [], cb) {
 	}
 }
 // Filters
+// order tempo real
+function orderTR(extracoes) {
+	return
+}
+// order principais bancas
 function orderPoste(extracoes) {
 	let poste = []
 	extracoes.forEach((extracao, i) => {
@@ -46,55 +50,63 @@ function formatImprimir(sorteio) {
 			extracao: sorteio.extracao
 		}
 	})
-	return sorteio;
+	return sorteio
 }
-function paginar(pagina, resultados, maxResultados = 12) {
-	let maxPaginas = Math.ceil(resultados / maxResultados)
+// paginacao
+function paginar(pagina, extracoes, maxResultados = 12) {
+	let maxPaginas = Math.ceil(extracoes.length / maxResultados)
 	pagina = pagina > maxPaginas ? maxPaginas : pagina
-	let paginas = {}
-	paginas.queries = []
-	paginas.ignorar = (pagina - 1) * maxResultados
-	paginas.buscar = pagina * maxResultados
+	let queries = []
+	let ignorar = (pagina - 1) * maxResultados
+	let buscar = pagina * maxResultados
 	for (let p = 1; p <= maxPaginas; p++) {
 		if (p == pagina) {
-			paginas.queries.push(null)
+			queries.push(null)
 			continue
 		} else if (p == 1) {
-			paginas.queries.push('/resultados')
+			queries.push('/resultados')
 			continue
 		} else {
-			paginas.queries.push(
+			queries.push(
 				qs.stringifyUrl({ url: '/resultados', query: { pagina: p } })
 			)
 		}
 	}
-	return paginas
+	return { queries, extracoes: extracoes.slice(ignorar, buscar) }
+}
+// trata req data
+function getData(data) {
+	return data.indexOf('/') > -1
+		? moment(data, 'DD/MM/YYYY')
+		: moment(data, 'YYYY-MM-DD')
 }
 
 exports.ultimas_extracoes = function(req, res, next) {
-	let searchMap = req.query.searchMap ? true : null
 	let pagina = req.query.pagina ? req.query.pagina : 1
-	asyncAPI(loteria.req_ultimas, [searchMap], (erro, extracoes) => {
+	asyncAPI(loteria.req_ultimas, null, (erro, extracoes) => {
 		if (erro) {
 			return next(erro)
 		}
-		// search ultimas extracoes json
-		if (searchMap) {
-			res.setHeader('Content-Type', 'application/json')
-			res.json(extracoes)
-			return
-		}
-		// paginacao
-		paginas = paginar(pagina, extracoes.length)
-		extracoes = extracoes.slice(paginas.ignorar, paginas.buscar)
-		extracoes = mapResultado(extracoes)
-		//- order deu no poste
+		pagina = paginar(pagina, extracoes)
+		extracoes = mapResultado(pagina.extracoes)
+
 		// extracoes = orderPoste(extracoes);
 		res.render('extracoes', {
 			title: 'LoteZoo - Resultados Hoje',
 			extracoes,
-			paginas: paginas.queries
+			paginas: pagina.queries
 		})
+	})
+}
+
+exports.procurar_dados = function(req, res, next) {
+	asyncAPI(loteria.req_ultimas, [true], (erro, extracoes) => {
+		if (erro) {
+			return next(erro)
+		}
+		res.setHeader('Content-Type', 'application/json')
+		res.json(extracoes)
+		return
 	})
 }
 
@@ -103,8 +115,9 @@ exports.banca_sorteios = function(req, res, next) {
 		if (erro) {
 			return next(erro)
 		}
+		// data do ultimo resultado da banca
 		const data = moment(resultado.data, 'DD/MM/YYYY')
-		// order primeiros do data
+		// order primeiros da data
 		resultado.sorteios.reverse()
 		res.render('resultados', {
 			title: 'Resultados',
@@ -119,17 +132,17 @@ exports.banca_sorteios_data = [
 	// checar formato se eh mesmo data
 	function(req, res, next) {
 		// validar dados da requisicao
-		let dataBanca = req.body.data.indexOf('/') > -1 ? moment(req.body.data, 'DD/MM/YYYY').format('DD_MM_YYYY') : moment(req.body.data, 'YYYY-MM-DD').format('DD_MM_YYYY');
+		const data = getData(req.body.data)
 		asyncAPI(
 			loteria.req_banca,
-			[req.params.banca, dataBanca],
+			[req.params.banca, data.format('DD_MM_YYYY')],
 			(erro, resultado) => {
 				if (erro) {
 					return next(erro)
 				}
-				const data = moment(resultado.data, 'DD/MM/YYYY')
-				// order primeiros do data
+				// order
 				resultado.sorteios.reverse()
+
 				res.render('resultados', {
 					title: 'Resultados',
 					banca: resultado.banca,
@@ -149,7 +162,7 @@ exports.banca_sorteio = function(req, res, next) {
 			if (erro) {
 				return next(erro)
 			}
-			sorteio = formatImprimir(sorteio);
+			sorteio = formatImprimir(sorteio)
 			res.setHeader('Content-Type', 'application/json')
 			res.json(sorteio)
 		}
@@ -164,8 +177,10 @@ exports.imprimir_sorteio = function(req, res, next) {
 			if (erro) {
 				return next(erro)
 			}
-			console.log(sorteio)
-			res.render('imprimir', {title: `Impressão - ${sorteio.extracao}`, sorteio})
+			res.render('imprimir', {
+				title: `Impressão - ${sorteio.extracao}`,
+				sorteio
+			})
 		}
 	)
 }
