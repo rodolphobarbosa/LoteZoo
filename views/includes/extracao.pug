@@ -1,0 +1,13 @@
+mixin extracao(e)
+	.col.px-1.px-md-2.px-lg-3.mb-3.mb-lg-4.mb-xl-5
+		.card.SORTEIO(id=e.ID class=e.poste?"SORTEIO--DESTAQUE":"")
+			.card-header.SORTEIO__CABECALHO
+				.CABECALHO__ITEM= e.banca
+				.CABECALHO__ITEM.SORTEIO__EXTRACAO(title='Extração')= e.extracao
+			.card-body.SORTEIO__RESULTADO
+				+premio(e.resultado, 0)
+			.card-footer.SORTEIO__RODAPE
+				span.RODAPE__ITEM= e.data
+				.RODAPE__ITEM.btn-group(role='group' aria-label='extracao opções')
+					a.btn.btn-outline-secondary.SORTEIO__BTN(role='button' href='resultados/'+e.urn) Banca
+					button.btn.btn-outline-primary.SORTEIO__BTN.SORTEIO__BTN--RES(type='button' data-uri=e.uri) Resultado

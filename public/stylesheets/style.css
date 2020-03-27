@@ -166,10 +166,6 @@ header {
 .sorteio-opt {
 	font-size: 0.9em;
 }
-.sorteio-resultado {
-	font-weight: 700;
-	color: var(--purple);
-}
 .bg-striped {
 	background-color: var(--cinza-claro);
 	background-image: linear-gradient(
@@ -264,4 +260,128 @@ header {
 }
 #btnData:disabled {
 	cursor: default;
+}
+.SORTEIO {
+	max-width: 27rem;
+	min-width: 19.5rem;
+	margin-left: auto;
+	margin-right: auto;
+	border-color: var(--cinza-escuro);
+	border-width: 2px;
+	color: var(--info);
+	font-size: 1.2rem;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.SORTEIO--DESTAQUE {
+	border-color: var(--info);
+}
+.SORTEIO__CABECALHO {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	padding: 0.6em 0.8em;
+}
+.CABECALHO__ITEM {
+	display: inline-block;
+	font-size: 1em;
+	font-weight: 600;
+}
+.CABECALHO__ITEM--DIREITA {
+	margin-left: auto;
+}
+.SORTEIO__EXTRACAO {
+	font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+		'Courier New', monospace;
+	color: inherit;
+	padding: 0.25em;
+	border-radius: 0.25em;
+	border: 1px solid var(--info);
+}
+.SORTEIO__RESULTADO {
+	padding: 0;
+	font-weight: 700;
+	color: var(--purple);
+}
+.SORTEIO__RODAPE {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	padding: 0.6em 0.8em;
+	color: #6c757d;
+}
+.RODAPE__ITEM {
+	display: inline-block;
+	font-size: 1em;
+}
+.SORTEIO__BTN {
+	padding: .2em .4em;
+	font-size: 1em;
+	line-height: 1.5;
+	border-radius: .2em;
+}
+.PREMIO {
+	height: 3.5rem;
+	font-size: 1.2rem;
+	padding-right: 1rem;
+	padding-left: 1rem;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.PREMIO:last-child {
+	border-bottom-width: 0;
+}
+.PREMIO--STRIPED {
+	background-color: var(--cinza-claro);
+	background-image: linear-gradient(
+		45deg,
+		rgba(255, 255, 255, 0.15) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, 0.15) 50%,
+		rgba(255, 255, 255, 0.15) 75%,
+		transparent 75%,
+		transparent
+	);
+	background-size: 1rem 1rem;
+}
+.PREMIO__MILHAR {
+	display: inline-flex;
+	align-items: center;
+	min-width: 6.5em;
+	max-width: 7.5em;
+	flex: 1;
+}
+.PREMIO__GRUPO {
+	display: inline-flex;
+	align-items: center;
+	flex: 1;
+}
+.MILHAR__NUM {
+	font-size: 1.5em;
+	letter-spacing: 0.15em;
+	margin-left: auto;
+}
+.MILHAR__POS {
+	padding: 0 0.4em;
+	font-size: 1.1em;
+	font-weight: 400;
+	color: #6c757d;
+	user-select: none;
+	border: 1px solid #dee2e6;
+	background-color: var(--light);
+}
+.GRUPO__IMG {
+	width: 2.3em;
+	height: auto;
+	user-select: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+.GRUPO__NUM {
+	margin-left: auto;
+	display: inline-block;
+	color: var(--gray-dark);
+	font-size: 1.2em;
+	padding: 0 0.5em;
 }

@@ -1,79 +1,83 @@
+const sorteiosBtns = $('.SORTEIO__BTN--RES')
+const sorteioModal = $('#Modal')
+
 function renderizaModal(modal, sorteio) {
-  modal.find('.sorteio-banca').text(sorteio.banca)
-	modal.find('.sorteio-extracao').show().text(sorteio.extracao)
-  modal.find('.sorteio-data').text(sorteio.data).removeClass('text-muted');
-  console.log(sorteio);
-  modal.find('.btn-primary').attr('href', sorteio.print)
-  let resultado = $('<ul class="list-group list-group-flush sorteio-resultado"></ul>');
-  sorteio.resultado.forEach((premio, i) => {
-    resultado.append(`
-      <li class='list-group-item sorteio-premio ${i%2==0?"bg-striped":""}'>
-        <div class='row no-gutters row-cols-md-3 row-cols-lg-4'>
-          <div class='col pl-3 d-flex align-items-center justify-content-between flex-grow-1'>
-            <span class='border text-muted premio-num'>
-              ${i+1}º
-            </span>
-            <p class='premio-milhar ml-auto'>${premio.milhar}</p>
-          </div>
-          <div class='col d-flex align-items-center justify-content-end flex-shrink-1'>
-            <span class='grupo-num'>${premio.grupo.num}</span>
-          </div>
-          <div class='col d-flex align-items-center justify-content-center'>
-            <img class='grupo-img' src='/images/grupos/${premio.grupo.img}' alt='${premio.grupo.nome}'>
-          </div>
-          <div class='col pr-3 d-none d-lg-flex align-items-center justify-content-center'>
-            <span class='grupo-nome'>${premio.grupo.nome}</span>
-          </div>
+	modal.find('.sorteio-banca').text(sorteio.banca)
+	modal
+		.find('.sorteio-extracao')
+		.show()
+		.text(sorteio.extracao)
+	modal
+		.find('.sorteio-data')
+		.text(sorteio.data)
+		.removeClass('text-muted')
+	modal.find('.btn-primary').attr('href', sorteio.print)
+	let resultado = $(
+		'<div class="SORTEIO__RESULTADO"></div>'
+	)
+	sorteio.resultado.forEach((premio, i) => {
+		resultado.append(`
+      <div class='PREMIO ${i % 2 == 0 ? 'PREMIO--STRIPED' : ''}'>
+        <div class='PREMIO__MILHAR'>
+          <span class='MILHAR__POS'>${i + 1}º</span>
+          <div class='MILHAR__NUM'>${premio.milhar}</div>
         </div>
-      </li>
-    `);
-  });
-  modal.find('.modal-body').html(resultado);
+
+        <div class='PREMIO__GRUPO'>
+          <div class='GRUPO__NUM'>${premio.grupo.num}</div>
+          <img class='GRUPO__IMG' src=/images/grupos/${premio.grupo.img}>
+        </div>
+      </div>
+    `)
+	})
+	modal.find('.modal-body').html(resultado)
 }
 function alertaModal(modal, status, erro) {
-  let titulo = modal.find('#ModalTitulo');
-  modal.find('.sorteio-extracao').hide();
-  modal.find('.sorteio-data').addClass('text-muted');
-  let txt = modal.find('.modal-body');
-  modal.find('.btn-primary').attr('disabled', 'true');
-  modal.find('.btn-primary').attr('aria-disabled', 'true');
-  switch(status) {
-    case('timeout'):
-      titulo.text('Tempo esgotado')
-      break;
-    case('error'):
-      titulo.text('Erro ao buscar')
-      break;
-    case('abort'):
-      titulo.text('Cancelado')
-      break;
-    default:
-      titulo.text('Falha na conexão')
-  }
-  switch(erro) {
-    case('Not Found'):
-      txt.text('Resultado não encontrado.')
-      break;
-    case('Internal Server Error.'):
-      txt.html('Erro no Servidor, porfavor <a href="mailto:ruansenadev@gmail.com?Subject=LoteZoo%20Suporte">Contate</a> o suporte.')
-      break;
-    default:
-      txt.text(erro || "Verifique os cabos de rede.")
-  }
+	let titulo = modal.find('#ModalTitulo')
+	// caso ja tenha sido aberto reformata
+	modal.find('.sorteio-extracao').hide()
+	modal.find('.sorteio-data').addClass('text-muted')
+
+	let txt = modal.find('.modal-body')
+	modal.find('.btn-primary').attr('disabled', 'true')
+	modal.find('.btn-primary').attr('aria-disabled', 'true')
+	switch (status) {
+		case 'timeout':
+			titulo.text('Tempo esgotado')
+			break
+		case 'error':
+			titulo.text('Erro ao buscar')
+			break
+		case 'abort':
+			titulo.text('Cancelado')
+			break
+		default:
+			titulo.text('Falha na conexão')
+	}
+	switch (erro) {
+		case 'Not Found':
+			txt.text('Resultado não encontrado.')
+			break
+		case 'Internal Server Error.':
+			txt.html(
+				'Erro no Servidor, porfavor <a href="mailto:ruansenadev@gmail.com?Subject=LoteZoo%20Suporte">Contate</a> o suporte.'
+			)
+			break
+		default:
+			txt.text(erro || 'Verifique os cabos de rede.')
+	}
 }
 
 $(function() {
-	const sorteiosBtns = $('.sorteio-res')
-	const sorteioModal = $('#Modal')
 	sorteiosBtns.click(function(ev) {
 		const btn = $(this)
 		let uri = btn.data('uri')
-		$.getJSON( uri, function(sorteio) {
-        renderizaModal(sorteioModal, sorteio);
-				sorteioModal.modal('show')
-			}).fail(function(jqXHR, status, erro) {
-      alertaModal(sorteioModal, status, erro);
-      sorteioModal.modal('show');
-    })
+		$.getJSON(uri, function(sorteio) {
+			renderizaModal(sorteioModal, sorteio)
+			sorteioModal.modal('show')
+		}).fail(function(jqXHR, status, erro) {
+			alertaModal(sorteioModal, status, erro)
+			sorteioModal.modal('show')
+		})
 	})
 })
