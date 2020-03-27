@@ -1,0 +1,9 @@
+mixin premio(p, i)
+	-let g = p.grupo
+	.PREMIO(class=i%2==0?"PREMIO--STRIPED":"")
+		.PREMIO__MILHAR
+			span.MILHAR__POS= (i+1)+"º"
+			.MILHAR__NUM= p.milhar
+		.PREMIO__GRUPO
+			.GRUPO__NUM= g.num
+			img.GRUPO__IMG(src='/images/grupos/'+g.img alt=g.nome)
