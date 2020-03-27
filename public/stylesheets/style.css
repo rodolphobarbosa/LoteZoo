@@ -263,7 +263,7 @@ header {
 }
 .SORTEIO {
 	max-width: 27rem;
-	min-width: 19.5rem;
+	min-width: 18rem;
 	margin-left: auto;
 	margin-right: auto;
 	border-color: var(--cinza-escuro);
@@ -286,8 +286,10 @@ header {
 	font-size: 1em;
 	font-weight: 600;
 }
-.CABECALHO__ITEM--DIREITA {
-	margin-left: auto;
+.CABECALHO__ITEM--GRANDE {
+	flex: 1;
+	max-width: 50%;
+	text-align: center;
 }
 .SORTEIO__EXTRACAO {
 	font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',

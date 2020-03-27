@@ -9,19 +9,7 @@ block content
 		.row.no-gutters.row-cols-1.row-cols-md-2.row-cols-xl-3
 			each item in extracoes
 				+extracao(item)
-				//- .col.px-sm-1.px-md-2.mb-3.mb-md-4.mb-lg-5
-				//- 	.card.rounded-0.shadow.sorteio(id=item.ID class=item.poste?"border-info":"border-cinza")
-				//- 		.card-header.d-flex.align-items-center.justify-content-between.px-3.py-3
-				//- 			h6.sorteio-banca.card-title.m-0= item.banca
-				//- 			h6.sorteio-extracao(title='Extração').card-subtitle.p-1.text-monospace.rounded.border.border-info= item.extracao
-				//- 		.card-body.p-0
-				//- 			.sorteio-resultado
-				//- 				+premio(item.resultado, 0)
-				//- 		.card-footer.d-flex.align-items-baseline.justify-content-between.px-2.px-md-3.py-2.text-muted
-				//- 			span.border.p-1.px-2.text-reset.sorteio-data= item.data
-				//- 			.btn-group(role='group' aria-label='extracao opções')
-				//- 				a.btn.btn-outline-secondary.btn-sm.sorteio-opt(role='button' href='resultados/'+item.urn) Banca
-				//- 				button.btn.btn-outline-primary.btn-sm.sorteio-opt.sorteio-res(type='button' data-uri=item.uri) Resultado
+				
 	.container-fluid.bg-dark
 		.row.paginacao.justify-content-end.justify-content-sm-center
 			nav(aria-label='Páginas extrações')
