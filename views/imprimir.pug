@@ -16,34 +16,72 @@ block header
 		h1.navbar-brand.brand.mx-auto LoteZoo
 			small.slogan A loteria do bicho
 			a.stretched-link.text-reset(href='/')
+		button#PRINT.btn.btn-primary.IMPRESSAO__BTN.position-sticky(type='button') Imprimir
 block content
-	section.pagina.shadow-lg
-		.pagina-cabecalho.d-flex.align-items-center.justify-content-around
+	.container-fluid
+		.IMPRESSAO
+			button.btn.btn-secondary.IMPRESSAO__BTN.IMPRESSAO__BTN--ZOO(type='button') Zoo
+			.btn-group.IMPRESSAO__NAV(role='group' aria-label='Formatação da Página')
+				.btn-group.IMPRESSAO__MENU(role='group')
+					button.btn.btn-dark.dropdown-toggle.IMPRESSAO__BTN(type='button' data-btn='bordas' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Tab
+					.dropdown-menu
+						h6.dropdown-header Bordas
+						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='sem') Limpa
+						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='padrao') Normal
+						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='total') Cheia
+				.btn-group.IMPRESSAO__MENU(role='group')
+					button.btn.btn-dark.dropdown-toggle.IMPRESSAO__BTN(type='button' data-btn='fonte' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Aa
+					.dropdown-menu
+						h6.dropdown-header Fonte
+						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='peq') Pequena
+						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='padrao') Média
+						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='grande') Grande
+				.btn-group.IMPRESSAO__MENU(role='group')
+					button.btn.btn-dark.dropdown-toggle.IMPRESSAO__BTN(type='button' data-btn='colunas' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Col
+					.dropdown-menu
+						h6.dropdown-header Colunas
+						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='sem') Curta
+						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='padrao') Normal
+						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='muito') Espaçosa
+				.btn-group.IMPRESSAO__MENU(role='group')
+					button.btn.btn-dark.dropdown-toggle.IMPRESSAO__BTN(type='button' data-btn='copias' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") +
+					.dropdown-menu
+						h6.dropdown-header Cópias
+						button.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='add') Adicionar
+						button.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='rm') Remover
+				.btn-group.IMPRESSAO__MENU(role='group')
+					button.btn.btn-dark.dropdown-toggle.IMPRESSAO__BTN(type='button' data-btn='posicao' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Pos
+					.dropdown-menu
+						h6.dropdown-header Posição
+						button.dropdown-item.IMPRESSAO__OPCAO(type='button' data-opcao='padrao') Topo
+						button.dropdown-item.IMPRESSAO__OPCAO(type='button' data-opcao='meio') Meio
+	section.PAGINA.shadow-lg
+		.PAGINA__CABECALHO.d-flex.align-items-center.justify-content-around
 			h3.navbar-brand.brand.mr-2 LoteZoo
 				small.slogan A loteria do bicho
 			h1.h2= sorteio.extracao
 			h2.h3= sorteio.banca
-		.pagina-conteudo
-			table.table.table-striped.table-responsive-md.tab
+		.PAGINA__CONTEUDO
+			table#tabela.table.table-striped.table-responsive-md.TABELA
 				thead
-					tr
-						th(scope='col')
-						th(scope='col') Milhar
-						th(scope='col').text-center Grupo
-						th(scope='col').text-right Zoo
-						th(scope='col') Nome
+					tr.TABELA__CABECALHO
+						th(scope='col').TABELA__TITULO
+						th(scope='col').TABELA__TITULO Milhar
+						th(scope='col').TABELA__TITULO.text-center Grupo
+						th(scope='col').TABELA__TITULO.TABELA__ITEM--ZOO Zoo
+						th(scope='col').TABELA__TITULO Nome
 				tbody
 				each premio, i in sorteio.resultado
-					tr.align-middle.tab-premio
-						th.align-middle.text-muted.text-right(scope='row')= (i+1)+"º" 
-						td.align-middle.tab-milhar= premio.milhar
-						td.align-middle.text-center= premio.grupo.num
-						td.align-middle.text-right #[img.tab-img(src='/images/grupos/svg/'+premio.grupo.svg)]
-						td.align-middle= premio.grupo.nome
-		.pagina-rodape.d-flex.flex-column.justify-content-between.align-items-center
-			.row.w-75
-				span#url= "/resultados/"+sorteio.urn
-				span.ml-auto= sorteio.data
+					tr.TABELA__PREMIO
+						th.TABELA__ITEM.TABELA__TITULO(scope='row')= (i+1)+"º" 
+						td.TABELA__ITEM.TABELA__ITEM--MILHAR= premio.milhar
+						td.TABELA__ITEM.text-center= premio.grupo.num
+						td.TABELA__ITEM.TABELA__ITEM--ZOO #[img(src='/images/grupos/svg/'+premio.grupo.svg)]
+						td.TABELA__ITEM= premio.grupo.nome
+		.PAGINA__RODAPE
+			.row.w-75.align-items-center.justify-content-between
+				#url= "/resultados/"+sorteio.urn
+				p.lead.mb-0 Sorteio: #{sorteio.data}
 			.row
 				blockquote.blockquote.text-center.note
 					block iconesRights
@@ -54,6 +92,5 @@ block content
 block footer
 block scripts
 	script(src='/dist/jquery.min.js')
-	script(src='/umd/popper.min.js')
-	script(src='/js/bootstrap.min.js')
+	script(src='/js/bootstrap.bundle.min.js')
 	script(src='/javascripts/print.js')
