@@ -20,10 +20,10 @@ block header
 block content
 	.container-fluid
 		.IMPRESSAO
-			button.btn.btn-secondary.IMPRESSAO__BTN.IMPRESSAO__BTN--ZOO(type='button') Zoo
+			button.btn.btn-outline-dark.IMPRESSAO__BTN.IMPRESSAO__BTN--ZOO(type='button') Zoo
 			.btn-group.IMPRESSAO__NAV(role='group' aria-label='Formatação da Página')
 				.btn-group.IMPRESSAO__MENU(role='group')
-					button.btn.btn-dark.dropdown-toggle.IMPRESSAO__BTN(type='button' data-btn='bordas' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Tab
+					button.btn.btn-dark.dropdown-toggle.IMPRESSAO__BTN(type='button' data-btn='borda' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Tab
 					.dropdown-menu
 						h6.dropdown-header Bordas
 						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='sem') Limpa
@@ -36,13 +36,13 @@ block content
 						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='peq') Pequena
 						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='padrao') Média
 						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='grande') Grande
+						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='gigante') Enorme
 				.btn-group.IMPRESSAO__MENU(role='group')
-					button.btn.btn-dark.dropdown-toggle.IMPRESSAO__BTN(type='button' data-btn='colunas' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Col
+					button.btn.btn-dark.dropdown-toggle.IMPRESSAO__BTN(type='button' data-btn='coluna' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Col
 					.dropdown-menu
 						h6.dropdown-header Colunas
-						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='sem') Curta
+						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='peq') Curta
 						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='padrao') Normal
-						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='muito') Espaçosa
 				.btn-group.IMPRESSAO__MENU(role='group')
 					button.btn.btn-dark.dropdown-toggle.IMPRESSAO__BTN(type='button' data-btn='copias' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") +
 					.dropdown-menu
@@ -55,14 +55,14 @@ block content
 						h6.dropdown-header Posição
 						button.dropdown-item.IMPRESSAO__OPCAO(type='button' data-opcao='padrao') Topo
 						button.dropdown-item.IMPRESSAO__OPCAO(type='button' data-opcao='meio') Meio
-	section.PAGINA.shadow-lg
+	section.PAGINA.shadow-lg.d-print-block
 		.PAGINA__CABECALHO.d-flex.align-items-center.justify-content-around
 			h3.navbar-brand.brand.mr-2 LoteZoo
 				small.slogan A loteria do bicho
 			h1.h2= sorteio.extracao
 			h2.h3= sorteio.banca
 		.PAGINA__CONTEUDO
-			table#tabela.table.table-striped.table-responsive-md.TABELA
+			table.table.table-striped.table-responsive-md.TABELA
 				thead
 					tr.TABELA__CABECALHO
 						th(scope='col').TABELA__TITULO
@@ -80,12 +80,11 @@ block content
 						td.TABELA__ITEM= premio.grupo.nome
 		.PAGINA__RODAPE
 			.row.w-75.align-items-center.justify-content-between
-				#url= "/resultados/"+sorteio.urn
+				#URL= "/resultados/"+sorteio.urn
 				p.lead.mb-0 Sorteio: #{sorteio.data}
-			.row
-				blockquote.blockquote.text-center.note
-					block iconesRights
-						+citeRights([ ["Freepik", "https://www.flaticon.com/authors/freepik"], ["monkik", "https://www.flaticon.com/authors/monkik"], ["Smashicons", "https://www.flaticon.com/authors/smashicons"], ["photo3idea_studio", "https://www.flaticon.com/authors/photo3idea-studio"] ], false)
+			.row.text-center.note
+				block iconesRights
+					+citeRights([ ["Freepik", "https://www.flaticon.com/authors/freepik"], ["monkik", "https://www.flaticon.com/authors/monkik"], ["Smashicons", "https://www.flaticon.com/authors/smashicons"], ["photo3idea_studio", "https://www.flaticon.com/authors/photo3idea-studio"] ], false)
 
 
 

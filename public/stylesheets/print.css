@@ -1,3 +1,19 @@
+@media print {
+	.container {
+		width: auto;
+	}
+	body * {
+		visibility: hidden !important;
+	}
+	.PAGINA * {
+		visibility: visible !important;
+	}
+	.PAGINA {
+		position: absolute !important;
+		top: 0;
+		left: 0;
+	}
+}
 .PAGINA {
 	position: relative;
 	cursor: default;
@@ -33,6 +49,8 @@
 	top: 50%;
 	transform: translateY(-50%);
 	max-height: 54rem;
+	display: flex;
+	justify-content: center;
 }
 .PAGINA__RODAPE {
 	display: flex;
@@ -47,6 +65,7 @@
 .TABELA {
 	width: auto;
 	font-size: 1rem;
+	margin: 0;
 }
 .TABELA__PREMIO td {
 	font-size: 1.2em;
@@ -56,18 +75,18 @@
 }
 .TABELA__ITEM--MILHAR {
 	font-size: 1.3em !important;
-	letter-spacing: 0.2rem;
+	letter-spacing: 0.2em;
 	font-weight: 600;
 }
 .TABELA__ITEM--ZOO {
 	text-align: right;
 }
 .TABELA__ITEM--ZOO img {
-	width: 2rem;
+	width: 2em;
 	height: auto;
 	user-select: none;
 }
-.TABELA__TITULO{
+.TABELA__TITULO {
 	color: #6c757d;
 }
 
@@ -94,5 +113,5 @@
 	right: 3em;
 }
 .IMPRESSAO__MENU {
-	padding: auto .2em;
+	padding: auto 0.2em;
 }
