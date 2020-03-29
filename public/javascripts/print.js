@@ -66,7 +66,7 @@ const formatTabs = {
 					.css('bottom', botOff)
 				break
 			default:
-				pagina.find('.PAGINA__CONTEUDO').css('top', 'auto').css('bot', 'auto').addClass('PAGINA__CONTEUDO--MID')
+				pagina.find('.PAGINA__CONTEUDO').css('bottom', 'auto').addClass('PAGINA__CONTEUDO--MID')
 				break
 		}
 	}

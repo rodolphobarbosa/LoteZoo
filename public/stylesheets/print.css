@@ -71,7 +71,7 @@
 	justify-content: center;
 }
 .PAGINA__CONTEUDO--MID {
-	top: 50%;
+	top: 50% !important;
 	transform: translateY(-50%);
 }
 .PAGINA__RODAPE {
