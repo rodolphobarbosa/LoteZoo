@@ -1,0 +1,12 @@
+mixin topmid(print = false)
+	if print
+		nav.navbar.navbar-expand-sm.fixed-top.navbar-dark.bg-dark.d-print-none
+			h1.navbar-brand.brand.mx-auto LoteZoo
+				small.slogan A loteria do bicho
+				a.stretched-link.text-reset(href='/')
+			button#PRINT.btn.btn-primary.IMPRESSAO__BTN.position-sticky(type='button') Imprimir
+	else
+		nav.navbar.navbar-expand-sm.fixed-top.navbar-dark.bg-dark.d-print-none
+			h1.navbar-brand.brand.mx-auto LoteZoo
+				small.slogan A loteria do bicho
+				a.stretched-link.text-reset(href='/')

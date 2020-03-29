@@ -46,9 +46,15 @@ header {
 .navbar-banca-icone {
 	background-image: url('/images/procurar.svg') !important;
 }
+#topNav {
+	max-width: 25rem;
+	width: 22rem;
+	min-width: 17.5rem;
+	margin-left: auto;
+}
 #topNav .dropdown {
-	max-width: 350px;
-	min-width: 280px;
+	width: 90%;
+	margin-left: auto;
 }
 
 .searchable:focus {
@@ -73,10 +79,10 @@ header {
 	background-color: var(--light);
 	margin-top: 0;
 }
-.dropdown-item {
+.dropdown-procurar .dropdown-item {
 	height: 3em;
 }
-.procurar-item {
+.PROCURAR__ITEM {
 	position: relative;
 	background-color: white;
 	border-top: 1px solid var(--cinza);
@@ -84,11 +90,22 @@ header {
 	line-height: 1.2;
 	cursor: default;
 	user-select: none;
+	overflow: hidden;
 }
-.procurar-item:last-child {
+.PROCURAR__ITEM--MATCH {
+	color: var(--info);
+}
+.PROCURAR__ITEM:last-child {
 	border-bottom: 1px solid var(--cinza);
 }
-.procurar-item::after {
+.PROCURAR__ITEM::before {
+	content: attr(data-content);
+	position: absolute;
+	right: 0.7rem;
+	top: 1.7rem;
+	color: var(--secondary);
+}
+.PROCURAR__ITEM::after {
 	content: '';
 	position: absolute;
 	right: 0.5rem;
@@ -97,26 +114,23 @@ header {
 	height: 1.5rem;
 	background-size: 100%;
 }
-.item-banca::after {
+.PROCURAR__ITEM--BANCA::after {
 	background-image: url('/images/banca32.png');
 }
-.item-extracao::after {
+.PROCURAR__ITEM--EXTRACAO::after {
 	background-image: url('/images/extracao32.png');
 }
-.item-extracao::before {
-	content: attr(data-content);
-	position: absolute;
-	right: 0.5rem;
-	top: 1.7rem;
-	color: var(--secondary);
+.PROCURAR__ITEM--GRUPO::after {
+	background-image: url('/images/pata32.png');
 }
-.busca-info {
+.ITEM__INFO {
 	display: flex;
 	width: 100%;
 	flex-flow: row wrap;
 	padding-top: 0.1rem;
+	color: var(--gray-dark);
 }
-.busca-el {
+.INFO__EL {
 	padding: 0 0.2rem;
 }
 .nav-scroller {
@@ -143,73 +157,19 @@ header {
 	text-align: center;
 	height: 200px;
 }
-.container-sorteios {
-	padding-top: 2rem;
-}
-.sorteios {
+.SORTEIOS {
+	padding-top: 1.5rem;
 	padding-bottom: 2rem;
+	margin-top: -1.5rem;
+	background-color: var(--light);
+	box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+}
+.EXTRACOES {
+	padding-top: 2rem;
 }
 .border-cinza,
 .page-link {
 	border-color: var(--cinza-escuro);
-}
-.sorteio {
-	border-width: 2px;
-	color: var(--info);
-	font-size: 1.2rem;
-}
-.sorteio-banca,
-.sorteio-extracao {
-	font-size: 1em;
-	font-weight: 600;
-}
-.sorteio-opt {
-	font-size: 0.9em;
-}
-.bg-striped {
-	background-color: var(--cinza-claro);
-	background-image: linear-gradient(
-		45deg,
-		rgba(255, 255, 255, 0.15) 25%,
-		transparent 25%,
-		transparent 50%,
-		rgba(255, 255, 255, 0.15) 50%,
-		rgba(255, 255, 255, 0.15) 75%,
-		transparent 75%,
-		transparent
-	);
-	background-size: 1rem 1rem;
-}
-.sorteio-premio {
-	padding: 0.4rem 0;
-}
-.premio-num {
-	background-color: var(--light);
-	padding: 0.1rem 0.3rem;
-	margin-right: 1rem;
-	font-weight: 400;
-	user-select: none;
-}
-.premio-milhar {
-	margin: 0;
-	font-size: 1.4em;
-	letter-spacing: 0.2rem;
-}
-.grupo-num {
-	font-size: 1.2em;
-}
-.grupo-img {
-	width: 2.5rem;
-	height: auto;
-	user-select: none;
-}
-.grupo-nome {
-	color: var(--gray-dark);
-	font-size: 1em;
-}
-.sorteio-data {
-	font-size: 0.9em;
-	border-color: #ccc;
 }
 .paginacao {
 	padding: 2rem 3rem;
@@ -309,17 +269,17 @@ header {
 	align-items: baseline;
 	justify-content: space-between;
 	padding: 0.6em 0.8em;
-	color: var(--secondary)
+	color: var(--secondary);
 }
 .RODAPE__ITEM {
 	display: inline-block;
 	font-size: 1em;
 }
 .SORTEIO__BTN {
-	padding: .2em .4em;
+	padding: 0.2em 0.4em;
 	font-size: 1em;
 	line-height: 1.5;
-	border-radius: .2em;
+	border-radius: 0.2em;
 }
 .PREMIO {
 	height: 3.5rem;
@@ -388,5 +348,5 @@ header {
 	padding: 0 0.5em;
 }
 #MODAL__TITULO {
-	margin-right: auto
+	margin-right: auto;
 }

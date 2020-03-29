@@ -1,4 +1,5 @@
 doctype html
+include includes/top.pug
 include includes/icones.pug
 html(lang='pt-br')
 	head
@@ -13,17 +14,17 @@ html(lang='pt-br')
 	body.text-body.bg-light
 		header
 			block header
-				nav.navbar.navbar-expand-sm.fixed-top.navbar-dark.bg-dark.mr-auto
+				nav.navbar.navbar-expand-sm.fixed-top.navbar-dark.bg-dark
 					h1.navbar-brand.brand LoteZoo
 						small.slogan A loteria do bicho
 						a.stretched-link.text-reset(href='/')
 					button.navbar-toggler.navbar-banca(type='button' data-toggle='collapse' data-target='#topNav' aria-controls='topNav' aria-expanded='false' aria-label='Procurar menu')
 						span.navbar-toggler-icon.navbar-banca-icone
-					#topNav.collapse.navbar-collapse.w-100.mt-2.mt-sm-0.mr-sm-2.mr-md-3.mr-lg-5
-						.dropdown.ml-auto
+					#topNav.collapse.navbar-collapse.mt-2.mt-sm-0
+						.dropdown.mr-sm-auto
 							form#procurar(action="" method="post" autocomplete="off" spellcheck="false")
 								input#procurar-data(type="hidden" name="data" value="")
-								input#procurar-campo.form-control(type='text' value="" placeholder='Extração, banca/grupo...' aria-label='Procurar')
+								input#procurar-campo.form-control(type='text' value="" placeholder='Banca Extração Grupo...' aria-label='Procurar')
 								#procurar-menu.dropdown-menu.dropdown-procurar.shadow-sm
 		main(role='main')
 			block content

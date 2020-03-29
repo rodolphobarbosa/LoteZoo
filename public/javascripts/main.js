@@ -32,9 +32,9 @@ function formatSearchType(item, match) {
 	// formata titulo e addons
 	switch (type) {
 		case 'banca':
-			menuItem.attr('data-content', item['urn'])
-			delete item['urn']
 			if (match) {
+				menuItem.attr('data-content', "/"+item['urn'])
+				delete item['urn']
 				menuItem
 					.addClass('PROCURAR__ITEM--BANCA')
 					.addClass('PROCURAR__ITEM--MATCH')
@@ -43,12 +43,13 @@ function formatSearchType(item, match) {
 			} else {
 				menuItem.text(item['loteria'])
 				delete item['loteria']
+				delete item['urn']
 			}
 			break
 		case 'grupo':
-			menuItem.attr('data-content', item['num'])
-			delete item['num']
 			if (match) {
+				menuItem.attr('data-content', "("+item['num']+")")
+				delete item['num']
 				menuItem
 					.addClass('PROCURAR__ITEM--GRUPO')
 					.addClass('PROCURAR__ITEM--MATCH')
@@ -57,13 +58,14 @@ function formatSearchType(item, match) {
 			} else {
 				menuItem.text(item['nome'])
 				delete item['nome']
+				delete item['num']
 			}
 			break
 		default:
 			// extracao
-			menuItem.attr('data-content', item['data'])
-			delete item['data']
 			if (match) {
+				menuItem.attr('data-content', item['data'])
+				delete item['data']
 				menuItem
 					.addClass('PROCURAR__ITEM--EXTRACAO')
 					.addClass('PROCURAR__ITEM--MATCH')
@@ -72,6 +74,7 @@ function formatSearchType(item, match) {
 			} else {
 				menuItem.text(item['extracao'])
 				delete item['extracao']
+				delete item['data']
 			}
 			break
 	}
@@ -141,7 +144,7 @@ function bindFuse(dados) {
 	let options = {
 		shouldSort: true,
 		includeMatches: true,
-		threshold: 0.5,
+		threshold: 0.4,
 		location: 0,
 		distance: 30,
 		minMatchCharLength: 2,
@@ -149,12 +152,12 @@ function bindFuse(dados) {
 			// banca
 			{ name: 'loteria', weight: 0.9 },
 			// grupo
-			{ name: 'num', weight: 0.9 },
-			{ name: 'nome', weight: 0.6 },
+			{ name: 'num', weight: 0.7 },
+			{ name: 'nome', weight: 0.5 },
 			// extracao
 			{ name: 'banca', weight: 0.7 },
 			{ name: 'extracao', weight: 0.8 },
-			{ name: 'grupo', weight: 0.5 },
+			{ name: 'grupo', weight: 0.6 },
 			{ name: 'data', weight: 0.4 }
 		]
 	}
