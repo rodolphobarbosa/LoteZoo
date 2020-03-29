@@ -5,12 +5,22 @@ const moment = require('moment')
 const dataHoje = moment().format('YYYY-MM-DD')
 const dias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab']
 
+// lidar com erros
+function localsErro408(e) {
+	return {
+		title: e.message,
+		message: e.message,
+		error: {
+			status: 408,
+			stack: e.stack
+		}
+	}
+}
 async function asyncAPI(fx, fxArgs = [], cb) {
 	try {
 		let response = await fx.apply(null, fxArgs)
 		return cb(null, response)
 	} catch (e) {
-		console.error(e)
 		return cb(e, null)
 	}
 }
@@ -83,9 +93,14 @@ function getData(data) {
 
 exports.ultimas_extracoes = function(req, res, next) {
 	let pagina = req.query.pagina ? req.query.pagina : 1
-	asyncAPI(loteria.req_ultimas, null, (erro, extracoes) => {
-		if (erro) {
-			return next(erro)
+	asyncAPI(loteria.req_ultimas, null, (e, extracoes) => {
+		if (e) {
+			if(e.code === "ECONNABORTED") {
+				// renderiza pagina timedout
+				e = localsErro408(e);
+				res.render('error', e)
+			}
+			return next(e)
 		}
 		pagina = paginar(pagina, extracoes)
 		extracoes = mapResultado(pagina.extracoes)
@@ -96,17 +111,6 @@ exports.ultimas_extracoes = function(req, res, next) {
 			extracoes,
 			paginas: pagina.queries
 		})
-	})
-}
-
-exports.procurar_dados = function(req, res, next) {
-	asyncAPI(loteria.req_ultimas, [true], (erro, extracoes) => {
-		if (erro) {
-			return next(erro)
-		}
-		res.setHeader('Content-Type', 'application/json')
-		res.json(extracoes)
-		return
 	})
 }
 
@@ -183,4 +187,16 @@ exports.imprimir_sorteio = function(req, res, next) {
 			})
 		}
 	)
+}
+
+exports.procurar_dados = function(req, res, next) {
+	asyncAPI(loteria.req_dados_search, null, (erro, dados) => {
+		if (erro) {
+			return next(erro)
+		}
+		res.setHeader('Content-Type', 'application/json')
+		console.log(dados)
+		res.json(dados)
+		return
+	})
 }

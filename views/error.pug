@@ -1,6 +1,26 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  case error.status
+    when 408
+      .container.rounded-lg
+        .alert.alert-warning(role='alert')
+          img.img-fluid.float-left(src="/images/zoo_fill.svg", alt="Oops")
+          h1= error.status
+          p.lead= message
+          hr
+          pre.pre-scrollable
+            code= error.stack
+    when 404
+      .container.rounded-lg
+        .alert.alert-danger(role='alert')
+          img.img-fluid.float-left(src="/images/zoo_outline.svg", alt="Oops")
+          h1= error.status
+          p.lead= message
+          hr
+          pre.pre-scrollable
+            code= error.stack
+    default
+      h1= message
+      h2= error.status
+      pre #{error.stack}
