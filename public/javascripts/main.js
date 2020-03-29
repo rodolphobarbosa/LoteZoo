@@ -11,8 +11,12 @@ const searchUri = '/resultados/procurar'
 const searchTypes = {
 	// match keys
 	banca: ['loteria'],
-	grupo: ['num', 'nome'],
-	extracao: ['banca', 'extracao', 'grupo', 'data']
+	extracao: ['banca', 'extracao', 'grupo', 'data'],
+	grupo: ['num', 'nome']
+}
+const searchMethods = {
+	banca: 'get',
+	extracao: 'post'
 }
 function formatSearchType(item, match) {
 	let type
@@ -80,6 +84,7 @@ function formatSearchType(item, match) {
 	}
 	if (item.hasOwnProperty('uri')) {
 		menuItem.attr('data-uri', item['uri'])
+		menuItem.attr('data-method', searchMethods[type])
 		delete item['uri']
 	}
 	// adiciona search infos
@@ -106,9 +111,15 @@ function formatSearchType(item, match) {
 	// binda click item com uri
 	if (menuItem.data('uri')) {
 		menuItem.on('click touchend', function(ev) {
-			searchData.attr('value', $(this).data('content'))
-			search.attr('action', $(this).data('uri'))
-			search.submit()
+			let metodo = $(this).data('method')
+			if(metodo === 'get') {
+				search.attr('action', $(this).data('uri')).attr('method', metodo)
+				search.submit()
+			} else {
+				searchData.attr('name', 'data').attr('value', $(this).data('content'))
+				search.attr('action', $(this).data('uri')).attr('method', metodo)
+				search.submit()
+			}
 		})
 	}
 	return menuItem
