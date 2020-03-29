@@ -23,7 +23,7 @@ html(lang='pt-br')
 						.dropdown.ml-auto
 							form#procurar(action="" method="post" autocomplete="off" spellcheck="false")
 								input#procurar-data(type="hidden" name="data" value="")
-								input#procurar-campo.form-control(type='text' value="" placeholder='Extração, banca/grupo...' aria-label='Procurar' data-query='/resultados?searchMap=true')
+								input#procurar-campo.form-control(type='text' value="" placeholder='Extração, banca/grupo...' aria-label='Procurar')
 								#procurar-menu.dropdown-menu.dropdown-procurar.shadow-sm
 		main(role='main')
 			block content
@@ -31,13 +31,10 @@ html(lang='pt-br')
 			block footer
 				.row.no-gutters.justify-content-center.p-2
 					blockquote.blockquote.text-center.text-muted.note
-						p.m-0 Desenvolvido por 
-							a.text-light(href="https://github.com/RuanSena" target="_blank") RuanSena
 						block iconesRights
 							+citeRights([ ["Freepik", "https://www.flaticon.com/authors/freepik"], ["monkik", "https://www.flaticon.com/authors/monkik"], ["Smashicons", "https://www.flaticon.com/authors/smashicons"], ["photo3idea_studio", "https://www.flaticon.com/authors/photo3idea-studio"] ])
 		block scripts
 			script(src='/dist/jquery.min.js')
-			script(src='/umd/popper.min.js')
-			script(src='/js/bootstrap.min.js')
+			script(src='/js/bootstrap.bundle.min.js')
 			script(src='/fuse.js')
 			script(src='/javascripts/main.js')

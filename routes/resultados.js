@@ -7,6 +7,8 @@ router.get('/', resultadosController.ultimas_extracoes);
 // impressao sorteio
 router.get('/imprimir', resultadosController.imprimir_sorteio);
 // pagina banca no dia
+router.get('/procurar', resultadosController.procurar_dados);
+// json extracoes para search
 router.get('/:banca', resultadosController.banca_sorteios);
 // json sorteio
 router.get('/:banca/sorteio', resultadosController.banca_sorteio);

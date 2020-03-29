@@ -8,6 +8,122 @@ const topNav = $('#topNav')
 const max_resultados = 5
 const searchUri = '/resultados/procurar'
 
+const searchTypes = {
+	// match keys
+	banca: ['loteria'],
+	grupo: ['num', 'nome'],
+	extracao: ['banca', 'extracao', 'grupo', 'data']
+}
+function formatSearchType(item, match) {
+	let type
+	for (let search in searchTypes) {
+		for (let t of searchTypes[search]) {
+			if (t in item) {
+				type = search
+				break
+			}
+		}
+		if (type) {
+			break
+		}
+	}
+	// constroi search item on fly
+	let menuItem = $(`<div class='dropdown-item PROCURAR__ITEM'></div>`)
+	// formata titulo e addons
+	switch (type) {
+		case 'banca':
+			menuItem.attr('data-content', item['urn'])
+			delete item['urn']
+			if (match) {
+				menuItem
+					.addClass('PROCURAR__ITEM--BANCA')
+					.addClass('PROCURAR__ITEM--MATCH')
+				menuItem.text(match.value)
+				delete item[match.key]
+			} else {
+				menuItem.text(item['loteria'])
+				delete item['loteria']
+			}
+			break
+		case 'grupo':
+			menuItem.attr('data-content', item['num'])
+			delete item['num']
+			if (match) {
+				menuItem
+					.addClass('PROCURAR__ITEM--GRUPO')
+					.addClass('PROCURAR__ITEM--MATCH')
+				menuItem.text(match.value)
+				delete item[match.key]
+			} else {
+				menuItem.text(item['nome'])
+				delete item['nome']
+			}
+			break
+		default:
+			// extracao
+			menuItem.attr('data-content', item['data'])
+			delete item['data']
+			if (match) {
+				menuItem
+					.addClass('PROCURAR__ITEM--EXTRACAO')
+					.addClass('PROCURAR__ITEM--MATCH')
+				menuItem.text(match.value)
+				delete item[match.key]
+			} else {
+				menuItem.text(item['extracao'])
+				delete item['extracao']
+			}
+			break
+	}
+	if (item.hasOwnProperty('uri')) {
+		menuItem.attr('data-uri', item['uri'])
+		delete item['uri']
+	}
+	// adiciona search infos
+	if (Object.keys(item).length) {
+		let itemInfo = $(`<div class='ITEM__INFO text-wrap text-break'></div>`)
+		for (let key in item) {
+			// formata info
+			switch(key) {
+				case('dez'):
+					item[key] = item[key].join(" - ")
+					break
+				case('extracao'):
+					item[key] = `[${item[key]}]`
+					break
+				default:
+					item[key] = `(${item[key]})`
+					break
+			}
+			itemInfo.append(`<span class='INFO__EL'>${item[key]}</span>`)
+		}
+		menuItem.append(itemInfo)
+	}
+
+	// binda click item com uri
+	if (menuItem.data('uri')) {
+		menuItem.on('click touchend', function(ev) {
+			searchData.attr('value', $(this).data('content'))
+			search.attr('action', $(this).data('uri'))
+			search.submit()
+		})
+	}
+	return menuItem
+}
+function atualizaMenu(resultados) {
+	searchMenu.empty()
+	resultados.forEach((res) => {
+		// boolean match
+		let match = res.matches[0]
+		let item = {}
+		// instance obj item
+		Object.assign(item, res.item)
+		item = formatSearchType(item, match)
+
+		searchMenu.append(item)
+	})
+	searchMenu.show()
+}
 function checkMatches(nova = [], ultima = []) {
 	// se tem o msm num de matches
 	if (nova.length !== ultima.length) {
@@ -30,10 +146,16 @@ function bindFuse(dados) {
 		distance: 30,
 		minMatchCharLength: 2,
 		keys: [
+			// banca
+			{ name: 'loteria', weight: 0.9 },
+			// grupo
+			{ name: 'num', weight: 0.9 },
+			{ name: 'nome', weight: 0.6 },
+			// extracao
 			{ name: 'banca', weight: 0.7 },
-			{ name: 'extracao', weight: 0.5 },
-			{ name: 'data', weight: 0.3 },
-			{ name: 'grupo', weight: 0.6 }
+			{ name: 'extracao', weight: 0.8 },
+			{ name: 'grupo', weight: 0.5 },
+			{ name: 'data', weight: 0.4 }
 		]
 	}
 	// inicializa fuse
@@ -42,6 +164,7 @@ function bindFuse(dados) {
 	searchInput.bind('keydown', fuse, function(event) {
 		let encontrado = fuse.search($(this).val())
 		// checa se tem novos resultados
+		encontrado = encontrado.slice(0, max_resultados)
 		if (!checkMatches(encontrado, ultima_procura)) {
 			// atualiza matches
 			ultima_procura = encontrado
@@ -50,51 +173,11 @@ function bindFuse(dados) {
 				fecharMenu()
 				return
 			}
-			encontrado = encontrado.slice(0, max_resultados)
+
 			atualizaMenu(encontrado)
 			return
 		}
 	})
-}
-function atualizaMenu(resultados) {
-	searchMenu.empty()
-	resultados.forEach((res) => {
-		let match = res.matches[0]
-		let resItem = res.item
-		let ref = {}
-		let item = $(
-			`<div class='dropdown-item procurar-item item-extracao text-info overflow-hidden'></div>`
-		)
-		if (match) {
-			for (let prop in resItem) {
-				if (prop == match.key) {
-					item.text(match.value)
-					continue
-				}
-				ref[prop] = resItem[prop]
-			}
-		} else {
-			Object.assign(ref, resItem)
-		}
-		let itemInfo = $(
-			`<div class='text-wrap text-break text-dark busca-info'></div>`
-		)
-		item.attr('data-content', ref['data'])
-		item.attr('data-uri', ref['uri'])
-		delete ref['data']
-		delete ref['uri']
-		for (let key in ref) {
-			itemInfo.append(`<span class='busca-el'>${ref[key]}</span>`)
-		}
-		item.append(itemInfo)
-		item.on('click touchend', function(ev) {
-			searchData.attr('value', $(this).data('content'))
-			search.attr('action', $(this).data('uri'))
-			search.submit()
-		})
-		searchMenu.append(item)
-	})
-	searchMenu.show()
 }
 function fecharMenu(blur = false) {
 	searchMenu.hide()
@@ -118,8 +201,8 @@ $(function() {
 			}).fail(function() {
 				searchInput.addClass('unsearchable')
 			})
-		} else if($('.procurar-item').length) {
-			searchMenu.show();
+		} else if ($('.procurar-item').length) {
+			searchMenu.show()
 		}
 		searchMenu.focusin()
 	})
@@ -129,6 +212,6 @@ $(function() {
 	})
 
 	$(document).on('keydown', search, function(ev) {
-		return ev.key !== "Enter";
+		return ev.key !== 'Enter'
 	})
 })

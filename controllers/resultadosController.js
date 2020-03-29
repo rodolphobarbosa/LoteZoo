@@ -195,7 +195,6 @@ exports.procurar_dados = function(req, res, next) {
 			return next(erro)
 		}
 		res.setHeader('Content-Type', 'application/json')
-		console.log(dados)
 		res.json(dados)
 		return
 	})
