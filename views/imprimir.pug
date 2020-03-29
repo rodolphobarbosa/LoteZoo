@@ -44,25 +44,21 @@ block content
 						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='peq') Curta
 						a.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='padrao') Normal
 				.btn-group.IMPRESSAO__MENU(role='group')
-					button.btn.btn-dark.dropdown-toggle.IMPRESSAO__BTN(type='button' data-btn='copias' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") +
-					.dropdown-menu
-						h6.dropdown-header Cópias
-						button.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='add') Adicionar
-						button.dropdown-item.IMPRESSAO__OPCAO(role='button' data-opcao='rm') Remover
-				.btn-group.IMPRESSAO__MENU(role='group')
 					button.btn.btn-dark.dropdown-toggle.IMPRESSAO__BTN(type='button' data-btn='posicao' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Pos
 					.dropdown-menu
 						h6.dropdown-header Posição
-						button.dropdown-item.IMPRESSAO__OPCAO(type='button' data-opcao='padrao') Topo
-						button.dropdown-item.IMPRESSAO__OPCAO(type='button' data-opcao='meio') Meio
+						button.dropdown-item.IMPRESSAO__OPCAO(type='button' data-opcao='topo') Topo
+						button.dropdown-item.IMPRESSAO__OPCAO(type='button' data-opcao='padrao') Meio
+						button.dropdown-item.IMPRESSAO__OPCAO(type='button' data-opcao='fim') Rodapé
 	section.PAGINA.shadow-lg.d-print-block
-		.PAGINA__CABECALHO.d-flex.align-items-center.justify-content-around
-			h3.navbar-brand.brand.mr-2 LoteZoo
-				small.slogan A loteria do bicho
-			h1.h2= sorteio.extracao
-			h2.h3= sorteio.banca
-		.PAGINA__CONTEUDO
-			table.table.table-striped.table-responsive-md.TABELA
+		.PAGINA__CABECALHO
+			.CABECALHO__BRAND
+				img.BRAND__IMG(src='/images/zoo.png')
+				.BRAND__TITULO LoteZoo
+			.CABECALHO__TITULO= sorteio.extracao
+			.CABECALHO__TITULO--SUB= sorteio.banca
+		.PAGINA__CONTEUDO.PAGINA__CONTEUDO--MID
+			table.table.TABELA
 				thead
 					tr.TABELA__CABECALHO
 						th(scope='col').TABELA__TITULO
@@ -79,10 +75,10 @@ block content
 						td.TABELA__ITEM.TABELA__ITEM--ZOO #[img(src='/images/grupos/svg/'+premio.grupo.svg)]
 						td.TABELA__ITEM= premio.grupo.nome
 		.PAGINA__RODAPE
-			.row.w-75.align-items-center.justify-content-between
+			.RODAPE__ITEM
 				#URL= "/resultados/"+sorteio.urn
-				p.lead.mb-0 Sorteio: #{sorteio.data}
-			.row.text-center.note
+				.RODAPE__TXT Sorteio: #{sorteio.data}
+			.RODAPE__ITEM.RODAPE__TXT
 				block iconesRights
 					+citeRights([ ["Freepik", "https://www.flaticon.com/authors/freepik"], ["monkik", "https://www.flaticon.com/authors/monkik"], ["Smashicons", "https://www.flaticon.com/authors/smashicons"], ["photo3idea_studio", "https://www.flaticon.com/authors/photo3idea-studio"] ], false)
 

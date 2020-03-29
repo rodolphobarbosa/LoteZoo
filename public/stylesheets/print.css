@@ -10,24 +10,25 @@
 	}
 	.PAGINA {
 		position: absolute !important;
-		top: 0;
+		top: 1em;
 		left: 0;
+		font-size: 140%;
 	}
 }
 .PAGINA {
 	position: relative;
 	cursor: default;
 	overflow: hidden;
-	width: 51rem;
-	height: 66rem;
-	margin: 0 auto 2rem auto;
+	width: 51em;
+	height: 66em;
+	margin: 0 auto 2em auto;
 	font-family: 'Muli', sans-serif;
 	background-color: white;
 }
 .PAGINA__CABECALHO,
 .PAGINA__RODAPE {
-	min-height: 6rem;
-	max-height: 26.4rem;
+	min-height: 6em;
+	max-height: 26.4em;
 }
 .PAGINA__CABECALHO,
 .PAGINA__CONTEUDO,
@@ -35,36 +36,62 @@
 	position: absolute;
 	left: 0;
 	width: 100%;
-	padding-left: 3rem;
-	padding-right: 3rem;
+	padding-left: 3em;
+	padding-right: 3em;
 }
 .PAGINA__CABECALHO {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 	top: 0;
-	padding-top: 1rem;
+	padding-top: 1em;
+}
+.CABECALHO__BRAND {
+	display: inline-flex;
+	align-items: center;
+}
+.BRAND__IMG {
+	width: 3em;
+	height: 3em;
+}
+.BRAND__TITULO {
+	font-size: 1.4em;
+	padding-left: 0.3em;
+}
+.CABECALHO__TITULO {
+	font-size: 1.7em;
+	text-decoration: underline;
+}
+.CABECALHO__TITULO--SUB {
+	font-size: 1.3em;
 }
 .PAGINA__CONTEUDO {
-	top: 50%;
-	transform: translateY(-50%);
-	max-height: 54rem;
+	max-height: 54em;
 	display: flex;
 	justify-content: center;
+}
+.PAGINA__CONTEUDO--MID {
+	top: 50%;
+	transform: translateY(-50%);
 }
 .PAGINA__RODAPE {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
 	bottom: 0;
-	padding-bottom: 2rem;
+	padding-bottom: 2em;
 	font-family: 'Roboto Slab', serif;
 }
-
+.RODAPE__ITEM {
+	display: inline-flex;
+	justify-content: space-around;
+}
+.RODAPE__TXT {
+	font-size: 1em;
+}
 .TABELA {
 	width: auto;
-	font-size: 1rem;
+	font-size: 1em;
 	margin: 0;
 }
 .TABELA__PREMIO td {
