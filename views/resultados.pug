@@ -11,13 +11,13 @@ block content
 			.HERO__CONTEUDO
 				form(action="" method="post")
 					.form-row
-						input#data-readonly(type="hidden" value=data[1] readonly)
-						#data.BANCA__DATA
+						input#DATA(type="hidden" value=data[1] readonly)
+						.BANCA__DATA
 							.DATA__ADDON
-								span#data-abbr.data-abbr.ADDON__TXT= data[0]
-							input#bancaData.DATA__INPUT(type="date" name="data" value=data[1] max=data[3] aria-label='Data do Sorteio' aria-describedby='data-abbr')
+								span#DATA__ABBR.ADDON__TXT= data[0]
+							input#DATA--BANCA.DATA__INPUT(type="date" name="data" value=data[1] max=data[3] aria-label='Data do Sorteio' aria-describedby='data-abbr')
 							.DATA__ADDON
-								button#btnData.btn.btn-outline-primary.DATA__BTN(type='submit') Buscar
+								button#DATA__BTN.btn.btn-outline-primary.DATA__BTN(type='submit') Buscar
 	.container.container-lg.SORTEIOS
 		if sorteios.length
 			.nav-scroller.py-2.mb-2.border-top.border-bottom.border-info

@@ -192,7 +192,7 @@ header {
 	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
 }
 .HERO__CONTEUDO {
-	padding: 3rem .5rem 1.5rem;
+	padding: 3rem 1rem 1.5rem;
 	background-color: var(--light);
 }
 .BANCA__DATA {
@@ -233,6 +233,7 @@ header {
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 	z-index: 10;
+	opacity: .65;
 }
 .DATA__INPUT {
 	flex: 1 1 0%;
@@ -243,9 +244,16 @@ header {
 	border: 1px solid #ced4da;
 	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+.DATA__INPUT::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	display: none;
+}
 .DATA__BTN {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
+}
+.DATA__BTN:disabled {
+	cursor: default;
 }
 .SORTEIOS {
 	padding-top: 1.5rem;
@@ -275,18 +283,6 @@ header {
 }
 #ModalTitulo {
 	font-size: 1em;
-}
-#data-readonly {
-	text-align: center;
-	max-width: 18rem;
-}
-#data-readonly::-webkit-inner-spin-button,
-#data-readonly::-webkit-calendar-picker-indicator {
-	-webkit-appearance: none;
-	display: none;
-}
-#btnData:disabled {
-	cursor: default;
 }
 .SORTEIO {
 	max-width: 27rem;

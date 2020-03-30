@@ -1,7 +1,7 @@
-const dataBanca = $('#data-readonly').val()
-const dataInput = $('#bancaData')
-const dataBtn = $('#btnData')
-const dataAbbr = $('#data-abbr')
+const dataBanca = $('#DATA').val()
+const dataInput = $('#DATA--BANCA')
+const dataBtn = $('#DATA__BTN')
+const dataAbbr = $('#DATA__ABBR')
 const dias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab']
 
 function getDds(data) {

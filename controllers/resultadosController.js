@@ -2,7 +2,7 @@ const loteria = require('./data/loteria')
 const qs = require('query-string')
 const moment = require('moment')
 
-const dataHoje = moment()
+const dataHoje = moment().format('YYYY-MM-DD')
 const dias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab']
 
 // lidar com erros
@@ -126,7 +126,7 @@ exports.banca_sorteios = function(req, res, next) {
 		res.render('resultados', {
 			title: 'Resultados',
 			banca: resultado.banca,
-			data: [dias[dataSorteio.day()], dataSorteio.format('YYYY-MM-DD'), dataHoje.format('DD/MM/YYYY'), dataHoje.format('YYYY-MM-DD')],
+			data: [dias[dataSorteio.day()], dataSorteio.format('YYYY-MM-DD'), dataSorteio.format('DD/MM/YYYY'), dataHoje],
 			sorteios: resultado.sorteios
 		})
 	})
@@ -146,11 +146,10 @@ exports.banca_sorteios_data = [
 				}
 				// order
 				resultado.sorteios.reverse()
-
 				res.render('resultados', {
 					title: 'Resultados',
 					banca: resultado.banca,
-					data: [dias[data.day()], data.format('YYYY-MM-DD'), dataHoje.format('DD/MM/YYYY'), dataHoje.format('YYYY-MM-DD')],
+					data: [dias[data.day()], data.format('YYYY-MM-DD'), data.format('DD/MM/YYYY'), dataHoje],
 					sorteios: resultado.sorteios
 				})
 			}
