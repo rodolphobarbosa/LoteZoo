@@ -7,14 +7,25 @@ html(lang='pt-br')
 			meta(charset='utf-8')
 			meta(name='viewport' content='width=device-width, initial-scale=1')
 			title= title
-			link(rel='icon' type='image/png' href='/images/zoo-favicon.png')
-			link(rel='stylesheet' href='/css/bootstrap.min.css')
-			link(href="https://fonts.googleapis.com/css?family=Baloo+Da+2|Muli&display=swap" rel="stylesheet")
-			link(rel='stylesheet' href='/stylesheets/style.css')
+			//- favicons
+			link(rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png")
+			link(rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png")
+			link(rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png")
+			link(rel="manifest" href="/images/favicons/site.webmanifest")
+			link(rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#a34f3e")
+			link(rel="shortcut icon" href="/images/favicons/favicon.ico")
+			meta(name="msapplication-TileColor" content="#00aba9")
+			meta(name="msapplication-config" content="/images/favicons/browserconfig.xml")
+			meta(name="theme-color" content="#ffffff")
+			block styles
+				//- styles
+				link(rel='stylesheet' href='/css/bootstrap.min.css')
+				link(href="https://fonts.googleapis.com/css?family=Baloo+Da+2|Muli&display=swap" rel="stylesheet")
+				link(rel='stylesheet' href='/stylesheets/style.css')
 	body.text-body.bg-light
 		header
 			block header
-				nav.navbar.navbar-expand-sm.fixed-top.navbar-dark.bg-dark
+				nav.navbar.navbar-expand-sm.fixed-top.navbar-dark
 					h1.navbar-brand.brand LoteZoo
 						small.slogan A loteria do bicho
 						a.stretched-link.text-reset(href='/')
