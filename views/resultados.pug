@@ -20,11 +20,10 @@ block content
 								button#DATA__BTN.btn.btn-outline-primary.DATA__BTN(type='submit') Buscar
 	.container.container-lg.SORTEIOS
 		if sorteios.length
-			.nav-scroller.py-2.mb-2.border-top.border-bottom.border-info
+			.nav-scroller.py-3.mb-2.border-top.border-bottom.border-info
 				nav.nav.justify-content-around.pb-0
 					each sorteio in sorteios
-						.px-2.py-2.text-monospace
-							a.px-2.py-1.border.border-secondary.rounded.text-muted.font-weight-bold(href='#'+sorteio.ID)= sorteio.extracao
+						a.px-3.py-2.text-monospace.border.border-secondary.rounded.text-muted.font-weight-bold(href='#'+sorteio.ID)= sorteio.extracao
 			.row.no-gutters.row-cols-1.row-cols-md-2.pt-4
 				each sorteio in sorteios
 					+sorteio(sorteio)

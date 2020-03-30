@@ -37,7 +37,7 @@ function formatSearchType(item, match) {
 	switch (type) {
 		case 'banca':
 			if (match) {
-				menuItem.attr('data-content', "/"+item['urn'])
+				menuItem.attr('data-content', '/' + item['urn'])
 				delete item['urn']
 				menuItem
 					.addClass('PROCURAR__ITEM--BANCA')
@@ -52,7 +52,7 @@ function formatSearchType(item, match) {
 			break
 		case 'grupo':
 			if (match) {
-				menuItem.attr('data-content', "("+item['num']+")")
+				menuItem.attr('data-content', '(' + item['num'] + ')')
 				delete item['num']
 				menuItem
 					.addClass('PROCURAR__ITEM--GRUPO')
@@ -92,11 +92,11 @@ function formatSearchType(item, match) {
 		let itemInfo = $(`<div class='ITEM__INFO text-wrap text-break'></div>`)
 		for (let key in item) {
 			// formata info
-			switch(key) {
-				case('dez'):
-					item[key] = item[key].join(" - ")
+			switch (key) {
+				case 'dez':
+					item[key] = item[key].join(' - ')
 					break
-				case('extracao'):
+				case 'extracao':
 					item[key] = `[${item[key]}]`
 					break
 				default:
@@ -112,7 +112,7 @@ function formatSearchType(item, match) {
 	if (menuItem.data('uri')) {
 		menuItem.on('click touchend', function(ev) {
 			let metodo = $(this).data('method')
-			if(metodo === 'get') {
+			if (metodo === 'get') {
 				search.attr('action', $(this).data('uri')).attr('method', metodo)
 				search.submit()
 			} else {
@@ -193,11 +193,11 @@ function bindFuse(dados) {
 		}
 	})
 }
-function fecharMenu(blur = false) {
+function fecharMenu() {
 	searchMenu.hide()
-	if (blur) {
-		searchInput.removeClass('unsearchable')
-	}
+}
+function retry() {
+	searchInput.removeClass('unsearchable')
 }
 $(function() {
 	searchInput.focus(function(ev) {
@@ -214,6 +214,7 @@ $(function() {
 				}
 			}).fail(function() {
 				searchInput.addClass('unsearchable')
+				searchInput.blur(()=>{retry()})
 			})
 		} else if ($('.procurar-item').length) {
 			searchMenu.show()
@@ -222,7 +223,7 @@ $(function() {
 	})
 	// fechar search dropdown
 	$(document).on('click touchend', function(e) {
-		if (searchMenu.is(':visible')) fecharMenu(true)
+		if (searchMenu.is(':visible')) fecharMenu()
 	})
 
 	$(document).on('keydown', search, function(ev) {

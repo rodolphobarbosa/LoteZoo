@@ -85,9 +85,11 @@
 .RODAPE__ITEM {
 	display: inline-flex;
 	justify-content: space-around;
+	align-items: baseline;
+	font-size: 1.1rem;
 }
-.RODAPE__TXT {
-	font-size: 1em;
+.RODAPE__SORTEIO {
+	font-size: 1.2em;
 }
 .TABELA {
 	width: auto;

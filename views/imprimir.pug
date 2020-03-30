@@ -1,10 +1,6 @@
 extends layout
 
-block head
-	meta(charset='utf-8')
-	//- meta(name='viewport' content='width=device-width, initial-scale=1')
-	title= title
-	link(rel='icon' type='image/png' href='/images/zoo-favicon.png')
+block styles
 	link(rel='stylesheet' href='/css/bootstrap.min.css')
 	link(href="https://fonts.googleapis.com/css?family=Baloo+Da+2|Muli&display=swap" rel="stylesheet")
 	link(href="https://fonts.googleapis.com/css?family=Lora|Roboto+Slab&display=swap" rel="stylesheet")
@@ -73,8 +69,8 @@ block content
 		.PAGINA__RODAPE
 			.RODAPE__ITEM
 				#URL= "/resultados/"+sorteio.urn
-				.RODAPE__TXT Sorteio: #{sorteio.data}
-			.RODAPE__ITEM.RODAPE__TXT
+				.RODAPE__SORTEIO Sorteio: #{sorteio.data}
+			.RODAPE__ITEM
 				block iconesRights
 					+citeRights([ ["Freepik", "https://www.flaticon.com/authors/freepik"], ["monkik", "https://www.flaticon.com/authors/monkik"], ["Smashicons", "https://www.flaticon.com/authors/smashicons"], ["photo3idea_studio", "https://www.flaticon.com/authors/photo3idea-studio"] ], false)
 
