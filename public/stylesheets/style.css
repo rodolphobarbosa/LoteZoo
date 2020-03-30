@@ -157,15 +157,101 @@ header {
 	text-align: center;
 	height: 200px;
 }
+.EXTRACOES {
+	padding-top: 2rem;
+}
+.BANCA {
+	max-width: 30rem;
+	padding: 0;
+	margin: 2rem auto 0;
+	background-color: transparent;
+}
+.BANCA__HERO {
+	text-align: center;
+	background: white;
+	border-top-left-radius: 1rem;
+	border-top-right-radius: 1rem;
+	z-index: 1060;
+}
+.HERO__CABECALHO {
+	position: relative;
+	font-size: 2rem;
+	padding: 1em;
+}
+.CABECALHO__TITULO {
+	font-size: 1.3em;
+	margin-bottom: 0;
+}
+.CABECALHO__ADDON {
+	position: absolute;
+	bottom: -.8em;
+	right: .5em;
+	z-index: 101;
+	padding: 0 .25em;
+	background-color: white;
+	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+.HERO__CONTEUDO {
+	padding: 3rem .5rem 1.5rem;
+	background-color: var(--light);
+}
+.BANCA__DATA {
+	display: inline-flex;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	width: 100%;
+	max-width: 32rem;
+	font-size: 1.2rem;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+.BANCA__DATA .DATA__INPUT {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+.BANCA__DATA .DATA__INPUT {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.DATA__ADDON {
+	display: flex;
+}
+.DATA__ADDON:first-child {
+	margin-right: -1px;
+}
+.DATA__ADDON:last-child {
+	margin-left: -1px;
+}
+.ADDON__TXT {
+	padding: .375rem .75rem;
+	text-decoration: underline;
+	text-align: center;
+	color: var(--info);
+	border: 1px solid var(--info);
+	border-radius: .25rem;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	z-index: 10;
+}
+.DATA__INPUT {
+	flex: 1 1 0%;
+	border-color: var(--info) !important;
+	padding: .375rem .75rem;
+	background-color: white;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.DATA__BTN {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
 .SORTEIOS {
 	padding-top: 1.5rem;
 	padding-bottom: 2rem;
-	margin-top: -1.5rem;
 	background-color: var(--light);
 	box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
-}
-.EXTRACOES {
-	padding-top: 2rem;
 }
 .border-cinza,
 .page-link {
@@ -190,22 +276,6 @@ header {
 #ModalTitulo {
 	font-size: 1em;
 }
-
-/* #data {
-	position: relative;
-	max-width: 350px;
-	min-width: 280px;
-	margin-left: auto;
-	margin-right: auto;
-} */
-.data-abbr {
-	font-weight: 600;
-	text-decoration: underline;
-}
-.data-abbr,
-.banca-data {
-	font-size: 1.2rem;
-}
 #data-readonly {
 	text-align: center;
 	max-width: 18rem;
@@ -214,9 +284,6 @@ header {
 #data-readonly::-webkit-calendar-picker-indicator {
 	-webkit-appearance: none;
 	display: none;
-}
-#data {
-	max-width: 32rem;
 }
 #btnData:disabled {
 	cursor: default;
@@ -227,10 +294,9 @@ header {
 	margin-left: auto;
 	margin-right: auto;
 	border-color: var(--cinza-escuro);
-	border-width: 2px;
+	border-width: 1px;
 	color: var(--info);
 	font-size: 1.2rem;
-	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 .SORTEIO--DESTAQUE {
 	border-color: var(--info);
@@ -240,6 +306,7 @@ header {
 	align-items: baseline;
 	justify-content: space-between;
 	padding: 0.6em 0.8em;
+	background-color: white;
 }
 .CABECALHO__ITEM {
 	display: inline-block;

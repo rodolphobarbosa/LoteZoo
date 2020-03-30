@@ -3,21 +3,21 @@ include includes/sorteio.pug
 include includes/premio.pug
 
 block content
-	section.jumbotron.text-center.mb-0
-		.bancaTitulo
-			h2= banca
-		.bancaData.mb-3
-			form(action="" method="post")
-				.form-row
-					.col-8.mb-5.mx-auto
-						input#data-readonly.banca-data.form-control.mx-auto(type="date" value=data[1] readonly)
-					.col-12
-						#data.input-group.mx-auto
-							.input-group-prepend
-								span#data-abbr.data-abbr.input-group-text.bg-light= data[0]
-							input#bancaData.banca-data.form-control(type="date" name="data" value=data[1] max=data[2] aria-label='Data do Sorteio' aria-describedby='data-abbr')
-							.input-group-append
-								button#btnData.btn.btn-outline-primary.bg-dark(type='submit') Buscar
+	section.BANCA
+		.BANCA__HERO
+			.HERO__CABECALHO
+				h2.CABECALHO__TITULO= banca
+				.CABECALHO__ADDON= data[2]
+			.HERO__CONTEUDO
+				form(action="" method="post")
+					.form-row
+						input#data-readonly(type="hidden" value=data[1] readonly)
+						#data.BANCA__DATA
+							.DATA__ADDON
+								span#data-abbr.data-abbr.ADDON__TXT= data[0]
+							input#bancaData.DATA__INPUT(type="date" name="data" value=data[1] max=data[3] aria-label='Data do Sorteio' aria-describedby='data-abbr')
+							.DATA__ADDON
+								button#btnData.btn.btn-outline-primary.DATA__BTN(type='submit') Buscar
 	.container.container-lg.SORTEIOS
 		if sorteios.length
 			.nav-scroller.py-2.mb-2.border-top.border-bottom.border-info
