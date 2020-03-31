@@ -1,6 +1,7 @@
 const loteria = require('./data/loteria')
 const qs = require('query-string')
 const moment = require('moment')
+const {check, validationResult} = require('express-validator')
 
 const dataHoje = moment().format('YYYY-MM-DD')
 const dias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab']
@@ -81,12 +82,6 @@ function paginar(pagina, extracoes, maxResultados = 12) {
 	}
 	return { queries, extracoes: extracoes.slice(ignorar, buscar) }
 }
-// trata req data
-function getData(data) {
-	return data.indexOf('/') > -1
-		? moment(data, 'DD/MM/YYYY')
-		: moment(data, 'YYYY-MM-DD')
-}
 
 exports.ultimas_extracoes = function(req, res, next) {
 	let pagina = req.query.pagina ? req.query.pagina : 1
@@ -130,10 +125,17 @@ exports.banca_sorteios = function(req, res, next) {
 }
 
 exports.banca_sorteios_data = [
-	// checar formato se eh mesmo data
+	// checar formato se e mesmo padrao data e valida
+	check('data').isISO8601({strict: true}),
+
 	function(req, res, next) {
-		// validar dados da requisicao
-		const data = getData(req.body.data)
+		// validar data do body
+		const erros = validationResult(req);
+		if(!erros.isEmpty()) {
+			return res.status(422).json(erros)
+		}
+
+		const data = moment(req.body.data, 'YYYY-MM-DD')
 		asyncAPI(
 			loteria.req_banca,
 			[req.params.banca, data.format('DD_MM_YYYY')],
