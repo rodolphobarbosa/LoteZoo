@@ -4,8 +4,8 @@ const resultadosController = require('../controllers/resultadosController');
 
 // ultimas resultados cabeça
 router.get('/', resultadosController.ultimas_extracoes);
-// impressao sorteio
-router.get('/imprimir', resultadosController.imprimir_sorteio);
+// impressao sorteio desativado
+// router.get('/imprimir', resultadosController.imprimir_sorteio);
 // pagina banca no dia
 router.get('/procurar', resultadosController.procurar_dados);
 // json extracoes para search

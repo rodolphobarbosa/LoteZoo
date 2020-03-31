@@ -25,10 +25,7 @@ async function asyncAPI(fx, fxArgs = [], cb) {
 	}
 }
 // Filters
-// order tempo real
-function orderTR(extracoes) {
-	return
-}
+
 // order principais bancas
 function orderPoste(extracoes) {
 	let poste = []
@@ -165,7 +162,7 @@ exports.banca_sorteio = function(req, res, next) {
 			if (erro) {
 				return next(erro)
 			}
-			sorteio = formatImprimir(sorteio)
+			// sorteio = formatImprimir(sorteio)
 			res.setHeader('Content-Type', 'application/json')
 			res.json(sorteio)
 		}

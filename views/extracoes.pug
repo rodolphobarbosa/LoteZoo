@@ -3,8 +3,8 @@ include includes/extracao.pug
 include includes/premio.pug
 
 block content
-	.container-fluid.container-ad
-		h2.h1 PROPAGANDA
+	.container-fluid.AD
+		h2.h1 
 	.container-fluid.px-0.px-md-3.EXTRACOES
 		.row.no-gutters.row-cols-1.row-cols-md-2.row-cols-xl-3
 			each item in extracoes
@@ -53,7 +53,7 @@ block content
 				.modal-footer.SORTEIO__RODAPE
 					.RODAPE__ITEM.SORTEIO__DATA
 					.RODAPE__ITEM.btn-group(role='group' aria-label='modal sorteio opções')
-						a.btn.btn-outline-primary.SORTEIO__BTN.SORTEIO__BTN--PRINT(role='button' href='') Imprimir
+						//- a.btn.btn-outline-primary.SORTEIO__BTN.SORTEIO__BTN--PRINT(role='button' href='') Imprimir
 						button.btn.btn-outline-secondary.SORTEIO__BTN(type='button' data-dismiss='modal') Fechar
 
 append scripts
