@@ -218,14 +218,14 @@ exports.req_banca = async function (banca_urn, data) {
 }
 
 function formatSorteio(sorteios, extracao) {
-	sorteios.extracoes = sorteios.extracoes.filter((sorteio) => {
-		return formatExtracao(sorteio.sorteio) === extracao
+	sorteios.extracoes = sorteios.extracoes.filter((e) => {
+		return formatExtracao(e.sorteio) === extracao
 	})
 	if (!sorteios.extracoes.length) {
 		throw new Error('Extração não encontrada.')
 	}
 	let sorteio = {
-		banca: sorteios.extracoes[0].banca,
+		banca: LOT.api[sorteios.extracoes[0].banca] || sorteios.extracoes[0].banca,
 		urn: sorteios.urn,
 		data: sorteios.data,
 		extracao: formatExtracao(sorteios.extracoes[0].sorteio),
