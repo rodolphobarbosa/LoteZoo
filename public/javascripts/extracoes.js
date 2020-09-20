@@ -4,10 +4,7 @@ const sorteioTitulo = $('#MODAL__TITULO')
 
 function renderizaModal(modal, sorteio) {
 	sorteioTitulo.text(sorteio.banca)
-	modal
-		.find('.SORTEIO__EXTRACAO')
-		.show()
-		.text(sorteio.extracao)
+	modal.find('.SORTEIO__EXTRACAO').show().text(sorteio.extracao)
 	modal.find('.SORTEIO__DATA').text(sorteio.data)
 	// modal.find('.SORTEIO__BTN--PRINT').attr('href', sorteio.print)
 	let resultado = $("<div class='SORTEIO__RESULTADO'></div>")
@@ -21,19 +18,19 @@ function renderizaModal(modal, sorteio) {
 
         <div class='PREMIO__GRUPO'>
           <div class='GRUPO__NUM'>${premio.grupo.num}</div>
-          <img class='GRUPO__IMG' src=/images/grupos/${premio.grupo.img}>
+		  <img class='GRUPO__IMG' src=/images/grupos/${premio.grupo.img} alt=${premio.grupo.nome} srcset='/images/grupos/${premio.grupo.img}, /images/grupos/${premio.grupo.img128} 1.5x' title=${premio.grupo.nome}>
         </div>
       </div>
     `)
 	})
-	modal.find('.modal-body').html(resultado);
+	modal.find('.modal-body').html(resultado)
 }
 function alertaModal(modal, status, erro) {
-  // caso ja tenha sido aberto reformata
-  modal.find('.SORTEIO__EXTRACAO').hide()
-  modal.find('.SORTEIO__DATA').text('03/07/1982') // easter egg
+	// caso ja tenha sido aberto reformata
+	modal.find('.SORTEIO__EXTRACAO').hide()
+	modal.find('.SORTEIO__DATA').text('03/07/1982') // easter egg
 	// modal.find('.SORTEIO__BTN--PRINT').addClass('disabled').attr('aria-disabled', 'true')
-  sorteioTitulo.addClass('text-secondary')
+	sorteioTitulo.addClass('text-secondary')
 	let alerta = $("<div class='alert alert-warning' role='alert'></div>")
 	switch (status) {
 		case 'timeout':
@@ -60,21 +57,29 @@ function alertaModal(modal, status, erro) {
 		default:
 			alerta.text(erro || 'Verifique os cabos de rede.')
 	}
-  modal.find('.modal-body').html(alerta);
-  modal.on('hide.bs.modal', function(e){
-    sorteioTitulo.removeClass('text-secondary');
-    // modal.find('.SORTEIO__BTN--PRINT').removeClass('disabled').attr('aria-disabled', false);
-  })
+	modal.find('.modal-body').html(alerta)
+	modal.on('hide.bs.modal', function (e) {
+		sorteioTitulo.removeClass('text-secondary')
+		// modal.find('.SORTEIO__BTN--PRINT').removeClass('disabled').attr('aria-disabled', false);
+	})
 }
 
-$(function() {
-	sorteiosBtns.click(function(ev) {
+$(function () {
+	sorteiosBtns.click(function (ev) {
 		const btn = $(this)
 		let uri = btn.data('uri')
-		$.getJSON(uri, function(sorteio) {
+		btn.prop('disabled', true)
+		btn.append(
+			`<a class='BTN--CARREGANDO' role="status" aria-hidden="true"></a>`
+		)
+		sorteioModal.on('show.bs.modal', function (e) {
+			btn.prop('disabled', false)
+			$('.BTN--CARREGANDO').remove()
+		})
+		$.getJSON(uri, function (sorteio) {
 			renderizaModal(sorteioModal, sorteio)
 			sorteioModal.modal('show')
-		}).fail(function(jqXHR, status, erro) {
+		}).fail(function (jqXHR, status, erro) {
 			alertaModal(sorteioModal, status, erro)
 			sorteioModal.modal('show')
 		})

@@ -7,6 +7,8 @@ const searchMenu = $('#procurar-menu')
 const topNav = $('#topNav')
 const max_resultados = 5
 const searchUri = '/resultados/procurar'
+const backTop = $('.BACKTOP')
+const TOP = $('#TOP').offset().top
 
 const searchTypes = {
 	// match keys
@@ -67,9 +69,10 @@ function formatSearchType(item, match) {
 			break
 		default:
 			// extracao
+			menuItem.attr('data-content', item['data'][0])
+			menuItem.attr('data-iso', item['data'][1])
+			delete item['data']
 			if (match) {
-				menuItem.attr('data-content', item['data'])
-				delete item['data']
 				menuItem
 					.addClass('PROCURAR__ITEM--EXTRACAO')
 					.addClass('PROCURAR__ITEM--MATCH')
@@ -110,13 +113,12 @@ function formatSearchType(item, match) {
 
 	// binda click item com uri
 	if (menuItem.data('uri')) {
-		menuItem.on('click touchend', function(ev) {
+		menuItem.on('click', function (ev) {
 			let metodo = $(this).data('method')
 			if (metodo === 'get') {
-				search.attr('action', $(this).data('uri')).attr('method', metodo)
-				search.submit()
+				window.location.href = $(this).data('uri')
 			} else {
-				searchData.attr('name', 'data').attr('value', $(this).data('content'))
+				searchData.attr('name', 'data').attr('value', $(this).data('iso'))
 				search.attr('action', $(this).data('uri')).attr('method', metodo)
 				search.submit()
 			}
@@ -158,7 +160,7 @@ function bindFuse(dados) {
 		threshold: 0.4,
 		location: 0,
 		distance: 30,
-		minMatchCharLength: 2,
+		minMatchCharLength: 1,
 		keys: [
 			// banca
 			{ name: 'loteria', weight: 0.9 },
@@ -175,7 +177,7 @@ function bindFuse(dados) {
 	// inicializa fuse
 	fuse = new Fuse(dados, options)
 	// binda fuse ao change do search
-	searchInput.bind('keydown', fuse, function(event) {
+	searchInput.bind('keydown', fuse, function (event) {
 		let encontrado = fuse.search($(this).val())
 		// checa se tem novos resultados
 		encontrado = encontrado.slice(0, max_resultados)
@@ -199,22 +201,27 @@ function fecharMenu() {
 function retry() {
 	searchInput.removeClass('unsearchable')
 }
-$(function() {
-	searchInput.focus(function(ev) {
+$(function () {
+	// ativa tooltips para grupos
+	$('[data-toggle="tooltip"]').tooltip()
+
+	searchInput.focus(function (ev) {
 		// checa se ja foi buscado os dados se não busca e binda search engine
 		if (!ultimos_dados) {
 			$.get({
 				url: searchUri,
 				dataType: 'json',
-				success: function(dados) {
+				success: function (dados) {
 					bindFuse(dados)
 					searchInput.addClass('searchable')
 					// ja pode procurar
 					ultimos_dados = dados
 				}
-			}).fail(function() {
+			}).fail(function () {
 				searchInput.addClass('unsearchable')
-				searchInput.blur(()=>{retry()})
+				searchInput.blur(() => {
+					retry()
+				})
 			})
 		} else if ($('.procurar-item').length) {
 			searchMenu.show()
@@ -222,11 +229,16 @@ $(function() {
 		searchMenu.focusin()
 	})
 	// fechar search dropdown
-	$(document).on('click touchend', function(e) {
+	$(document).on('click', function (e) {
 		if (searchMenu.is(':visible')) fecharMenu()
 	})
 
-	$(document).on('keydown', search, function(ev) {
+	$(document).on('keydown', search, function (ev) {
 		return ev.key !== 'Enter'
+	})
+	backTop.on('click', function(ev) {
+		ev.stopImmediatePropagation()
+		ev.preventDefault()
+		$('body, html').animate({ scrollTop: TOP }, 600);
 	})
 })

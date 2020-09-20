@@ -1,6 +1,6 @@
 mixin citeRights(refs = [], dark = true)
 	-let nested = refs.slice(0, refs.length-1)
-	footer.blockquote-footer Icons made by 
+	blockquote.blockquote.text-center.text-muted.note Icons made by 
 		if refs.length > 0
 			each ref in nested
 				a.text-decoration-none(href=ref[1] class=dark?"text-light":"text-reset" target="_blank" rel="noopener noreferrer")

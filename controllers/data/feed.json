@@ -1,0 +1,614 @@
+[
+  {
+    "banca_id": 9,
+    "banca": "L-BR",
+    "banca_url": "api/v3/feed/lbr",
+    "data": "19/09/2020",
+    "extracao": "Extração das 22:00",
+    "resultado": "5778 (20)",
+    "img": "g20"
+  },
+  {
+    "banca_id": 17,
+    "banca": "Loteria Nacional",
+    "banca_url": "api/v3/feed/loterianacional",
+    "data": "19/09/2020",
+    "extracao": "LN 22:00",
+    "resultado": "5850 (13)",
+    "img": "g13"
+  },
+  {
+    "banca_id": 1,
+    "banca": "Rio de Janeiro",
+    "banca_url": "api/v3/feed/riojaneiro",
+    "data": "19/09/2020",
+    "extracao": "Coruja 21:20 hrs",
+    "resultado": "6669 (18)",
+    "img": "g18"
+  },
+  {
+    "banca_id": 12,
+    "banca": "Maluca - Bahia",
+    "banca_url": "api/v3/feed/malucabahia",
+    "data": "19/09/2020",
+    "extracao": "Extração das 21:20",
+    "resultado": "0331 (08)",
+    "img": "g08"
+  },
+  {
+    "banca_id": 10,
+    "banca": "Bahia",
+    "banca_url": "api/v3/feed/bahia",
+    "data": "19/09/2020",
+    "extracao": "Extração das 21:20",
+    "resultado": "8620 (05)",
+    "img": "g05"
+  },
+  {
+    "banca_id": 7,
+    "banca": "Look - GO",
+    "banca_url": "api/v3/feed/look",
+    "data": "19/09/2020",
+    "extracao": "Extração da 21:20",
+    "resultado": "9950 (13)",
+    "img": "g13"
+  },
+  {
+    "banca_id": 9,
+    "banca": "L-BR",
+    "banca_url": "api/v3/feed/lbr",
+    "data": "19/09/2020",
+    "extracao": "Extração das 20:40",
+    "resultado": "4041 (11)",
+    "img": "g11"
+  },
+  {
+    "banca_id": 18,
+    "banca": "Poste da Trevo",
+    "banca_url": "api/v3/feed/postetrevo",
+    "data": "19/09/2020",
+    "extracao": "Extração das 20:30",
+    "resultado": "0801 (01)",
+    "img": "g01"
+  },
+  {
+    "banca_id": 2,
+    "banca": "São Paulo",
+    "banca_url": "api/v3/feed/saopaulo",
+    "data": "19/09/2020",
+    "extracao": "PTN 20:20 hrs",
+    "resultado": "7158 (15)",
+    "img": "g15"
+  },
+  {
+    "banca_id": 4,
+    "banca": "Lotep - PB",
+    "banca_url": "api/v3/feed/loteppb",
+    "data": "19/09/2020",
+    "extracao": "Extração das 20:00",
+    "resultado": "7681 (21)",
+    "img": "g21"
+  },
+  {
+    "banca_id": 6,
+    "banca": "Lotece",
+    "banca_url": "api/v3/feed/lotece",
+    "data": "19/09/2020",
+    "extracao": "Extração das 19:00",
+    "resultado": "2643 (11)",
+    "img": "g11"
+  },
+  {
+    "banca_id": 12,
+    "banca": "Maluca - Bahia",
+    "banca_url": "api/v3/feed/malucabahia",
+    "data": "19/09/2020",
+    "extracao": "Extração das 19:00",
+    "resultado": "6464 (16)",
+    "img": "g16"
+  },
+  {
+    "banca_id": 5,
+    "banca": "Rio Grande do Sul",
+    "banca_url": "api/v3/feed/riograndesul",
+    "data": "19/09/2020",
+    "extracao": "Extração das 18:00",
+    "resultado": "0576 (19)",
+    "img": "g19"
+  },
+  {
+    "banca_id": 8,
+    "banca": "Federal",
+    "banca_url": "api/v3/feed/federal",
+    "data": "19/09/2020",
+    "extracao": "Federal",
+    "resultado": "0576 (19)",
+    "img": "g19"
+  },
+  {
+    "banca_id": 9,
+    "banca": "L-BR",
+    "banca_url": "api/v3/feed/lbr",
+    "data": "19/09/2020",
+    "extracao": "Extração das 19:00",
+    "resultado": "1519 (05)",
+    "img": "g05"
+  },
+  {
+    "banca_id": 17,
+    "banca": "Loteria Nacional",
+    "banca_url": "api/v3/feed/loterianacional",
+    "data": "19/09/2020",
+    "extracao": "LN 19:00",
+    "resultado": "8774 (19)",
+    "img": "g19"
+  },
+  {
+    "banca_id": 19,
+    "banca": "Aliança Ext. Online",
+    "banca_url": "api/v3/feed/alianca",
+    "data": "19/09/2020",
+    "extracao": "Extração das 18:40",
+    "resultado": "5056 (14)",
+    "img": "g14"
+  },
+  {
+    "banca_id": 11,
+    "banca": "Popular Recife",
+    "banca_url": "api/v3/feed/popularrecife",
+    "data": "19/09/2020",
+    "extracao": "Extração das 18:30",
+    "resultado": "8535 (09)",
+    "img": "g09"
+  },
+  {
+    "banca_id": 7,
+    "banca": "Look - GO",
+    "banca_url": "api/v3/feed/look",
+    "data": "19/09/2020",
+    "extracao": "Extração da 18:20",
+    "resultado": "6877 (20)",
+    "img": "g20"
+  },
+  {
+    "banca_id": 4,
+    "banca": "Lotep - PB",
+    "banca_url": "api/v3/feed/loteppb",
+    "data": "19/09/2020",
+    "extracao": "Extração das 18:00",
+    "resultado": "5604 (01)",
+    "img": "g01"
+  },
+  {
+    "banca_id": 18,
+    "banca": "Poste da Trevo",
+    "banca_url": "api/v3/feed/postetrevo",
+    "data": "19/09/2020",
+    "extracao": "Extração das 17:30",
+    "resultado": "0739 (10)",
+    "img": "g10"
+  },
+  {
+    "banca_id": 9,
+    "banca": "L-BR",
+    "banca_url": "api/v3/feed/lbr",
+    "data": "19/09/2020",
+    "extracao": "Extração das 17:00",
+    "resultado": "5197 (25)",
+    "img": "g25"
+  },
+  {
+    "banca_id": 11,
+    "banca": "Popular Recife",
+    "banca_url": "api/v3/feed/popularrecife",
+    "data": "19/09/2020",
+    "extracao": "Extração das 17:00",
+    "resultado": "9389 (23)",
+    "img": "g23"
+  },
+  {
+    "banca_id": 19,
+    "banca": "Aliança Ext. Online",
+    "banca_url": "api/v3/feed/alianca",
+    "data": "19/09/2020",
+    "extracao": "Extração das 17:00",
+    "resultado": "7143 (11)",
+    "img": "g11"
+  },
+  {
+    "banca_id": 17,
+    "banca": "Loteria Nacional",
+    "banca_url": "api/v3/feed/loterianacional",
+    "data": "19/09/2020",
+    "extracao": "LN 17:00",
+    "resultado": "8329 (08)",
+    "img": "g08"
+  },
+  {
+    "banca_id": 2,
+    "banca": "São Paulo",
+    "banca_url": "api/v3/feed/saopaulo",
+    "data": "19/09/2020",
+    "extracao": "Bandeirante",
+    "resultado": "9928 (07)",
+    "img": "g07"
+  },
+  {
+    "banca_id": 1,
+    "banca": "Rio de Janeiro",
+    "banca_url": "api/v3/feed/riojaneiro",
+    "data": "19/09/2020",
+    "extracao": "PTV 16:20 hrs",
+    "resultado": "3491 (23)",
+    "img": "g23"
+  },
+  {
+    "banca_id": 7,
+    "banca": "Look - GO",
+    "banca_url": "api/v3/feed/look",
+    "data": "19/09/2020",
+    "extracao": "Extração da 16:20",
+    "resultado": "8193 (24)",
+    "img": "g24"
+  },
+  {
+    "banca_id": 4,
+    "banca": "Lotep - PB",
+    "banca_url": "api/v3/feed/loteppb",
+    "data": "19/09/2020",
+    "extracao": "Extração das 15:45",
+    "resultado": "6138 (10)",
+    "img": "g10"
+  },
+  {
+    "banca_id": 11,
+    "banca": "Popular Recife",
+    "banca_url": "api/v3/feed/popularrecife",
+    "data": "19/09/2020",
+    "extracao": "Extração das 15:40",
+    "resultado": "5194 (24)",
+    "img": "g24"
+  },
+  {
+    "banca_id": 19,
+    "banca": "Aliança Ext. Online",
+    "banca_url": "api/v3/feed/alianca",
+    "data": "19/09/2020",
+    "extracao": "Extração das 15:40",
+    "resultado": "7910 (03)",
+    "img": "g03"
+  },
+  {
+    "banca_id": 12,
+    "banca": "Maluca - Bahia",
+    "banca_url": "api/v3/feed/malucabahia",
+    "data": "19/09/2020",
+    "extracao": "Extração das 15:00",
+    "resultado": "7734 (09)",
+    "img": "g09"
+  },
+  {
+    "banca_id": 18,
+    "banca": "Poste da Trevo",
+    "banca_url": "api/v3/feed/postetrevo",
+    "data": "19/09/2020",
+    "extracao": "Extração das 15:30",
+    "resultado": "2554 (14)",
+    "img": "g14"
+  },
+  {
+    "banca_id": 10,
+    "banca": "Bahia",
+    "banca_url": "api/v3/feed/bahia",
+    "data": "19/09/2020",
+    "extracao": "Extração das 15:00",
+    "resultado": "6117 (05)",
+    "img": "g05"
+  },
+  {
+    "banca_id": 9,
+    "banca": "L-BR",
+    "banca_url": "api/v3/feed/lbr",
+    "data": "19/09/2020",
+    "extracao": "Extração das 15:00",
+    "resultado": "6015 (04)",
+    "img": "g04"
+  },
+  {
+    "banca_id": 3,
+    "banca": "Minas Gerais",
+    "banca_url": "api/v3/feed/minas",
+    "data": "19/09/2020",
+    "extracao": "Minas Dia",
+    "resultado": "7924 (06)",
+    "img": "g06"
+  },
+  {
+    "banca_id": 17,
+    "banca": "Loteria Nacional",
+    "banca_url": "api/v3/feed/loterianacional",
+    "data": "19/09/2020",
+    "extracao": "LN 15:00",
+    "resultado": "4928 (07)",
+    "img": "g07"
+  },
+  {
+    "banca_id": 5,
+    "banca": "Rio Grande do Sul",
+    "banca_url": "api/v3/feed/riograndesul",
+    "data": "19/09/2020",
+    "extracao": "Extração das 14:00",
+    "resultado": "9477 (20)",
+    "img": "g20"
+  },
+  {
+    "banca_id": 1,
+    "banca": "Rio de Janeiro",
+    "banca_url": "api/v3/feed/riojaneiro",
+    "data": "19/09/2020",
+    "extracao": "PT  14:20 hrs",
+    "resultado": "8620 (05)",
+    "img": "g05"
+  },
+  {
+    "banca_id": 6,
+    "banca": "Lotece",
+    "banca_url": "api/v3/feed/lotece",
+    "data": "19/09/2020",
+    "extracao": "Extração das 14:00",
+    "resultado": "6614 (04)",
+    "img": "g04"
+  },
+  {
+    "banca_id": 7,
+    "banca": "Look - GO",
+    "banca_url": "api/v3/feed/look",
+    "data": "19/09/2020",
+    "extracao": "Extração da 14:20",
+    "resultado": "2120 (05)",
+    "img": "g05"
+  },
+  {
+    "banca_id": 11,
+    "banca": "Popular Recife",
+    "banca_url": "api/v3/feed/popularrecife",
+    "data": "19/09/2020",
+    "extracao": "Extração das 14:00",
+    "resultado": "2579 (20)",
+    "img": "g20"
+  },
+  {
+    "banca_id": 19,
+    "banca": "Aliança Ext. Online",
+    "banca_url": "api/v3/feed/alianca",
+    "data": "19/09/2020",
+    "extracao": "Extração das 14:00",
+    "resultado": "2193 (24)",
+    "img": "g24"
+  },
+  {
+    "banca_id": 2,
+    "banca": "São Paulo",
+    "banca_url": "api/v3/feed/saopaulo",
+    "data": "19/09/2020",
+    "extracao": "PT 13:30 hrs",
+    "resultado": "1001 (01)",
+    "img": "g01"
+  },
+  {
+    "banca_id": 18,
+    "banca": "Poste da Trevo",
+    "banca_url": "api/v3/feed/postetrevo",
+    "data": "19/09/2020",
+    "extracao": "Extração das 13:30",
+    "resultado": "8198 (25)",
+    "img": "g25"
+  },
+  {
+    "banca_id": 4,
+    "banca": "Lotep - PB",
+    "banca_url": "api/v3/feed/loteppb",
+    "data": "19/09/2020",
+    "extracao": "Extração das 12:45",
+    "resultado": "8251 (13)",
+    "img": "g13"
+  },
+  {
+    "banca_id": 19,
+    "banca": "Aliança Ext. Online",
+    "banca_url": "api/v3/feed/alianca",
+    "data": "19/09/2020",
+    "extracao": "Extração das 12:40",
+    "resultado": "2060 (15)",
+    "img": "g15"
+  },
+  {
+    "banca_id": 9,
+    "banca": "L-BR",
+    "banca_url": "api/v3/feed/lbr",
+    "data": "19/09/2020",
+    "extracao": "Extração das 12:40",
+    "resultado": "8757 (15)",
+    "img": "g15"
+  },
+  {
+    "banca_id": 11,
+    "banca": "Popular Recife",
+    "banca_url": "api/v3/feed/popularrecife",
+    "data": "19/09/2020",
+    "extracao": "Extração das 12:40",
+    "resultado": "2430 (08)",
+    "img": "g08"
+  },
+  {
+    "banca_id": 12,
+    "banca": "Maluca - Bahia",
+    "banca_url": "api/v3/feed/malucabahia",
+    "data": "19/09/2020",
+    "extracao": "Extração das 12:00",
+    "resultado": "8839 (10)",
+    "img": "g10"
+  },
+  {
+    "banca_id": 10,
+    "banca": "Bahia",
+    "banca_url": "api/v3/feed/bahia",
+    "data": "19/09/2020",
+    "extracao": "Extração das 12:00",
+    "resultado": "2018 (05)",
+    "img": "g05"
+  },
+  {
+    "banca_id": 3,
+    "banca": "Minas Gerais",
+    "banca_url": "api/v3/feed/minas",
+    "data": "19/09/2020",
+    "extracao": "Alvorada",
+    "resultado": "5774 (19)",
+    "img": "g19"
+  },
+  {
+    "banca_id": 17,
+    "banca": "Loteria Nacional",
+    "banca_url": "api/v3/feed/loterianacional",
+    "data": "19/09/2020",
+    "extracao": "LN 12:00",
+    "resultado": "2068 (17)",
+    "img": "g17"
+  },
+  {
+    "banca_id": 1,
+    "banca": "Rio de Janeiro",
+    "banca_url": "api/v3/feed/riojaneiro",
+    "data": "19/09/2020",
+    "extracao": "PTM 11:20 hrs",
+    "resultado": "9852 (13)",
+    "img": "g13"
+  },
+  {
+    "banca_id": 7,
+    "banca": "Look - GO",
+    "banca_url": "api/v3/feed/look",
+    "data": "19/09/2020",
+    "extracao": "Extração da 11:20",
+    "resultado": "2976 (19)",
+    "img": "g19"
+  },
+  {
+    "banca_id": 19,
+    "banca": "Aliança Ext. Online",
+    "banca_url": "api/v3/feed/alianca",
+    "data": "19/09/2020",
+    "extracao": "Extração das 11:00",
+    "resultado": "2432 (08)",
+    "img": "g08"
+  },
+  {
+    "banca_id": 11,
+    "banca": "Popular Recife",
+    "banca_url": "api/v3/feed/popularrecife",
+    "data": "19/09/2020",
+    "extracao": "Extração das 11:00",
+    "resultado": "5316 (04)",
+    "img": "g04"
+  },
+  {
+    "banca_id": 4,
+    "banca": "Lotep - PB",
+    "banca_url": "api/v3/feed/loteppb",
+    "data": "19/09/2020",
+    "extracao": "Extração das 10:45",
+    "resultado": "2875 (19)",
+    "img": "g19"
+  },
+  {
+    "banca_id": 12,
+    "banca": "Maluca - Bahia",
+    "banca_url": "api/v3/feed/malucabahia",
+    "data": "19/09/2020",
+    "extracao": "Extração das 10:00",
+    "resultado": "7150 (13)",
+    "img": "g13"
+  },
+  {
+    "banca_id": 10,
+    "banca": "Bahia",
+    "banca_url": "api/v3/feed/bahia",
+    "data": "19/09/2020",
+    "extracao": "Extração das 10:00",
+    "resultado": "4187 (22)",
+    "img": "g22"
+  },
+  {
+    "banca_id": 18,
+    "banca": "Poste da Trevo",
+    "banca_url": "api/v3/feed/postetrevo",
+    "data": "19/09/2020",
+    "extracao": "Extração das 10:30",
+    "resultado": "0695 (24)",
+    "img": "g24"
+  },
+  {
+    "banca_id": 9,
+    "banca": "L-BR",
+    "banca_url": "api/v3/feed/lbr",
+    "data": "19/09/2020",
+    "extracao": "Extração das 10:00",
+    "resultado": "8803 (01)",
+    "img": "g01"
+  },
+  {
+    "banca_id": 17,
+    "banca": "Loteria Nacional",
+    "banca_url": "api/v3/feed/loterianacional",
+    "data": "19/09/2020",
+    "extracao": "LN 10:00",
+    "resultado": "0716 (04)",
+    "img": "g04"
+  },
+  {
+    "banca_id": 4,
+    "banca": "Lotep - PB",
+    "banca_url": "api/v3/feed/loteppb",
+    "data": "19/09/2020",
+    "extracao": "Extração das 09:45",
+    "resultado": "3813 (04)",
+    "img": "g04"
+  },
+  {
+    "banca_id": 19,
+    "banca": "Aliança Ext. Online",
+    "banca_url": "api/v3/feed/alianca",
+    "data": "19/09/2020",
+    "extracao": "Extração das 09:40",
+    "resultado": "6188 (22)",
+    "img": "g22"
+  },
+  {
+    "banca_id": 11,
+    "banca": "Popular Recife",
+    "banca_url": "api/v3/feed/popularrecife",
+    "data": "19/09/2020",
+    "extracao": "Extração das 09:30",
+    "resultado": "5769 (18)",
+    "img": "g18"
+  },
+  {
+    "banca_id": 17,
+    "banca": "Loteria Nacional",
+    "banca_url": "api/v3/feed/loterianacional",
+    "data": "19/09/2020",
+    "extracao": "LN 08:00",
+    "resultado": "1296 (24)",
+    "img": "g24"
+  },
+  {
+    "banca_id": 17,
+    "banca": "Loteria Nacional",
+    "banca_url": "api/v3/feed/loterianacional",
+    "data": "19/09/2020",
+    "extracao": "LN 02:00",
+    "resultado": "6375 (19)",
+    "img": "g19"
+  }
+]

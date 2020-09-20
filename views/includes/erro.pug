@@ -1,0 +1,10 @@
+mixin erro(status, msg, stack, img='fill')
+	.d-flex.flex-column-reverse.align-items-center.overflow-auto.py-3(role='alert')
+		p.lead= msg
+		h2.h1= status
+		hr
+		if stack
+			pre.pre-scrollable.alert-secondary.p-2
+				code.text-break.text-wrap= stack
+		else
+			img.img-fluid.float-left.w-25(src="/images/zoo_"+img+".svg" alt="Oops")

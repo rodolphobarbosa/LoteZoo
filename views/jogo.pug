@@ -1,0 +1,34 @@
+extends layout
+prepend head
+	meta(name="description" content="Para apostar no jogo do bicho é preciso escolher um grupo dentre os 25, cada um representado por um animal. Os ganhos são multiplicados pelo tipo da aposta feita.")
+
+block header
+	+topmid()
+block content
+	.container-fluid
+		article.container.pt-3(role='article')
+			h2.h3.py-2.px-3.bg-dark.text-light Como jogar no Bicho
+			p.lead O princípio básico do Jogo do Bicho é apostar em um animal que corresponde a um dos 25 grupos. Cada um representando uma sequência de 4 números consecutivos entre 1 e 100, e seguindo a ordem alfabética. Seus ganhos serão proporcionais ao dinheiro que você inverteu e ao estilo de aposta que você escolheu. Os ganhos podem variar de cidade em cidade, por exemplo no Rio de Janeiro as proporções de ganho apostando em um animal na cabeça (1º. Prêmio) é de 1 para 18, ou seja, para cada 1 Real apostado, você pode ganhar R$18,00 vezes o valor apostado se o animal sair no sorteio.
+			details.mb-4
+				summary.h3 Tabela dos grupos
+				.container
+					.row.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.row-cols-xl-5
+						each g in grupos
+							.col.mb-2
+								.media.p-2.border.border-dark.rounded.text-center
+									img.GRUPO__IMG.mt-2(src='/images/grupos/svg/'+g.svg)
+									.media-body
+										h4.mt-0= g.nome
+										h5.text-nowrap.mb-0= g.dez.join(' - ')
+			h3 Apostas e prêmios
+			p.lead A maneira mais comum de jogar é apostar um real em um animal na cabeça, mas também é possível escolher uma combinação de números e numerais designados por um animal. Os quatro tipos tradicionais de prêmios são os seguintes:
+			ul(style="font-size: 1.15rem")
+				li #[strong Cabeça:] Uma aposta em quatro números entre 00 e 99 (grupo), representados por um animal; probabilidade 25: 1.
+				li #[strong Dezena:] Uma aposta em um número de 00 a 99; probabilidade 100: 1.
+				li #[strong Centena:] Uma aposta em um número de 000 a 999; probabilidade 1000: 1.
+				li #[strong Milhar:] Uma aposta em um número de 0000 a 9999; probabilidade 10000: 1.
+			p.h5 Além dos tipos listados há outras apostas e combinações como #[mark Cercados], #[mark Duques], #[mark Ternos], e #[mark Passe].
+
+			hr.mb-2
+			blockquote.blockquote
+				footer.blockquote-footer Fontes: #[cite(title="Wikipédia") Wikipédia, a enciclopédia livre] e #[cite(title="JogoDoBicho") #[a.text-reset(href='https://www.jogodobicho.net/como-jogar/' target='_blank') Jogo do Bicho online.]]

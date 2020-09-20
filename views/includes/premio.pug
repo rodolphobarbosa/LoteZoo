@@ -6,4 +6,4 @@ mixin premio(p, i)
 			.MILHAR__NUM= p.milhar
 		.PREMIO__GRUPO
 			.GRUPO__NUM= g.num
-			img.GRUPO__IMG(src='/images/grupos/'+g.img alt=g.nome)
+			img.GRUPO__IMG(src="/images/grupos/"+g.img128, alt=g.nome, srcset=`/images/grupos/${g.img}, /images/grupos/${g.img128} 1.5x` data-toggle="tooltip" data-placement="top" title=g.nome)

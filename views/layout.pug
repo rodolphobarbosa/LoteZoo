@@ -1,5 +1,6 @@
 doctype html
 include includes/top.pug
+include includes/breadcrumb.pug
 include includes/icones.pug
 html(lang='pt-br')
 	head
@@ -23,7 +24,7 @@ html(lang='pt-br')
 				link(href="https://fonts.googleapis.com/css?family=Baloo+Da+2|Muli&display=swap" rel="stylesheet")
 				link(rel='stylesheet' href='/stylesheets/style.css')
 	body.text-body.bg-light
-		header
+		header#TOP
 			block header
 				nav.navbar.navbar-expand-sm.fixed-top.navbar-dark
 					h1.navbar-brand.brand LoteZoo
@@ -33,16 +34,28 @@ html(lang='pt-br')
 						span.navbar-toggler-icon.navbar-banca-icone
 					#topNav.collapse.navbar-collapse.mt-2.mt-sm-0
 						.dropdown.mr-sm-auto
-							form#procurar(action="" method="" autocomplete="off" spellcheck="false")
+							form#procurar(action="" method="" autocomplete="off" spellcheck="false" role='search')
 								input#procurar-data(type="hidden")
 								input#procurar-campo.form-control(type='text' value="" placeholder='Banca Extração Grupo...' aria-label='Procurar')
 								#procurar-menu.dropdown-menu.dropdown-procurar.shadow-sm
 		main(role='main')
 			block content
-		footer.bg-dark
+		footer.bg-dark.text-light.py-2
 			block footer
-				.row.no-gutters.justify-content-center.p-2
-					blockquote.blockquote.text-center.text-muted.note
+				.row.no-gutters.justify-content-center
+					.col-4.p-2.text-center
+						h5.text-white Ajuda
+						ul.list-unstyled.m-0
+							li.pl-1.mb-1
+								a.text-reset(href='/sobre') O Jogo do Bicho
+							li.pl-1.mb-1
+								a.text-reset(href='/jogo') Como jogar
+					.col-4.p-2.text-center
+						h5.text-white Sobre
+						ul.list-unstyled.m-0
+							li.pl-1.mb-1
+								a.text-reset(href="mailto:ruansenadev@gmail.com?Subject=LoteZoo%20Contato") Contato
+					.col-12
 						block iconesRights
 							+citeRights([ ["Freepik", "https://www.flaticon.com/authors/freepik"], ["monkik", "https://www.flaticon.com/authors/monkik"], ["Smashicons", "https://www.flaticon.com/authors/smashicons"], ["photo3idea_studio", "https://www.flaticon.com/authors/photo3idea-studio"] ])
 		block scripts

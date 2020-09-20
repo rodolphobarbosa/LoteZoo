@@ -1,0 +1,11 @@
+mixin bc(bcs, type)
+	nav(aria-label='breadcrumb')
+		ol.breadcrumb.container
+			-var url = ''
+			each bread, i in bcs
+				-url= url + bread.path
+				if i != bcs.length-1
+					li.breadcrumb-item
+						a(href=url)= bread.titulo
+				else
+					li.breadcrumb-item.active(aria-current=type?type:'page')= bcs[bcs.length-1].titulo

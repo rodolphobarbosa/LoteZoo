@@ -1,0 +1,29 @@
+extends layout
+prepend head
+	meta(name="description" content="O Jogo do Bicho foi inventando em 1982 no Rio de Janeiro a partir de um bilhete para zoológico. Há várias supertições que cercam o jogo do bicho relacionado aos números e grupos.")
+
+block header
+	+topmid()
+block content
+	.container-fluid
+		article.container.pt-3(role='article')
+			h2.py-2.px-3.bg-dark.text-light O Jogo do Bicho
+			figure.figure.float-md-right.text-center.pt-3
+				img.figure-img.img-fluid.rounded.img-thumbnail(src="/images/bilhete-jardim-zoologico.png", alt="Entrada jardim zoologico")
+				figcaption.figure-caption.px-4.text-wrap Bilhete de entrada no zoológico do Rio de Janeiro, 1892.
+			p.lead.text-justify O jogo do bicho é uma bolsa ilegal de apostas em números que representam animais. Foi inventado em 1892 pelo barão João Batista Viana Drummond, fundador do Jardim Zoológico do Rio de Janeiro, em Vila Isabel, no Rio de Janeiro, no Brasil. A fase de intensa especulação financeira e jogatina na bolsa de valores nos primeiros anos da república brasileira imprimiu grave crise ao comércio. Para estimular as vendas, os comerciantes instituíram sorteios de brindes. Assim é que, querendo aumentar a frequência popular ao zoológico, o barão decidiu estipular um prêmio em dinheiro ao portador do bilhete de entrada que tivesse a figura do animal do dia, o qual era escolhido entre os 25 animais do zoológico e passava o dia inteiro encoberto com um pano. O pano somente era retirado no final do dia, revelando o animal do dia. Posteriormente, os animais foram associados a séries numéricas da loteria e o jogo passou a ser praticado largamente fora do zoológico, a ponto de transformar a capital da república na "capital do jogo do bicho".
+			h3.mb-0 Superstição
+			hr.mt-0
+			p.lead Ao longo das décadas, a teoria supersticiosa evoluiu em torno da escolha do grupo do animal, grande parte envolvendo sonhos. Cavalo, por exemplo, pode ser indicado por um sonho de cavalo, ou por trigo, leite ou mulheres nuas. O elefante passou a ser associado à morte, e sempre que há um acidente de trânsito fatal envolvendo um carro com um dos números do elefante (45-48) em suas placas, o número de apostas são grandes. Quando os jornais do Rio publicaram a imagem de uma locomotiva descarrilada na década de 1960, tantos apostaram nos últimos quatro números de seu número de série que os bicheiros foram forçados a avisar que não poderiam pagar com as probabilidades comuns se vencessem.
+			
+			h3.mb-0 Métodos
+			hr.mt-0
+			p.lead Para os que não acreditam tanto em superstição, ou não conta com tanta sorte como gostaria, ao apostar em números ao acaso vários dos apostadores tentam descobrir métodos que busca aumentar as probabilidades de ganho. Ressaltamos que quando se trata de loteria não existe nenhum método infalível, portanto não deve se tomar como a "salvação de dívidas", mas sim como uma forma alternativa de palpites.
+
+			hr.mb-1
+			blockquote.blockquote
+				p.mb-0
+					ins Não disponibilizamos nenhum livro sobre supertições, como livro dos sonhos, nem métodos de jogo. Contudo é possível encontrar facilmente na internet.
+				footer.blockquote-footer Fontes: #[cite(title="Wikipédia") Wikipédia, a enciclopédia livre], #[cite(title="JogoDoBicho") #[a.text-reset(href='https://www.jogodobicho.net/historia/' target='_blank') Jogo do Bicho online]] e #[cite(title="Freebase") Google, Freebase Data Dumps.]
+block iconesRights
+	+citeRights([["Freepik", "https://www.flaticon.com/authors/freepik"]])

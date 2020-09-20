@@ -104,4 +104,17 @@ dist
 .tern-port
 
 # Middlewares files
-controllers/data/*
+# controllers/data/*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+
+# Linux
+*~
+
+# Public Tools files
+/public/*
+!/public/**/
+!/public/sitemap.xml
+!/public/robots.txt

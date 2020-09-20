@@ -1,4 +1,6 @@
 extends layout
+prepend head
+	meta(name='description' content='A loteria do bicho moderna e busca fácil contando com a maioria das bancas do Brasil. Extrações em tempo real e consultas por data')
 append styles
 	link(rel="stylesheet" href="/stylesheets/home.css")
 block header
@@ -21,19 +23,22 @@ block content
 			.CEL
 				.CEL__TELA
 					.TELA__FAKE
-					.TELA__ICONE
+					#ICONE.TELA__ICONE
 		.TOPICO__CEL
 			.TOPICO__TEXTO
 				h2 Abra seu navegador
 				p.TOPICO__DESC Selecione a seguinte opção
 			.CEL
 				.CEL__TELA
-					.TELA__FAKE.TELA__FAKE--NAV
-						.FAKE__OPCOES Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum unde dicta assumenda placeat consectetur nihil cumque. Assumenda optio, unde quis culpa laudantium fuga eius, quo delectus perferendis corrupti voluptate expedita!
+					.TELA__FAKE.TELA__FAKE--NAV(data-url=url)
+						#OPCOES.FAKE__OPCOES Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum unde dicta assumenda placeat consectetur nihil cumque.
 					.TELA__SITE
 
-block footer
-	.row.no-gutters.justify-content-center.p-2
-		blockquote.blockquote.text-center.text-muted.note
-			block iconesRights
-				+citeRights([["Freepik", "https://www.flaticon.com/authors/freepik"]])
+
+block iconesRights
+	+citeRights([["Freepik", "https://www.flaticon.com/authors/freepik"]])
+
+block scripts
+	script(src='/dist/jquery.min.js')
+	script(src='/js/bootstrap.bundle.min.js')
+	script(src='/javascripts/home.js')

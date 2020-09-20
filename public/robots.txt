@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: /resultados/procurar
+Disallow: /resultados/*/sorteio*
+
+Sitemap: https://lotezoo.azurewebsites.net/sitemap.xml

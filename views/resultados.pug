@@ -2,6 +2,11 @@ extends layout
 include includes/sorteio.pug
 include includes/premio.pug
 
+prepend head
+	if sorteios.length
+		meta(name='description' content=banca+' resultados hoje, última extração: '+sorteios[sorteios.length-1].extracao+'. Confira também os resultados em qualquer data.')
+	else
+		meta(name='description' content=banca+' resultados hoje. Confira também os sorteios em qualquer data.')
 block content
 	section.BANCA
 		.BANCA__HERO
@@ -9,7 +14,7 @@ block content
 				h2.CABECALHO__TITULO= banca
 				.CABECALHO__ADDON= data[2]
 			.HERO__CONTEUDO
-				form(action="" method="post")
+				form(action=formUri method="post")
 					.form-row
 						input#DATA(type="hidden" value=data[1] readonly)
 						.BANCA__DATA
@@ -18,16 +23,19 @@ block content
 							input#DATA--BANCA.DATA__INPUT(type="date" name="data" value=data[1] max=data[3] aria-label='Data do Sorteio' aria-describedby='data-abbr')
 							.DATA__ADDON
 								button#DATA__BTN.btn.btn-outline-primary.DATA__BTN(type='submit') Buscar
+	+bc(bcs.breads, bcs.type)
 	.container.container-lg.SORTEIOS
 		if sorteios.length
-			.nav-scroller.py-3.mb-2.border-top.border-bottom.border-info
-				nav.nav.justify-content-around.pb-0
+			.MENU__SCROLL
+				nav.MENU__EXTRACOES.nav
 					each sorteio in sorteios
-						a.px-3.py-2.text-monospace.border.border-secondary.rounded.text-muted.font-weight-bold(href='#'+sorteio.ID)= sorteio.extracao
+						a.EXTRACAO__ID(href='#'+sorteio.ID)= sorteio.extracao
 			.row.no-gutters.row-cols-1.row-cols-md-2.pt-4
 				each sorteio in sorteios
 					+sorteio(sorteio)
 		else
-			p.lead.mb-0.text-center Não foram encontrados resultados para esta data.
+			p.lead.mb-0.text-center Não foram encontrados sorteios nesta data.
+prepend footer
+	a(href='#TOP' role='button').BACKTOP.text-decoration-none Topo da página
 append scripts
 	script(src="/javascripts/resultados.js")

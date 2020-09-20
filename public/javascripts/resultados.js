@@ -9,10 +9,18 @@ function getDds(data) {
 	return dds ? dds - 1 : 6
 }
 
-$(function() {
+if (location.hash) {
+	setTimeout(function() {
+		let $id = $(location.hash)
+		let pos = $id.offset().top - 56
+		$('body, html').animate({ scrollTop: pos })
+	}, 1)
+}
+
+$(function () {
 	dataBtn.attr('disabled', dataInput.val() == dataBanca)
 	// SMOOTH SCROLL
-	$(document).on('click', 'a[href^="#"]', function(e) {
+	$(document).on('click', 'a[href^="#"]', function (e) {
 		// anchor id
 		let id = $(this).attr('href')
 		// anchor
@@ -28,7 +36,7 @@ $(function() {
 		$('body, html').animate({ scrollTop: pos })
 	})
 
-	dataInput.change(function(ev) {
+	dataInput.change(function (ev) {
 		let data = $(this).val()
 		let dds = data ? dias[getDds(data)] : "&times;"
 		dataBtn.attr('disabled', data == dataBanca || !data)

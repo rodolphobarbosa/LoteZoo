@@ -1,27 +1,24 @@
+const createError = require('http-errors')
+const debug = require('debug')('lotezoo:axios')
 const loteria = require('./data/loteria')
 const qs = require('query-string')
-const moment = require('moment')
-const {check, validationResult} = require('express-validator')
+const moment = require('moment-timezone')
+const path = require('path')
+const fs = require('fs')
+const bahiaTz = 'America/Bahia'
+const { check, validationResult } = require('express-validator')
 
-const dataHoje = moment().format('YYYY-MM-DD')
+const dataHoje = moment().tz(bahiaTz).format('YYYY-MM-DD')
 const dias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab']
 
-// lidar com erros
-function localsErro408(e) {
-	return {
-		title: e.message,
-		message: e.message,
-		error: {
-			status: 408,
-			stack: e.stack
-		}
-	}
-}
+var EXTRACOES_PAGINADAS
+
 async function asyncAPI(fx, fxArgs = [], cb) {
 	try {
 		let response = await fx.apply(null, fxArgs)
 		return cb(null, response)
 	} catch (e) {
+		debug('Axios erro requisicao get a api:' + e)
 		return cb(e, null)
 	}
 }
@@ -38,12 +35,77 @@ function orderPoste(extracoes) {
 	return poste.concat(extracoes)
 }
 // Built-in fxs
+function getPathes(url) {
+	// evita primeira barra e demais
+	return url.split('/').slice(1)
+}
+function mapBreadcrumbs(url, type = false, token = '') {
+	let breads = getPathes(url)
+	const bancas = {
+		// bancas
+		federal: 'Federal',
+		l_br: 'L-BR',
+		lotep_pb: 'Lotep (PB)',
+		rio_grande_do_sul: 'Rio Grande do Sul',
+		sao_paulo: 'São Paulo',
+		lotece: 'Lotece',
+		look_go: 'Look (GO)',
+		bahia: 'Bahia',
+		bahia_maluca: 'Bahia - Maluca',
+		popular_recife: 'Popular Recife',
+		loteria_nacional: 'Loteria Nacional',
+		minas_gerais: 'Minas Gerais',
+		rio_de_janeiro: 'Rio de Janeiro',
+	}
+	var bcRefs = {
+		resultados: 'Últimos Resultados',
+	}
+	breads = breads.map((bc) => {
+		let titulo = bc in bancas ? bancas[bc] : bcRefs[bc]
+		// banca em data post
+		return { path: '/' + bc, titulo: titulo }
+	})
+	if (type) {
+		switch (type) {
+			case 'date':
+				// adiciona ultimo path da banca data
+				breads.push({
+					path: breads[breads.length - 1].path,
+					titulo: 'Data ' + token,
+				})
+				break
+			default:
+				// page
+				breads.push({
+					path: breads[breads.length - 1].path,
+					titulo: 'Página ' + token,
+				})
+				break
+		}
+	}
+	return { breads, type }
+}
+function mapCloud(extracoes) {
+	return extracoes.map(e => {return{banca: e.banca, poste: e.poste}}).reduce((es, e) => {
+		let flag = false
+		for(let i = 0; i < es.length; i++) {
+			if (es[i][0] === e.banca) {
+				es[i][1] += 1
+				if(e.poste) es[i][2] = true;
+				flag = true
+				break
+			}
+		}
+		if(!flag) es.push(e.poste?[e.banca, 1, true]: [e.banca, 1])
+		return es
+	}, [])
+}
 // uri para requisitar modal
 function mapResultado(extracoes) {
 	return extracoes.map((extracao) => {
 		extracao.uri = qs.stringifyUrl({
 			url: `/resultados/${extracao.urn}/sorteio`,
-			query: { data: extracao.data, extracao: extracao.extracao }
+			query: { data: extracao.data, extracao: extracao.extracao },
 		})
 		return extracao
 	})
@@ -55,108 +117,151 @@ function formatImprimir(sorteio) {
 		query: {
 			banca: sorteio.urn,
 			data: sorteio.data,
-			extracao: sorteio.extracao
-		}
+			extracao: sorteio.extracao,
+		},
 	})
 	return sorteio
 }
 // paginacao
-function paginar(pagina, extracoes, maxResultados = 12) {
-	let maxPaginas = Math.ceil(extracoes.length / maxResultados)
-	pagina = pagina > maxPaginas ? maxPaginas : pagina
-	let queries = []
-	let ignorar = (pagina - 1) * maxResultados
-	let buscar = pagina * maxResultados
-	for (let p = 1; p <= maxPaginas; p++) {
-		if (p == pagina) {
-			queries.push(null)
-			continue
-		} else if (p == 1) {
-			queries.push('/resultados')
-			continue
-		} else {
+function mapPaginas(extracoes, maxResultados = 12) {
+	let limitePaginas = Math.ceil(extracoes.length / maxResultados)
+	let queries = ['/resultados']
+	if (limitePaginas > 1) {
+		for (let p = 2; p <= limitePaginas; p++) {
 			queries.push(
 				qs.stringifyUrl({ url: '/resultados', query: { pagina: p } })
 			)
 		}
 	}
-	return { queries, extracoes: extracoes.slice(ignorar, buscar) }
+	return { queries, extracoes, max: maxResultados, limite: limitePaginas }
+}
+function paginar(map, pagina) {
+	let queries = [...map.queries]
+	pagina = pagina > map.limite ? map.limite : pagina
+	queries[pagina - 1] = null
+	return {
+		queries,
+		extracoes: map.extracoes.slice((pagina - 1) * map.max, pagina * map.max),
+	}
 }
 
-exports.ultimas_extracoes = function(req, res, next) {
+exports.ultimas_extracoes = function (req, res, next) {
+	// cache extracoes
+	let extracoes = loteria.req_ultimas()
+	if (extracoes === null) {
+		res.setHeader('Retry-After', '60')
+		return next(createError(503, 'Indisponível, tente novamente em instantes'))
+	} else if (extracoes.length) {
+		// cache var
+		EXTRACOES_PAGINADAS = mapPaginas(extracoes)
+		// cache local
+		fs.writeFileSync(path.join(__dirname, 'extracoes_paginadas.json'), JSON.stringify(EXTRACOES_PAGINADAS, null, 2), 'utf8')
+	}
+	// formatacao breadcrumbs
 	let pagina = req.query.pagina ? req.query.pagina : 1
-	asyncAPI(loteria.req_ultimas, null, (e, extracoes) => {
-		if (e) {
-			if(e.code === "ECONNABORTED") {
-				// renderiza pagina timedout
-				e = localsErro408(e);
-				res.render('error', e)
-			}
-			return next(e)
-		}
-		pagina = paginar(pagina, extracoes)
-		extracoes = mapResultado(pagina.extracoes)
-
-		// extracoes = orderPoste(extracoes);
-		res.render('extracoes', {
-			title: 'LoteZoo - Resultados Hoje',
-			extracoes,
-			paginas: pagina.queries
-		})
+	let bcs = qs.parseUrl(req.originalUrl)
+	if (!(pagina > 1)) {
+		bcs = mapBreadcrumbs(bcs.url)
+	} else {
+		bcs = mapBreadcrumbs(bcs.url, 'page', bcs.query.pagina)
+	}
+	// extracoes por pagina
+	pagina = paginar(EXTRACOES_PAGINADAS || JSON.parse(fs.readFileSync(path.join(__dirname, 'extracoes_paginadas.json'), 'utf8')), pagina)
+	pagina.cloud = mapCloud(pagina.extracoes)
+	pagina.extracoes = mapResultado(pagina.extracoes)
+	res.render('extracoes', {
+		title: 'LoteZoo - Resultados Hoje',
+		extracoes: pagina.extracoes,
+		cloud: pagina.cloud,
+		bcs,
+		paginas: pagina.queries,
 	})
 }
 
-exports.banca_sorteios = function(req, res, next) {
+exports.banca_sorteios = function (req, res, next) {
 	asyncAPI(loteria.req_banca, [req.params.banca], (erro, resultado) => {
 		if (erro) {
+			if (erro.code === 'ECONNABORTED') {
+				next(createError(408, 'Conexão lenta, verifique sua internet'))
+			}
 			return next(erro)
 		}
+
 		// data do ultimo resultado da banca
-		const dataSorteio = moment(resultado.data, 'DD/MM/YYYY')
+		let dataSorteio = moment(resultado.data, 'DD/MM/YYYY')
+		let sorteioIso = dataSorteio.format('YYYY-MM-DD')
+		let shortData = dataHoje != sorteioIso ? dataSorteio.format('DD/MM') : null
+		// breadcrumbs path
+		let bcs
+		if (shortData) {
+			bcs = mapBreadcrumbs(req.originalUrl, 'date', shortData)
+		} else {
+			bcs = mapBreadcrumbs(req.originalUrl)
+		}
 		// order primeiros da data
 		resultado.sorteios.reverse()
 		res.render('resultados', {
-			title: 'Resultados',
+			title: `${resultado.banca} - ${shortData ? shortData : 'Hoje'}`,
 			banca: resultado.banca,
-			data: [dias[dataSorteio.day()], dataSorteio.format('YYYY-MM-DD'), dataSorteio.format('DD/MM/YYYY'), dataHoje],
-			sorteios: resultado.sorteios
+			data: [dias[dataSorteio.day()], sorteioIso, resultado.data, dataHoje],
+			sorteios: resultado.sorteios,
+			bcs,
+			formUri: req.originalUrl,
 		})
 	})
 }
 
 exports.banca_sorteios_data = [
 	// checar formato se e mesmo padrao data e valida
-	check('data').isISO8601({strict: true}),
+	check('data').isISO8601({ strict: true }),
 
-	function(req, res, next) {
+	function (req, res, next) {
 		// validar data do body
-		const erros = validationResult(req);
-		if(!erros.isEmpty()) {
+		const erros = validationResult(req)
+		if (!erros.isEmpty()) {
 			return res.status(422).json(erros)
 		}
 
-		const data = moment(req.body.data, 'YYYY-MM-DD')
+		const dataSorteio = moment(req.body.data)
 		asyncAPI(
 			loteria.req_banca,
-			[req.params.banca, data.format('DD_MM_YYYY')],
+			[req.params.banca, dataSorteio.format('DD_MM_YYYY')],
 			(erro, resultado) => {
 				if (erro) {
+					if (e.code === 'ECONNABORTED') {
+						next(createError(408, 'Conexão lenta, por favor verifique sua conexão'))
+					}
 					return next(erro)
+				}
+				let shortData =
+					dataHoje != req.body.data ? dataSorteio.format('DD/MM') : null
+				let bcs
+				if (shortData) {
+					bcs = mapBreadcrumbs(req.originalUrl, 'date', shortData)
+				} else {
+					bcs = mapBreadcrumbs(req.originalUrl)
 				}
 				// order
 				resultado.sorteios.reverse()
 				res.render('resultados', {
-					title: 'Resultados',
+					title: `${resultado.banca} - ${shortData ? shortData : 'Hoje'}`,
 					banca: resultado.banca,
-					data: [dias[data.day()], data.format('YYYY-MM-DD'), data.format('DD/MM/YYYY'), dataHoje],
-					sorteios: resultado.sorteios
+					data: [
+						dias[dataSorteio.day()],
+						req.body.data,
+						dataSorteio.format('DD/MM/YYYY'),
+						dataHoje,
+					],
+					sorteios: resultado.sorteios,
+					bcs,
+					formUri: req.originalUrl,
 				})
 			}
 		)
-	}
+	},
 ]
 
-exports.banca_sorteio = function(req, res, next) {
+exports.banca_sorteio = function (req, res, next) {
 	asyncAPI(
 		loteria.req_sorteio,
 		[req.params.banca, req.query.data, req.query.extracao],
@@ -171,7 +276,7 @@ exports.banca_sorteio = function(req, res, next) {
 	)
 }
 
-exports.imprimir_sorteio = function(req, res, next) {
+exports.imprimir_sorteio = function (req, res, next) {
 	asyncAPI(
 		loteria.req_sorteio,
 		[req.query.banca, req.query.data, req.query.extracao],
@@ -181,13 +286,13 @@ exports.imprimir_sorteio = function(req, res, next) {
 			}
 			res.render('imprimir', {
 				title: `Impressão - ${sorteio.extracao}`,
-				sorteio
+				sorteio,
 			})
 		}
 	)
 }
 
-exports.procurar_dados = function(req, res, next) {
+exports.procurar_dados = function (req, res, next) {
 	asyncAPI(loteria.req_dados_search, null, (erro, dados) => {
 		if (erro) {
 			return next(erro)

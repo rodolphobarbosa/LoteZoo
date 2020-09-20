@@ -1,0 +1,1566 @@
+[
+  {
+    "banca": "L-BR",
+    "urn": "l_br",
+    "extracao": "22:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "5778",
+      "grupo": {
+        "num": "20",
+        "nome": "Peru",
+        "dezenas": [
+          "77",
+          "78",
+          "79",
+          "80"
+        ],
+        "img": "peru.png",
+        "img128": "peru128.png",
+        "svg": "peru.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Loteria Nacional",
+    "urn": "loteria_nacional",
+    "extracao": "22:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "5850",
+      "grupo": {
+        "num": "13",
+        "nome": "Galo",
+        "dezenas": [
+          "49",
+          "50",
+          "51",
+          "52"
+        ],
+        "img": "galo.png",
+        "img128": "galo128.png",
+        "svg": "galo.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Rio de Janeiro",
+    "urn": "rio_de_janeiro",
+    "extracao": "21:20",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "6669",
+      "grupo": {
+        "num": "18",
+        "nome": "Porco",
+        "dezenas": [
+          "69",
+          "70",
+          "71",
+          "72"
+        ],
+        "img": "porco.png",
+        "img128": "porco128.png",
+        "svg": "porco.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Bahia - Maluca",
+    "urn": "bahia_maluca",
+    "extracao": "21:20",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "0331",
+      "grupo": {
+        "num": "08",
+        "nome": "Camelo",
+        "dezenas": [
+          "29",
+          "30",
+          "31",
+          "32"
+        ],
+        "img": "camelo.png",
+        "img128": "camelo128.png",
+        "svg": "camelo.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Bahia",
+    "urn": "bahia",
+    "extracao": "21:20",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "8620",
+      "grupo": {
+        "num": "05",
+        "nome": "Cachorro",
+        "dezenas": [
+          "17",
+          "18",
+          "19",
+          "20"
+        ],
+        "img": "cachorro.png",
+        "img128": "cachorro128.png",
+        "svg": "cachorro.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Look (GO)",
+    "urn": "look_go",
+    "extracao": "21:20",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "9950",
+      "grupo": {
+        "num": "13",
+        "nome": "Galo",
+        "dezenas": [
+          "49",
+          "50",
+          "51",
+          "52"
+        ],
+        "img": "galo.png",
+        "img128": "galo128.png",
+        "svg": "galo.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "L-BR",
+    "urn": "l_br",
+    "extracao": "20:40",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "4041",
+      "grupo": {
+        "num": "11",
+        "nome": "Cavalo",
+        "dezenas": [
+          "41",
+          "42",
+          "43",
+          "44"
+        ],
+        "img": "cavalo.png",
+        "img128": "cavalo128.png",
+        "svg": "cavalo.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Trevo Nacional",
+    "urn": "trevo",
+    "extracao": "20:30",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "0801",
+      "grupo": {
+        "num": "01",
+        "nome": "Avestruz",
+        "dezenas": [
+          "01",
+          "02",
+          "03",
+          "04"
+        ],
+        "img": "avestruz.png",
+        "img128": "avestruz128.png",
+        "svg": "avestruz.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "São Paulo",
+    "urn": "sao_paulo",
+    "extracao": "PTN 20:20",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "7158",
+      "grupo": {
+        "num": "15",
+        "nome": "Jacaré",
+        "dezenas": [
+          "57",
+          "58",
+          "59",
+          "60"
+        ],
+        "img": "jacare.png",
+        "img128": "jacare128.png",
+        "svg": "jacare.svg"
+      }
+    },
+    "poste": true
+  },
+  {
+    "banca": "Lotep (PB)",
+    "urn": "lotep_pb",
+    "extracao": "20:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "7681",
+      "grupo": {
+        "num": "21",
+        "nome": "Touro",
+        "dezenas": [
+          "81",
+          "82",
+          "83",
+          "84"
+        ],
+        "img": "touro.png",
+        "img128": "touro128.png",
+        "svg": "touro.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Lotece",
+    "urn": "lotece",
+    "extracao": "19:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "2643",
+      "grupo": {
+        "num": "11",
+        "nome": "Cavalo",
+        "dezenas": [
+          "41",
+          "42",
+          "43",
+          "44"
+        ],
+        "img": "cavalo.png",
+        "img128": "cavalo128.png",
+        "svg": "cavalo.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Bahia - Maluca",
+    "urn": "bahia_maluca",
+    "extracao": "19:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "6464",
+      "grupo": {
+        "num": "16",
+        "nome": "Leão",
+        "dezenas": [
+          "61",
+          "62",
+          "63",
+          "64"
+        ],
+        "img": "leao.png",
+        "img128": "leao128.png",
+        "svg": "leao.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Rio Grande do Sul",
+    "urn": "rio_grande_do_sul",
+    "extracao": "18:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "0576",
+      "grupo": {
+        "num": "19",
+        "nome": "Pavão",
+        "dezenas": [
+          "73",
+          "74",
+          "75",
+          "76"
+        ],
+        "img": "pavao.png",
+        "img128": "pavao128.png",
+        "svg": "pavao.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Federal",
+    "urn": "federal",
+    "extracao": "Federal",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "0576",
+      "grupo": {
+        "num": "19",
+        "nome": "Pavão",
+        "dezenas": [
+          "73",
+          "74",
+          "75",
+          "76"
+        ],
+        "img": "pavao.png",
+        "img128": "pavao128.png",
+        "svg": "pavao.svg"
+      }
+    },
+    "poste": true
+  },
+  {
+    "banca": "L-BR",
+    "urn": "l_br",
+    "extracao": "19:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "1519",
+      "grupo": {
+        "num": "05",
+        "nome": "Cachorro",
+        "dezenas": [
+          "17",
+          "18",
+          "19",
+          "20"
+        ],
+        "img": "cachorro.png",
+        "img128": "cachorro128.png",
+        "svg": "cachorro.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Loteria Nacional",
+    "urn": "loteria_nacional",
+    "extracao": "19:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "8774",
+      "grupo": {
+        "num": "19",
+        "nome": "Pavão",
+        "dezenas": [
+          "73",
+          "74",
+          "75",
+          "76"
+        ],
+        "img": "pavao.png",
+        "img128": "pavao128.png",
+        "svg": "pavao.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Aliança Online",
+    "urn": "alianca",
+    "extracao": "18:40",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "5056",
+      "grupo": {
+        "num": "14",
+        "nome": "Gato",
+        "dezenas": [
+          "53",
+          "54",
+          "55",
+          "56"
+        ],
+        "img": "gato.png",
+        "img128": "gato128.png",
+        "svg": "gato.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Popular Recife",
+    "urn": "popular_recife",
+    "extracao": "18:30",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "8535",
+      "grupo": {
+        "num": "09",
+        "nome": "Cobra",
+        "dezenas": [
+          "33",
+          "34",
+          "35",
+          "36"
+        ],
+        "img": "cobra.png",
+        "img128": "cobra128.png",
+        "svg": "cobra.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Look (GO)",
+    "urn": "look_go",
+    "extracao": "18:20",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "6877",
+      "grupo": {
+        "num": "20",
+        "nome": "Peru",
+        "dezenas": [
+          "77",
+          "78",
+          "79",
+          "80"
+        ],
+        "img": "peru.png",
+        "img128": "peru128.png",
+        "svg": "peru.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Lotep (PB)",
+    "urn": "lotep_pb",
+    "extracao": "18:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "5604",
+      "grupo": {
+        "num": "01",
+        "nome": "Avestruz",
+        "dezenas": [
+          "01",
+          "02",
+          "03",
+          "04"
+        ],
+        "img": "avestruz.png",
+        "img128": "avestruz128.png",
+        "svg": "avestruz.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Trevo Nacional",
+    "urn": "trevo",
+    "extracao": "17:30",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "0739",
+      "grupo": {
+        "num": "10",
+        "nome": "Coelho",
+        "dezenas": [
+          "37",
+          "38",
+          "39",
+          "40"
+        ],
+        "img": "coelho.png",
+        "img128": "coelho128.png",
+        "svg": "coelho.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "L-BR",
+    "urn": "l_br",
+    "extracao": "17:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "5197",
+      "grupo": {
+        "num": "25",
+        "nome": "Vaca",
+        "dezenas": [
+          "97",
+          "98",
+          "99",
+          "00"
+        ],
+        "img": "vaca.png",
+        "img128": "vaca128.png",
+        "svg": "vaca.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Popular Recife",
+    "urn": "popular_recife",
+    "extracao": "17:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "9389",
+      "grupo": {
+        "num": "23",
+        "nome": "Urso",
+        "dezenas": [
+          "89",
+          "90",
+          "91",
+          "92"
+        ],
+        "img": "urso.png",
+        "img128": "urso128.png",
+        "svg": "urso.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Aliança Online",
+    "urn": "alianca",
+    "extracao": "17:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "7143",
+      "grupo": {
+        "num": "11",
+        "nome": "Cavalo",
+        "dezenas": [
+          "41",
+          "42",
+          "43",
+          "44"
+        ],
+        "img": "cavalo.png",
+        "img128": "cavalo128.png",
+        "svg": "cavalo.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Loteria Nacional",
+    "urn": "loteria_nacional",
+    "extracao": "17:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "8329",
+      "grupo": {
+        "num": "08",
+        "nome": "Camelo",
+        "dezenas": [
+          "29",
+          "30",
+          "31",
+          "32"
+        ],
+        "img": "camelo.png",
+        "img128": "camelo128.png",
+        "svg": "camelo.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "São Paulo",
+    "urn": "sao_paulo",
+    "extracao": "Bandeirante",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "9928",
+      "grupo": {
+        "num": "07",
+        "nome": "Carneiro",
+        "dezenas": [
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "img": "carneiro.png",
+        "img128": "carneiro128.png",
+        "svg": "carneiro.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Rio de Janeiro",
+    "urn": "rio_de_janeiro",
+    "extracao": "PTV 16:20",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "3491",
+      "grupo": {
+        "num": "23",
+        "nome": "Urso",
+        "dezenas": [
+          "89",
+          "90",
+          "91",
+          "92"
+        ],
+        "img": "urso.png",
+        "img128": "urso128.png",
+        "svg": "urso.svg"
+      }
+    },
+    "poste": true
+  },
+  {
+    "banca": "Look (GO)",
+    "urn": "look_go",
+    "extracao": "16:20",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "8193",
+      "grupo": {
+        "num": "24",
+        "nome": "Veado",
+        "dezenas": [
+          "93",
+          "94",
+          "95",
+          "96"
+        ],
+        "img": "veado.png",
+        "img128": "veado128.png",
+        "svg": "veado.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Lotep (PB)",
+    "urn": "lotep_pb",
+    "extracao": "15:45",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "6138",
+      "grupo": {
+        "num": "10",
+        "nome": "Coelho",
+        "dezenas": [
+          "37",
+          "38",
+          "39",
+          "40"
+        ],
+        "img": "coelho.png",
+        "img128": "coelho128.png",
+        "svg": "coelho.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Popular Recife",
+    "urn": "popular_recife",
+    "extracao": "15:40",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "5194",
+      "grupo": {
+        "num": "24",
+        "nome": "Veado",
+        "dezenas": [
+          "93",
+          "94",
+          "95",
+          "96"
+        ],
+        "img": "veado.png",
+        "img128": "veado128.png",
+        "svg": "veado.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Aliança Online",
+    "urn": "alianca",
+    "extracao": "15:40",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "7910",
+      "grupo": {
+        "num": "03",
+        "nome": "Burro",
+        "dezenas": [
+          "09",
+          "10",
+          "11",
+          "12"
+        ],
+        "img": "burro.png",
+        "img128": "burro128.png",
+        "svg": "burro.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Bahia - Maluca",
+    "urn": "bahia_maluca",
+    "extracao": "15:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "7734",
+      "grupo": {
+        "num": "09",
+        "nome": "Cobra",
+        "dezenas": [
+          "33",
+          "34",
+          "35",
+          "36"
+        ],
+        "img": "cobra.png",
+        "img128": "cobra128.png",
+        "svg": "cobra.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Trevo Nacional",
+    "urn": "trevo",
+    "extracao": "15:30",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "2554",
+      "grupo": {
+        "num": "14",
+        "nome": "Gato",
+        "dezenas": [
+          "53",
+          "54",
+          "55",
+          "56"
+        ],
+        "img": "gato.png",
+        "img128": "gato128.png",
+        "svg": "gato.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Bahia",
+    "urn": "bahia",
+    "extracao": "15:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "6117",
+      "grupo": {
+        "num": "05",
+        "nome": "Cachorro",
+        "dezenas": [
+          "17",
+          "18",
+          "19",
+          "20"
+        ],
+        "img": "cachorro.png",
+        "img128": "cachorro128.png",
+        "svg": "cachorro.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "L-BR",
+    "urn": "l_br",
+    "extracao": "15:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "6015",
+      "grupo": {
+        "num": "04",
+        "nome": "Borboleta",
+        "dezenas": [
+          "13",
+          "14",
+          "15",
+          "16"
+        ],
+        "img": "borboleta.png",
+        "img128": "borboleta128.png",
+        "svg": "borboleta.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Minas Gerais",
+    "urn": "minas_gerais",
+    "extracao": "Minas Dia",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "7924",
+      "grupo": {
+        "num": "06",
+        "nome": "Cabra",
+        "dezenas": [
+          "21",
+          "22",
+          "23",
+          "24"
+        ],
+        "img": "cabra.png",
+        "img128": "cabra128.png",
+        "svg": "cabra.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Loteria Nacional",
+    "urn": "loteria_nacional",
+    "extracao": "15:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "4928",
+      "grupo": {
+        "num": "07",
+        "nome": "Carneiro",
+        "dezenas": [
+          "25",
+          "26",
+          "27",
+          "28"
+        ],
+        "img": "carneiro.png",
+        "img128": "carneiro128.png",
+        "svg": "carneiro.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Rio Grande do Sul",
+    "urn": "rio_grande_do_sul",
+    "extracao": "14:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "9477",
+      "grupo": {
+        "num": "20",
+        "nome": "Peru",
+        "dezenas": [
+          "77",
+          "78",
+          "79",
+          "80"
+        ],
+        "img": "peru.png",
+        "img128": "peru128.png",
+        "svg": "peru.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Rio de Janeiro",
+    "urn": "rio_de_janeiro",
+    "extracao": "PT 14:20",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "8620",
+      "grupo": {
+        "num": "05",
+        "nome": "Cachorro",
+        "dezenas": [
+          "17",
+          "18",
+          "19",
+          "20"
+        ],
+        "img": "cachorro.png",
+        "img128": "cachorro128.png",
+        "svg": "cachorro.svg"
+      }
+    },
+    "poste": true
+  },
+  {
+    "banca": "Lotece",
+    "urn": "lotece",
+    "extracao": "14:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "6614",
+      "grupo": {
+        "num": "04",
+        "nome": "Borboleta",
+        "dezenas": [
+          "13",
+          "14",
+          "15",
+          "16"
+        ],
+        "img": "borboleta.png",
+        "img128": "borboleta128.png",
+        "svg": "borboleta.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Look (GO)",
+    "urn": "look_go",
+    "extracao": "14:20",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "2120",
+      "grupo": {
+        "num": "05",
+        "nome": "Cachorro",
+        "dezenas": [
+          "17",
+          "18",
+          "19",
+          "20"
+        ],
+        "img": "cachorro.png",
+        "img128": "cachorro128.png",
+        "svg": "cachorro.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Popular Recife",
+    "urn": "popular_recife",
+    "extracao": "14:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "2579",
+      "grupo": {
+        "num": "20",
+        "nome": "Peru",
+        "dezenas": [
+          "77",
+          "78",
+          "79",
+          "80"
+        ],
+        "img": "peru.png",
+        "img128": "peru128.png",
+        "svg": "peru.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Aliança Online",
+    "urn": "alianca",
+    "extracao": "14:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "2193",
+      "grupo": {
+        "num": "24",
+        "nome": "Veado",
+        "dezenas": [
+          "93",
+          "94",
+          "95",
+          "96"
+        ],
+        "img": "veado.png",
+        "img128": "veado128.png",
+        "svg": "veado.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "São Paulo",
+    "urn": "sao_paulo",
+    "extracao": "PT 13:30",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "1001",
+      "grupo": {
+        "num": "01",
+        "nome": "Avestruz",
+        "dezenas": [
+          "01",
+          "02",
+          "03",
+          "04"
+        ],
+        "img": "avestruz.png",
+        "img128": "avestruz128.png",
+        "svg": "avestruz.svg"
+      }
+    },
+    "poste": true
+  },
+  {
+    "banca": "Trevo Nacional",
+    "urn": "trevo",
+    "extracao": "13:30",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "8198",
+      "grupo": {
+        "num": "25",
+        "nome": "Vaca",
+        "dezenas": [
+          "97",
+          "98",
+          "99",
+          "00"
+        ],
+        "img": "vaca.png",
+        "img128": "vaca128.png",
+        "svg": "vaca.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Lotep (PB)",
+    "urn": "lotep_pb",
+    "extracao": "12:45",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "8251",
+      "grupo": {
+        "num": "13",
+        "nome": "Galo",
+        "dezenas": [
+          "49",
+          "50",
+          "51",
+          "52"
+        ],
+        "img": "galo.png",
+        "img128": "galo128.png",
+        "svg": "galo.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Aliança Online",
+    "urn": "alianca",
+    "extracao": "12:40",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "2060",
+      "grupo": {
+        "num": "15",
+        "nome": "Jacaré",
+        "dezenas": [
+          "57",
+          "58",
+          "59",
+          "60"
+        ],
+        "img": "jacare.png",
+        "img128": "jacare128.png",
+        "svg": "jacare.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "L-BR",
+    "urn": "l_br",
+    "extracao": "12:40",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "8757",
+      "grupo": {
+        "num": "15",
+        "nome": "Jacaré",
+        "dezenas": [
+          "57",
+          "58",
+          "59",
+          "60"
+        ],
+        "img": "jacare.png",
+        "img128": "jacare128.png",
+        "svg": "jacare.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Popular Recife",
+    "urn": "popular_recife",
+    "extracao": "12:40",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "2430",
+      "grupo": {
+        "num": "08",
+        "nome": "Camelo",
+        "dezenas": [
+          "29",
+          "30",
+          "31",
+          "32"
+        ],
+        "img": "camelo.png",
+        "img128": "camelo128.png",
+        "svg": "camelo.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Bahia - Maluca",
+    "urn": "bahia_maluca",
+    "extracao": "12:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "8839",
+      "grupo": {
+        "num": "10",
+        "nome": "Coelho",
+        "dezenas": [
+          "37",
+          "38",
+          "39",
+          "40"
+        ],
+        "img": "coelho.png",
+        "img128": "coelho128.png",
+        "svg": "coelho.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Bahia",
+    "urn": "bahia",
+    "extracao": "12:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "2018",
+      "grupo": {
+        "num": "05",
+        "nome": "Cachorro",
+        "dezenas": [
+          "17",
+          "18",
+          "19",
+          "20"
+        ],
+        "img": "cachorro.png",
+        "img128": "cachorro128.png",
+        "svg": "cachorro.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Minas Gerais",
+    "urn": "minas_gerais",
+    "extracao": "Alvorada",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "5774",
+      "grupo": {
+        "num": "19",
+        "nome": "Pavão",
+        "dezenas": [
+          "73",
+          "74",
+          "75",
+          "76"
+        ],
+        "img": "pavao.png",
+        "img128": "pavao128.png",
+        "svg": "pavao.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Loteria Nacional",
+    "urn": "loteria_nacional",
+    "extracao": "12:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "2068",
+      "grupo": {
+        "num": "17",
+        "nome": "Macaco",
+        "dezenas": [
+          "65",
+          "66",
+          "67",
+          "68"
+        ],
+        "img": "macaco.png",
+        "img128": "macaco128.png",
+        "svg": "macaco.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Rio de Janeiro",
+    "urn": "rio_de_janeiro",
+    "extracao": "PTM 11:20",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "9852",
+      "grupo": {
+        "num": "13",
+        "nome": "Galo",
+        "dezenas": [
+          "49",
+          "50",
+          "51",
+          "52"
+        ],
+        "img": "galo.png",
+        "img128": "galo128.png",
+        "svg": "galo.svg"
+      }
+    },
+    "poste": true
+  },
+  {
+    "banca": "Look (GO)",
+    "urn": "look_go",
+    "extracao": "11:20",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "2976",
+      "grupo": {
+        "num": "19",
+        "nome": "Pavão",
+        "dezenas": [
+          "73",
+          "74",
+          "75",
+          "76"
+        ],
+        "img": "pavao.png",
+        "img128": "pavao128.png",
+        "svg": "pavao.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Aliança Online",
+    "urn": "alianca",
+    "extracao": "11:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "2432",
+      "grupo": {
+        "num": "08",
+        "nome": "Camelo",
+        "dezenas": [
+          "29",
+          "30",
+          "31",
+          "32"
+        ],
+        "img": "camelo.png",
+        "img128": "camelo128.png",
+        "svg": "camelo.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Popular Recife",
+    "urn": "popular_recife",
+    "extracao": "11:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "5316",
+      "grupo": {
+        "num": "04",
+        "nome": "Borboleta",
+        "dezenas": [
+          "13",
+          "14",
+          "15",
+          "16"
+        ],
+        "img": "borboleta.png",
+        "img128": "borboleta128.png",
+        "svg": "borboleta.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Lotep (PB)",
+    "urn": "lotep_pb",
+    "extracao": "10:45",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "2875",
+      "grupo": {
+        "num": "19",
+        "nome": "Pavão",
+        "dezenas": [
+          "73",
+          "74",
+          "75",
+          "76"
+        ],
+        "img": "pavao.png",
+        "img128": "pavao128.png",
+        "svg": "pavao.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Bahia - Maluca",
+    "urn": "bahia_maluca",
+    "extracao": "10:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "7150",
+      "grupo": {
+        "num": "13",
+        "nome": "Galo",
+        "dezenas": [
+          "49",
+          "50",
+          "51",
+          "52"
+        ],
+        "img": "galo.png",
+        "img128": "galo128.png",
+        "svg": "galo.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Bahia",
+    "urn": "bahia",
+    "extracao": "10:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "4187",
+      "grupo": {
+        "num": "22",
+        "nome": "Tigre",
+        "dezenas": [
+          "85",
+          "86",
+          "87",
+          "88"
+        ],
+        "img": "tigre.png",
+        "img128": "tigre128.png",
+        "svg": "tigre.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Trevo Nacional",
+    "urn": "trevo",
+    "extracao": "10:30",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "0695",
+      "grupo": {
+        "num": "24",
+        "nome": "Veado",
+        "dezenas": [
+          "93",
+          "94",
+          "95",
+          "96"
+        ],
+        "img": "veado.png",
+        "img128": "veado128.png",
+        "svg": "veado.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "L-BR",
+    "urn": "l_br",
+    "extracao": "10:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "8803",
+      "grupo": {
+        "num": "01",
+        "nome": "Avestruz",
+        "dezenas": [
+          "01",
+          "02",
+          "03",
+          "04"
+        ],
+        "img": "avestruz.png",
+        "img128": "avestruz128.png",
+        "svg": "avestruz.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Loteria Nacional",
+    "urn": "loteria_nacional",
+    "extracao": "10:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "0716",
+      "grupo": {
+        "num": "04",
+        "nome": "Borboleta",
+        "dezenas": [
+          "13",
+          "14",
+          "15",
+          "16"
+        ],
+        "img": "borboleta.png",
+        "img128": "borboleta128.png",
+        "svg": "borboleta.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Lotep (PB)",
+    "urn": "lotep_pb",
+    "extracao": "09:45",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "3813",
+      "grupo": {
+        "num": "04",
+        "nome": "Borboleta",
+        "dezenas": [
+          "13",
+          "14",
+          "15",
+          "16"
+        ],
+        "img": "borboleta.png",
+        "img128": "borboleta128.png",
+        "svg": "borboleta.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Aliança Online",
+    "urn": "alianca",
+    "extracao": "09:40",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "6188",
+      "grupo": {
+        "num": "22",
+        "nome": "Tigre",
+        "dezenas": [
+          "85",
+          "86",
+          "87",
+          "88"
+        ],
+        "img": "tigre.png",
+        "img128": "tigre128.png",
+        "svg": "tigre.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Popular Recife",
+    "urn": "popular_recife",
+    "extracao": "09:30",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "5769",
+      "grupo": {
+        "num": "18",
+        "nome": "Porco",
+        "dezenas": [
+          "69",
+          "70",
+          "71",
+          "72"
+        ],
+        "img": "porco.png",
+        "img128": "porco128.png",
+        "svg": "porco.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Loteria Nacional",
+    "urn": "loteria_nacional",
+    "extracao": "08:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "1296",
+      "grupo": {
+        "num": "24",
+        "nome": "Veado",
+        "dezenas": [
+          "93",
+          "94",
+          "95",
+          "96"
+        ],
+        "img": "veado.png",
+        "img128": "veado128.png",
+        "svg": "veado.svg"
+      }
+    },
+    "poste": false
+  },
+  {
+    "banca": "Loteria Nacional",
+    "urn": "loteria_nacional",
+    "extracao": "02:00",
+    "data": "19/09/2020",
+    "resultado": {
+      "milhar": "6375",
+      "grupo": {
+        "num": "19",
+        "nome": "Pavão",
+        "dezenas": [
+          "73",
+          "74",
+          "75",
+          "76"
+        ],
+        "img": "pavao.png",
+        "img128": "pavao128.png",
+        "svg": "pavao.svg"
+      }
+    },
+    "poste": false
+  }
+]
